@@ -1,0 +1,48 @@
+#wrapper {
+  width: 250px;
+  height: 300px;
+}
+
+.shape {
+  width:70px;
+  height: 70px;
+  border-radius: 35px;
+  display: inline-block; 
+  margin-bottom: 10px;
+}
+
+
+
+.num-container {
+  position: relative;
+  top: 20%;
+  left: 40%;
+  color: white;
+}
+
+
+
+body div div:nth-child(2) {
+  background-color: #0CEBDE;
+}
+
+body div div:nth-child(3) {
+  background-color: #0CEBDE;
+}
+
+body div div:nth-child(4) {
+  background-color: #0CEBDE;
+}
+
+body div div:nth-child(5) {
+  background-color: #0CEBDE;
+}
+
+body div div:nth-child(6) {
+  background-color: #EBBE0C;
+}
+
+
+body div div:nth-child(1) {
+  background-color: #B90CEB;
+}
