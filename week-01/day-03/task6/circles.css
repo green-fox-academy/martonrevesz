@@ -43,6 +43,6 @@ body div div:nth-child(6) {
 }
 
 
-body div div:nth-child(1) {
-  background-color: #B90CEB;
+#wrapper > div:first-of-type {
+  background-color: red;
 }
