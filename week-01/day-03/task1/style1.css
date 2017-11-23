@@ -1,0 +1,32 @@
+body {
+    background-color: #DDDDDD;
+}
+
+#parent {
+    position: absolute;
+    top: 100px;
+    left: 361px;
+    width: 360px;
+    height: 473px;
+    border: 1px solid #6A737D;
+    padding: 6px;
+    background-color: white;
+    
+}
+
+#parent div {
+    box-sizing: border-box;
+    width: 357px;
+    height: 143px;
+    border: 4px solid #7DCE94;
+    margin-bottom: 18px;
+    background-color: #0E91A1;
+    color: #005566;
+    font-size: 36px;
+    padding: 15px 0px 0px 15px;
+}
+
+#parent div:last-child {
+    margin-bottom: 0px;
+}
+
