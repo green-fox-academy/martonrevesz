@@ -10,10 +10,10 @@
     
 }
 
-.parent div {
+.parent  > div {
   box-sizing: border-box;
   width: 348px;
-  height: 129px;
+  height: 123px;
   background-color: #0E91A1;
   font-size: 36px;
   padding: 15px 0px 0px 15px;
@@ -21,17 +21,9 @@
   color:white;
 }
 
-.parent div:nth-child(1) {
+body div:first-child div {
   background-color: #E67676;
 }
-.parent div:nth-child(2) {
-  background-color: #E67676;
-  margin-bottom: 10px;
-}
-.parent div:nth-child(3) {
+body div:last-child div {
   background-color: #A9E6E6;
 }
-.parent div:nth-child(4) {
-  background-color: #A9E6E6;
-}
-
