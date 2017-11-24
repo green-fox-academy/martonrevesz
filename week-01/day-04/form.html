@@ -3,6 +3,7 @@
   <head>
     <title>Form</title>
     <link rel="stylesheet" href="./form.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
   </head>
   <body>
     <div id="container">
@@ -10,23 +11,22 @@
         <h2>Profile</h2>
       </div>
       <div id="outer2">
-        <h3>Personal</h3>
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name" required>
+        <h3 class="lead">Personal</h3><br>
+        <label for="name" class="bold">Name</label><br>
+        <input type="text" id="name" name="name" required >
         <div id="inner1">
-          <label for="birth">Birth</label>
+          <label for="birth" class="bold">Birth</label>
           <input type="number" id="birth" name="birth" min="1900" max="2017" step="1">
         </div>
         <div id="inner2">
-          <h3>Gender</h3>
+          <p class="bold">Sex<p>
             <label for="female">Female</label>
-            <input type="radio" id="female" name="gender" >
+            <input type="radio" id="female" name="gender">
             <label for="male">Male</label>
             <input type="radio" id="male" name="gender" >
-        </div>
+        </div><br><br><br><br>
+        <p class="bold">Your favourite brands</p><br>
         <div id="inner3">
-          <br><br>
-          <h3>Your favourite brands</h3><br>
           <label for="adidas">Adidas</label>
           <input type="checkbox" id="adidas" name="adidas" >
           <label for="apple">Apple</label>
@@ -50,27 +50,27 @@
         </div>
       </div>
       <div id="outer3">
-        <h3>Contact</h3>
-        <label for="phone">Phone</label>
+        <p class="lead">Contact</p><br>
+        <label for="phone"  class="bold">Phone</label>
         <input type="tel" id="phone" required placeholder="+36 -- --- ----"><br><br>
-        <label for="email">Email</label>
+        <label for="email"  class="bold">Email</label>
         <input type="email" id="email" required placeholder="nev@domain.hu"><br><br>
-        <label for="fb">Facebook Profile</label>
+        <label for="fb"  class="bold">Facebook Profile</label>
         <input type="url" id="fb"  placeholder="http://facebook.com/..."><br><br>
-        <label for="twitter">Twitter Profile</label>
+        <label for="twitter"  class="bold">Twitter Profile</label>
         <input type="url" id="twitter"  placeholder="http://twitter.com/..."><br><br>
-        <label>In what type of house do you live?</label>
-        <select id="select" name="select"> 
+        <label  class="bold">In what type of house do you live?</label>
+        <select id="select" name="houseType" > 
           <option value="bungalow">Bungalow</option> 
           <option value="castle" selected>Castle</option>
           <option value="apartment">Apartment</option>
         </select> <br><br>
       </div>
       <div id="outer4">
-        <h3>Introduce yourself</h3>
+        <p class="bold"> Introduce yourself</p>
         <textarea name="textarea" 
         rows="8" cols="50">Write something here</textarea>
       </div>
-  </div>
+    </div>
   </body>
 </html>
