@@ -6,60 +6,55 @@
 
 body {
   box-sizing: border-box;
-  padding: 0% 13%;
+  padding: 0% 16%;
 }
 
 #container {
   background-color: green;
   box-sizing: border-box;
   width: 90%;
-  height: 750px;
+  height: 650px;
 }
 
-.outer{
+#outer1, #outer2, #outer3, #outer4 {
   padding: 5px;
   background-color: yellow;
-  color: yellow;
   box-sizing: border-box;
 }
 
- #container .outer:nth-child(2),  #container .outer:nth-child(3) {
+ #outer2, #outer3 {
   margin-top: 20px;
   display: inline-block;
   height: 460px;
-  width: 49%;
+  width: 48%;
   vertical-align: middle;
- 
 } 
-
- #container .outer:nth-child(1),  {
+#outer1  {
   width: 100%;
   height: 45px;
   margin-bottom: 15px;
-
 } 
-
- #container .outer:nth-child(4) {
+ #outer4 {
   width: 100%;
   height: 180px;
   margin-top: 20px;
-  
 }
-.inner {
-  border: solid 1px black;
-  display: inline-block;
+#inner1, #inner2, #inner3 {
   position: relative;
-  top: 200px;
+  top: 120px;
 }
 
-.outer .inner:nth-child(1), .outer .inner:nth-child(2) {
-  width: 47%;
+#inner1, #inner2 {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 35%;
   height: 50px;
+  vertical-align: middle;
 } 
 
-.outer .inner:nth-child(3) {
-  height: 40px;
-  width: 98%;
+#inner3 {
+  height: 120px;
+  width: 96%;
 } 
 
 
