@@ -37,7 +37,7 @@ p {
     font-family: consolas, courier;
 }
 
-.intro, .wiki {
+.intro, #wiki {
     margin-top: 5%;
     margin-left: 10%;
     margin-right: 20%;
