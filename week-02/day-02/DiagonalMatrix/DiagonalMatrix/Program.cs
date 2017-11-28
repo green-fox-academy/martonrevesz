@@ -10,31 +10,38 @@ namespace DiagonalMatrix
 	{
 		static void Main(string[] args)
 		{
-			PrintDiagonalMatrix(7);
-			Console.ReadLine();
+            int[,] matrix = CreateDiagonalMatrix(16);
+            PrintMatrix(matrix);
+            Console.ReadLine();
 		}
 
-		static void PrintDiagonalMatrix(int n)
+        private static void PrintMatrix(int[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.Write("\n");
+            }
+        }
+
+        static int[,] CreateDiagonalMatrix(int n)
 		{
-			//draw n lines
-			for (int i = 0; i < n; i++)
-			{
-				//until we reach i we draw 0-s
-				for (int j = 0; j < i; j++)
-				{
-					Console.Write("0 ");
-				}
-
-				//when we reach i we draw 0
-				Console.Write("1 ");
-
-				//after we leave i we draw 0-s
-				for (int k = i + 1; k < n; k++)
-				{
-					Console.Write("0 ");
-				}
-				Console.Write("\n");
-			}
-		}
+            int[,] matrix = new int[n, n];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    matrix[i, j] = 0;
+                    if(i == j )
+                    {
+                        matrix[i, j] = 1;
+                    }
+                }
+            }
+            return matrix;
+        }
 	}
 }
