@@ -21,9 +21,9 @@ namespace colors
 
         private static void PrintMultiArray(string[][] array)
         {
-            for (int i = 0; i < array.Length; i++)
+            foreach (string[] externalArray in array)
             {
-                foreach (string item in array[i])
+                foreach (string item in externalArray)
                 {
                     Console.WriteLine(item);
                 }
