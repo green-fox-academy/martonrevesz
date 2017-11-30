@@ -19,11 +19,13 @@ namespace Sort
             Console.ReadLine();
         }
 
+
+
         static List<int> SortList(List<int> list)
         {
-            for (int i = 0; i < list.Count - 1; i++)  
+            for (int i = 0; i < list.Count - 1; i++)
             {
-                for (int j = i ; j < list.Count - 1 ; j++)
+                for (int j = i ; j < list.Count - 1; j++)
                 {
                     if (list[i] > list[j + 1])
                     {
@@ -33,7 +35,8 @@ namespace Sort
                     }
                 }
             }
-            return list; 
+            return list;
         }
+
     }
 }
