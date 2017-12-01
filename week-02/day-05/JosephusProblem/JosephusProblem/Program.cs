@@ -6,24 +6,39 @@ namespace JosephusProblem
     {
         static void Main(string[] args)
         {
-            int number = 3;
+            int number = 66;
             Console.WriteLine(FindJosephus(number));
             Console.ReadLine();
         }
 
-        static int FindJosephus (int number)
+        static int FindJosephus(int number)
         {
-            int i = 0;
-            int goodExponent = 0;
-            while (Math.Pow(2,i) <= number)
-            {
-                i++;
-            }
-            i--;
+            int[] participants = GenerateParticipantsList(number);
+            int pointer = 0;
+            int living = number;
 
-            int remainder = number % (int) (Math.Pow(2,i));
-            int goodPlace = remainder * 2 + 1;
-            return goodPlace ;
+            // The pointer shows which is the actual person. The next one will be the one who is pointed by the actual person's pointed.
+            // Who is not pointed any more counts as dead. The last person pointed is the winner.
+            while (living != 1)
+            {
+                participants[pointer] = participants[participants[pointer]];
+                pointer = participants[pointer];
+                living--;
+            }
+            return participants[pointer] + 1;
+        }
+
+        static int[] GenerateParticipantsList(int number)
+        {
+            int[] participants = new int[number];
+
+            for (int i = 0; i < participants.Length - 1; i++)
+            {
+                participants[i] = i + 1;
+            }
+            participants[participants.Length - 1] = 0;
+
+            return participants;
         }
     }
 }
