@@ -10,15 +10,16 @@ namespace DrawDiamond
             int number = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < number; i++)
             {
-                //draw spaces 
+                //draw spaces on line i
                 double spaceDouble = Math.Abs(i - (number - 1) / 2.0);
                 int spaceInt = (int)Math.Floor(spaceDouble);
                 for (int j = 0; j < spaceInt; j++)
                 {
                     Console.Write(" ");
                 }
-                // draw stars
-                double starDouble =  (Math.Abs(i - (number - 1) / 2.0))* (-2) + number;
+                // draw stars on line i
+                double starDouble = 
+                    Math.Abs(i - (number - 1) / 2.0)* (-2) + number;
                 int starInt = (int)Math.Floor(starDouble);
                 for (int j = 0; j < starInt; j++)
                 {
