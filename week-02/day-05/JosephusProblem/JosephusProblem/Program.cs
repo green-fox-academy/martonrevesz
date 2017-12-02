@@ -6,7 +6,7 @@ namespace JosephusProblem
     {
         static void Main(string[] args)
         {
-            int number = 66;
+            int number = 3563;
             Console.WriteLine(FindJosephus(number));
             Console.ReadLine();
         }
