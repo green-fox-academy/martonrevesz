@@ -7,11 +7,18 @@ namespace WriteMultipleLines
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt";
-            string word = "apple";
-            int number = 5;
-            int counter = 0;
+            string myPath = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt";
+            string myWord = "apple";
+            int myNumber = 5;
+            WriteMultipleLines(myPath, myWord, myNumber);
+            
+        }
+
+        static void WriteMultipleLines(string path, string word, int number)
+        {
             var sw = new StreamWriter(path, true);
+            int counter = 0;
+
             try
             {
                 while (counter < number)
