@@ -30,6 +30,10 @@ namespace CountLines
             {
                 return 0;
             }
+            catch(Exception e)
+            {
+                return 0;
+            }
         }
     }
 }
