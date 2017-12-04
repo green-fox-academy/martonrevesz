@@ -7,7 +7,6 @@ namespace WriteMultipleLines
     {
         static void Main(string[] args)
         {
-           
             try
             {
                 Console.WriteLine("Please enter the only valid file path: ");
@@ -20,15 +19,14 @@ namespace WriteMultipleLines
                 Console.WriteLine("Please enter an integer: ");
                 int myNumber = int.Parse(Console.ReadLine());
                 Console.WriteLine("Please enter a word: ");
-                string myWord = Console.ReadLine();              
+                string myWord = Console.ReadLine();
                 WriteMultipleLines(myPath, myWord, myNumber);
-                
             }
             catch (MyUglyException e)
             {
                 Console.WriteLine(e.Message);
             }
-            catch(FormatException e)
+            catch (FormatException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -46,7 +44,6 @@ namespace WriteMultipleLines
         {
             var sw = new StreamWriter(path, true);
             int counter = 0;
-
             try
             {
                 while (counter < number)
