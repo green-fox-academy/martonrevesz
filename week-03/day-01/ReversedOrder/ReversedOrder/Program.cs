@@ -20,19 +20,24 @@ namespace ReversedOrder
 
         static void DecryptReversedOrder(string path)
         {
+            var sw = new StreamWriter(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\reversed-order-copy.txt");
             try
             {
                 string[] array = File.ReadAllLines(path);
                 for (int i = 0; i < array.Length; i++)
                 {
                     Console.WriteLine(array[array.Length - (i + 1)]);
+                    sw.WriteLine(array[array.Length - (i + 1)]);
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message);               
             }
-            
+            finally
+            {
+                sw.Close();
+            }           
         }
     }
 }
