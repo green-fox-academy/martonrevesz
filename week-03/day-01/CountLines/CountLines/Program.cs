@@ -7,7 +7,9 @@ namespace CountLines
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt";
+            Console.WriteLine("Please enter a valid file path: ");
+            //@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt"
+            string path = Console.ReadLine();
             Console.WriteLine(CountLines(path));
             Console.ReadLine();
         }
