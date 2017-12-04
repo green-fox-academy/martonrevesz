@@ -15,7 +15,7 @@ namespace PrintEachLine
                     Console.WriteLine(line);
                 }
             }
-            catch (FileNotFoundException e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
