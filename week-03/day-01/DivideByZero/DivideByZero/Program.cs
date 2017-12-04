@@ -6,8 +6,17 @@ namespace DivideByZero
     {
         static void Main(string[] args)
         {
-            int a = 0;
-            DivideTenBy(a);
+            Console.WriteLine("Please enter a number: ");
+            int a;
+            try
+            {
+                a = int.Parse(Console.ReadLine());
+                DivideTenBy(a);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadLine();
         }
         static void DivideTenBy(int number)
