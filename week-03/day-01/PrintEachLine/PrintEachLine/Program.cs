@@ -9,7 +9,7 @@ namespace PrintEachLine
         {
             try
             {
-                string[] array = File.ReadAllLines(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt");
+                string[] array = File.ReadAllLines(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\PrintEachLine\PrintEachLine\my-file.txt");
                 foreach (string line in array)
                 {
                     Console.WriteLine(line);

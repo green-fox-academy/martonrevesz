@@ -10,9 +10,9 @@ namespace WriteMultipleLines
             try
             {
                 Console.WriteLine("Please enter the only valid file path: ");
-                //C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt
+                //C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\WriteMultipleLines\WriteMultipleLines\my-file.txt
                 string myPath = @Console.ReadLine();
-                if (!myPath.Equals(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt"))
+                if (!myPath.Equals(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\WriteMultipleLines\WriteMultipleLines\my-file.txt"))
                 {
                     throw new MyUglyException();
                 }

@@ -7,13 +7,13 @@ namespace Reversed
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\reversed-lines.txt";
+            string path = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Reversed\Reversed\reversed-lines.txt";
             DecryptReverse(path);
             Console.ReadLine();
         }
         static void DecryptReverse(string path)
         {
-            var sw = new StreamWriter(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\reversed-lines-copy.txt");
+            var sw = new StreamWriter(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Reversed\Reversed\reversed-lines-copy.txt");
             try
             {
                 string[] myArray = File.ReadAllLines(path);

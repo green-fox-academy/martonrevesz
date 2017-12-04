@@ -11,9 +11,9 @@ namespace WriteSingleLine
             try
             {
                 Console.WriteLine("Please enter the only valid filepath without quotes: ");
-                //"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt"
+                //"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\WriteSingleLine\WriteSingleLine\my-file.txt"
                 string path = @Console.ReadLine();
-                if (!path.Equals(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt"))
+                if (!path.Equals(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\WriteSingleLine\WriteSingleLine\my-file.txt"))
                 {
                     throw new MySpecialException();
                 }

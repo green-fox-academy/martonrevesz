@@ -12,7 +12,7 @@ namespace ReversedOrder
         static void Main(string[] args)
         {
             Console.WriteLine("Please enter a file path: ");
-            //@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\reversed-order.txt"
+            //@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\ReversedOrder\ReversedOrder\reversed-order.txt"
             string path = @Console.ReadLine();            
             DecryptReversedOrder(path);
             Console.ReadLine();
@@ -20,7 +20,7 @@ namespace ReversedOrder
 
         static void DecryptReversedOrder(string path)
         {
-            var sw = new StreamWriter(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\reversed-order-copy.txt");
+            var sw = new StreamWriter(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\ReversedOrder\ReversedOrder\reversed-order-copy.txt");
             try
             {
                 string[] array = File.ReadAllLines(path);

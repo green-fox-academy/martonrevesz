@@ -7,8 +7,8 @@ namespace Lottery
     {
         static void Main(string[] args)
         {
-            string source = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\lottery-data.txt";
-            string destination = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\lottery-data-selected.txt";
+            string source = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Lottery\Lottery\lottery-data.txt";
+            string destination = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Lottery\Lottery\lottery-data-selected.txt";
             WriteLotteryDataInFile(source, destination);
 
             int[] thefinalArray = FindFiveMostCommon(FillResultsInArray(destination));

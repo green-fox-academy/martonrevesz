@@ -7,8 +7,8 @@ namespace Doubled
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\duplicated-chars.txt";
-            string path2 = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\duplicated-chars-copy.txt";
+            string path = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Doubled\Doubled\duplicated-chars.txt";
+            string path2 = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Doubled\Doubled\duplicated-chars-copy.txt";
             DecryptDuplicated(path, path2);
             Console.ReadLine();
         }

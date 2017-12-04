@@ -7,9 +7,10 @@ namespace CopyFile
     {
         static void Main(string[] args)
         {
-            string fileName1 = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file.txt";
-            string fileName2 = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\my-file-copy.txt";
+            string fileName1 = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\CopyFile\CopyFile\my-file.txt";
+            string fileName2 = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\CopyFile\CopyFile\my-file-copy.txt";
             CopyFile(fileName1, fileName2);
+            Console.ReadLine();
         }
         static bool CopyFile(string file1, string file2)
         {

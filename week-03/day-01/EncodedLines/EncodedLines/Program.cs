@@ -7,7 +7,7 @@ namespace EncodedLines
     {
         static void Main(string[] args)
         {
-            BreakCaesar(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\encoded-lines.txt");
+            BreakCaesar(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\EncodedLines\EncodedLines\encoded-lines.txt");
             Console.ReadLine();
         }
 
