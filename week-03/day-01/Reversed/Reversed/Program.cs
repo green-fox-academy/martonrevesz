@@ -13,14 +13,28 @@ namespace Reversed
         }
         static void DecryptReverse(string path)
         {
-            string[] myArray = File.ReadAllLines(path);
-            for (int i = 0; i < myArray.Length; i++)
+            var sw = new StreamWriter(@"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\reversed-lines-copy.txt");
+            try
             {
-                for (int j = 0; j < myArray[i].Length; j++)
+                string[] myArray = File.ReadAllLines(path);
+                for (int i = 0; i < myArray.Length; i++)
                 {
-                    Console.Write(myArray[i][myArray[i].Length - (j + 1)]);
+                    for (int j = 0; j < myArray[i].Length; j++)
+                    {
+                        Console.Write(myArray[i][myArray[i].Length - (j + 1)]);
+                        sw.Write(myArray[i][myArray[i].Length - (j + 1)]);
+                    }
+                    Console.Write("\n");
+                    sw.Write("\n");
                 }
-                Console.WriteLine("\n");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                sw.Close();
             }
         }
     }
