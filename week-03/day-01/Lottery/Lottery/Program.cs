@@ -8,10 +8,7 @@ namespace Lottery
         static void Main(string[] args)
         {
             string source = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Lottery\Lottery\lottery-data.txt";
-            string destination = @"C:\Users\Hajnal és Marci\greenfox\martonrevesz\week-03\day-01\Lottery\Lottery\lottery-data-selected.txt";
-            WriteLotteryDataInFile(source, destination);
-
-            int[] thefinalArray = FindFiveMostCommon(FillResultsInArray(destination));
+            int[] thefinalArray = FindFiveMostCommon(WriteLotteryDataIntoArray(source));
             foreach (int item in thefinalArray)
             {
                 Console.WriteLine(item);
@@ -19,11 +16,11 @@ namespace Lottery
             Console.ReadLine();
         }
 
-        static void WriteLotteryDataInFile(string source, string destination)
+        static int[] WriteLotteryDataIntoArray(string source)
         {
             var sr = new StreamReader(source);
-            var sw = new StreamWriter(destination);
             string line = "";
+            int[] options = new int[90];
 
             try
             {
@@ -34,10 +31,9 @@ namespace Lottery
                     {
                         string[] splitData = line.Split(';');
                         for (int i = 11; i < 16; i++)
-                        {
-                            sw.Write(splitData[i] + " ");
-                        }
-                        sw.Write("\n");
+                        {                    
+                                options[(int.Parse(splitData[i])) - 1] += 1;                          
+                        }                       
                     }
                 }
             }
@@ -48,41 +44,9 @@ namespace Lottery
             finally
             {
                 sr.Close();
-                sw.Close();
-            }
-        }
-
-        static int[] FillResultsInArray(string file)
-        {
-            int[] options = new int[90];
-            var sr = new StreamReader(file);
-            string line = " ";
-            try
-            {
-                while (line != null)
-                {
-                    line = sr.ReadLine();
-                    if (line != null)
-                    {
-                        string[] splitString = line.Split(' ');
-                        for (int i = 0; i < 5; i++)
-                        {
-                            options[(int.Parse(splitString[i])) - 1] += 1;
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                sr.Close();              
             }
             return options;
         }
-
         static int[] FindFiveMostCommon(int[] inputArray)
         {
             int[] result = new int[5];
