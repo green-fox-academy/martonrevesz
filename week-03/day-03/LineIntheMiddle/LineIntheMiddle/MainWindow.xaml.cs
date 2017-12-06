@@ -16,23 +16,18 @@ using GreenFox;
 
 namespace LineIntheMiddle
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-            //  draw a red horizontal line to the canvas' middle.
-            //  draw a green vertical line to the canvas' middle.
-            DrawLines(foxDraw);
+            DrawLines(foxDraw, 0, 175, 525, 175);
+            DrawLines(foxDraw, 263, 0, 263, 350);
         }
-        public static void DrawLines(FoxDraw foxDraw)
+        public static void DrawLines(FoxDraw foxDraw, int x1, int y1, int x2, int y2)
         {
-            foxDraw.DrawLine(0, 175 , 525, 175 );
-            foxDraw.DrawLine(263, 0, 263, 350);
+            foxDraw.DrawLine(x1, y1, x2, y2);
         }
     }
 }
