@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
 
-namespace FourRectangles
+namespace CenterBox
 {
     public partial class MainWindow : Window
     {
@@ -22,22 +22,18 @@ namespace FourRectangles
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-            DrawRectangle(foxDraw);
+            // create a square drawing function that takes 1 parameter:
+            // the square size
+            // and draws a square of that size to the center of the canvas.
+            // draw 3 squares with that function.
+            DrawSquare(foxDraw, 100);
+            DrawSquare(foxDraw, 80);
+            DrawSquare(foxDraw, 60);
         }
-        static void DrawRectangle(FoxDraw foxDraw)
+
+        static void DrawSquare(FoxDraw foxDraw, int size)
         {
-            foxDraw.FillColor(Colors.Green);
-            foxDraw.DrawRectangle(50, 50, 60, 60);
-
-            string s = "Colors.Red";
-            foxDraw.FillColor(s);
-            foxDraw.DrawRectangle(110, 110, 70, 70);
-
-            foxDraw.FillColor(Colors.Blue);
-            foxDraw.DrawRectangle(180, 180, 80, 80);
-
-            foxDraw.FillColor(Colors.Yellow);
-            foxDraw.DrawRectangle(260, 260, 30, 30);
+            foxDraw.DrawRectangle(263 - size / 2, 175 - size / 2, size, size);
         }
     }
 }
