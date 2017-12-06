@@ -26,18 +26,12 @@ namespace FourRectangles
         }
         static void DrawRectangle(FoxDraw foxDraw)
         {
-            foxDraw.FillColor(Colors.Green);
-            foxDraw.DrawRectangle(50, 50, 60, 60);
-
-            string s = "Colors.Red";
-            foxDraw.FillColor(s);
-            foxDraw.DrawRectangle(110, 110, 70, 70);
-
-            foxDraw.FillColor(Colors.Blue);
-            foxDraw.DrawRectangle(180, 180, 80, 80);
-
-            foxDraw.FillColor(Colors.Yellow);
-            foxDraw.DrawRectangle(260, 260, 30, 30);
+            var random = new Random();
+            for (int i = 0; i < 4; i++)
+            {
+                foxDraw.FillColor(Color.FromRgb((byte)random.Next(), (byte)random.Next(), (byte)random.Next()));
+                foxDraw.DrawRectangle(random.Next(400), random.Next(300), random.Next(100), random.Next(100));
+            }
         }
     }
 }
