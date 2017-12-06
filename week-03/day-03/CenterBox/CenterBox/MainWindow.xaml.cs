@@ -22,10 +22,6 @@ namespace CenterBox
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-            // create a square drawing function that takes 1 parameter:
-            // the square size
-            // and draws a square of that size to the center of the canvas.
-            // draw 3 squares with that function.
             DrawSquare(foxDraw, 100);
             DrawSquare(foxDraw, 80);
             DrawSquare(foxDraw, 60);
