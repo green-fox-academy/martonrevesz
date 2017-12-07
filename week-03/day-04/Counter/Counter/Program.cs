@@ -21,7 +21,6 @@ namespace Counter
             {
                 CountDown(n - 1);
             }
-            
         }
     }
 }
