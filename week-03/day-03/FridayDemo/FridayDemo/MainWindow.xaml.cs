@@ -34,10 +34,10 @@ namespace FridayDemo
                   new Point(500, 400), new Point(100, 400), new Point(500, 400), new Point(300, 55)
                 };
             var myList3 = new List<Point>()
-                { new Point(50, 50), new Point(50, 250), new Point(50, 250), new Point(350, 250),
-                  new Point(50,250), new Point(350, 250), new Point(350, 250), new Point(350, 50),
-                  new Point(350, 250), new Point(350, 50), new Point(350, 50), new Point(50, 50),
-                  new Point(350,50), new Point(50, 50), new Point(50, 50), new Point(50, 250)
+                { new Point(50, 50), new Point(50, 450), new Point(50, 450), new Point(650, 450),
+                  new Point(50,450), new Point(650, 450), new Point(650, 450), new Point(650, 50),
+                  new Point(650, 450), new Point(650, 50), new Point(650, 50), new Point(50, 50),
+                  new Point(650,50), new Point(50, 50), new Point(50, 50), new Point(50, 450)
                };
             DrawPointsInBetween(foxDraw, myList1, 20);
         }
