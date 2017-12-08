@@ -28,7 +28,7 @@ namespace Triangles
             DrawTriangles(foxDraw, sideLength, baseLineY, pieces);
         }
 
-        static void DrawTriangles(FoxDraw foxDraw, int sideLength, int baseLineY, int pieces)
+        static void DrawTriangles(FoxDraw foxDraw, int sideLength, int baseLineY, int resolution)
         {
             Point a = new Point(50, baseLineY);
             Point b = new Point(50 + sideLength, baseLineY);
@@ -42,12 +42,12 @@ namespace Triangles
             double x2 = a.X;
             double y2 = a.Y;
 
-            for (int i = 1; i < pieces; i++)
+            for (int i = 1; i < resolution; i++)
             {
-                x1 = (i * a.X + (pieces - i) * c.X) / pieces;
-                y1 = (i * a.Y + (pieces - i) * c.Y) / pieces;
-                x2 = (i * a.X + (pieces - i) * b.X) / pieces;
-                y2 = (i * a.Y + (pieces - i) * b.Y) / pieces;
+                x1 = (i * a.X + (resolution - i) * c.X) / resolution;
+                y1 = (i * a.Y + (resolution - i) * c.Y) / resolution;
+                x2 = (i * a.X + (resolution - i) * b.X) / resolution;
+                y2 = (i * a.Y + (resolution - i) * b.Y) / resolution;
                 foxDraw.DrawLine(x1, y1, x2, y2);
             }
 
@@ -56,12 +56,12 @@ namespace Triangles
             x2 = c.X;
             y2 = c.Y;
 
-            for (int i = 1; i < pieces; i++)
+            for (int i = 1; i < resolution; i++)
             {
-                x1 = (i * c.X + (pieces - i) * a.X) / pieces;
-                y1 = (i * c.Y + (pieces - i) * a.Y) / pieces;
-                x2 = (i * c.X + (pieces - i) * b.X) / pieces;
-                y2 = (i * c.Y + (pieces - i) * b.Y) / pieces;
+                x1 = (i * c.X + (resolution - i) * a.X) / resolution;
+                y1 = (i * c.Y + (resolution - i) * a.Y) / resolution;
+                x2 = (i * c.X + (resolution - i) * b.X) / resolution;
+                y2 = (i * c.Y + (resolution - i) * b.Y) / resolution;
                 foxDraw.DrawLine(x1, y1, x2, y2);
             }
 
@@ -70,12 +70,12 @@ namespace Triangles
             x2 = b.X;
             y2 = b.Y;
 
-            for (int i = 1; i < pieces; i++)
+            for (int i = 1; i < resolution; i++)
             {
-                x1 = (i * b.X + (pieces - i) * a.X) / pieces;
-                y1 = (i * b.Y + (pieces - i) * a.Y) / pieces;
-                x2 = (i * b.X + (pieces - i) * c.X) / pieces;
-                y2 = (i * b.Y + (pieces - i) * c.Y) / pieces;
+                x1 = (i * b.X + (resolution - i) * a.X) / resolution;
+                y1 = (i * b.Y + (resolution - i) * a.Y) / resolution;
+                x2 = (i * b.X + (resolution - i) * c.X) / resolution;
+                y2 = (i * b.Y + (resolution - i) * c.Y) / resolution;
                 foxDraw.DrawLine(x1, y1, x2, y2);
             }
         }
