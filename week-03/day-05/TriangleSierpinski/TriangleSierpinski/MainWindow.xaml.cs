@@ -32,11 +32,11 @@ namespace TriangleSierpinski
                 level--;
                 double sizeY = 0.866025 * sizeX;
                 foxDraw.DrawLine(startPoint.X, startPoint.Y, startPoint.X + sizeX, startPoint.Y);
-                foxDraw.DrawLine(startPoint.X, startPoint.Y, startPoint.X +  sizeX / 2, startPoint.Y + sizeY);
-                foxDraw.DrawLine(startPoint.X + sizeX /2 , startPoint.Y + sizeY, startPoint.X + sizeX, startPoint.Y);
-                
+                foxDraw.DrawLine(startPoint.X, startPoint.Y, startPoint.X + sizeX / 2, startPoint.Y + sizeY);
+                foxDraw.DrawLine(startPoint.X + sizeX / 2, startPoint.Y + sizeY, startPoint.X + sizeX, startPoint.Y);
+
                 DrawShape(foxDraw, sizeX / 2, new Point(startPoint.X, startPoint.Y), level);
-                DrawShape(foxDraw, sizeX / 2, new Point(startPoint.X + sizeX /2, startPoint.Y), level);
+                DrawShape(foxDraw, sizeX / 2, new Point(startPoint.X + sizeX / 2, startPoint.Y), level);
                 DrawShape(foxDraw, sizeX / 2, new Point(startPoint.X + sizeX / 4, startPoint.Y + sizeY / 2), level);
             }
         }
