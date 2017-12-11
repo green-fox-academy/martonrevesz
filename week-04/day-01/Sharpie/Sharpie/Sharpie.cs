@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sharpie
+namespace SharpieSet
 {
     class Sharpie
     {
         public string Color { get; set; }
         public double Width { get; set; }
-        public double InkAmount { get; set; } = 100;
+        public double InkAmount { get; set; } = 3;
 
         public Sharpie(string color, double width)
         {
@@ -20,7 +20,10 @@ namespace Sharpie
 
         public void Use()
         {
-            InkAmount--;
+            if (InkAmount > 0)
+            {
+                InkAmount--;
+            }
         }
     }
 }
