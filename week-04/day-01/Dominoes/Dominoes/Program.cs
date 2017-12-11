@@ -12,8 +12,8 @@ namespace Domino
         static void Main(string[] args)
         {
             var dominoes = InitializeDominoes();
-            var finalList = OrderDominoes(dominoes);
-            foreach (Domino item in finalList)
+            dominoes = OrderDominoes(dominoes);
+            foreach (Domino item in dominoes)
             {
                 Console.WriteLine("[" + item.GetValues()[0] + ", " + item.GetValues()[1] + "]");
             }
@@ -34,23 +34,19 @@ namespace Domino
 
         static List<Domino> OrderDominoes(List<Domino> dominoList)
         {
-            var newList = new List<Domino>();
-            int originalListLength = dominoList.Count;
-
-            newList.Add(dominoList[0]);
-            dominoList.Remove(dominoList[0]);
-            for (int i = 1; i < originalListLength - 1; i++)
+            for (int i = 1; i < dominoList.Count; i++)
             {
-                for (int j = 0; j < dominoList.Count; j++)
+                for (int j = i; j < dominoList.Count; j++)
                 {
-                    if (newList[newList.Count - 1].GetValues()[1] == dominoList[j].GetValues()[0])
+                    if (dominoList[i - 1].GetValues()[1] == dominoList[j].GetValues()[0])
                     {
-                        newList.Add(dominoList[j]);
-                        dominoList.Remove(dominoList[j]);
+                        var tempDomino = dominoList[i];
+                        dominoList[i] = dominoList[j];
+                        dominoList[j] = tempDomino;
                     }
                 }
             }
-            return newList;
+            return dominoList;
         }
     }
 }
