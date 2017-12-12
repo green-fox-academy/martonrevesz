@@ -22,6 +22,7 @@ namespace Aircrafts
         {
             int damageCaused = CurrentAmmo * BaseDamage;
             CurrentAmmo = 0;
+            AllDamage += damageCaused;
             return damageCaused;
         }
 
