@@ -10,9 +10,9 @@ namespace GreenFoxOrganization
 
         public Person(string name, int age, string gender)
         {
-            Name = name;
-            Age = age;
-            Gender = gender;
+            this.Name = name;
+            this.Age = age;
+            this.Gender = gender;
         }
 
         public Person()
@@ -27,7 +27,7 @@ namespace GreenFoxOrganization
             Console.WriteLine("Hi, I'm {0}, a {1} year old {2}.", Name, Age, Gender);
         }
 
-        public  virtual void GetGoal()
+        public virtual void GetGoal()
         {
             Console.WriteLine("My goal is: Live for the moment!");
         }
