@@ -11,9 +11,12 @@ namespace Sum
         public int Sum(List<int> list)
         {
             int sum = 0;
-            foreach (int item in list)
+            if (list != null)
             {
-                sum += item;
+                foreach (int item in list)
+                {
+                    sum += item;
+                } 
             }
             return sum;
         }
