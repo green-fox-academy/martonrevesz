@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Farm
+namespace FarmNS
 {
-    class Animal
+    public class Animal
     {
         public int HungerValue { get; set; }
         public int ThirstValue { get; set; }
@@ -17,20 +17,19 @@ namespace Farm
             ThirstValue = 50;
         }
 
-        public void Eat()
+        public int Eat()
         {
-            HungerValue--;
+            return --HungerValue;
         }
 
-        public void Drink()
+        public int Drink()
         {
-            ThirstValue--;
+            return --ThirstValue;
         }
 
-        public void Play()
+        public int[] Play()
         {
-            HungerValue++;
-            ThirstValue++;
+            return new int[] { ++HungerValue,  ++ThirstValue};
         }
     }
 }

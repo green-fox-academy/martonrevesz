@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Farm
+namespace FarmNS
 {
-    class Farm
+    public class Farm
     {
         public List<Animal> AnimalList { get; set; }
         public int FreePlaces { get; set; }
@@ -17,15 +17,16 @@ namespace Farm
             FreePlaces = freePlaces - animalList.Count;
         }
 
-        public void Breed()
+        public int Breed()
         {
             if (FreePlaces > 0)
             {
                 AnimalList.Add(new Animal());
                 FreePlaces--;
             }
+            return AnimalList.Count;
         }
-        public void Slaughter()
+        public Animal Slaughter()
         {
             var theLeastHungry = AnimalList[0];
             foreach (Animal item in AnimalList)
@@ -35,8 +36,10 @@ namespace Farm
                     theLeastHungry = item;
                 }
             }
+            
             AnimalList.Remove(theLeastHungry);
             FreePlaces++;
+            return theLeastHungry;
         }
     }
 }
