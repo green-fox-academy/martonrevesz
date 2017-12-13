@@ -30,7 +30,6 @@ namespace SharpieSet
 
         public void RemoveTrash()
         {
-
             for (int i = 0; i < SharpieList.Count; i++)
             {
                 if (SharpieList[i].InkAmount == 0)
@@ -38,7 +37,6 @@ namespace SharpieSet
                     SharpieList.Remove(SharpieList[i]);
                 }
             }
-
         }
     }
 }
