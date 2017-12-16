@@ -10,12 +10,19 @@ namespace Pirates
             var ship2 = new Ship();
             ship1.FillShip();
             ship2.FillShip();
+            ship1.Captain.DrinkSomeRum();
+            ship1.Captain.DrinkSomeRum();
+            ship1.Captain.DrinkSomeRum();
+            ship1.Captain.DrinkSomeRum();
             ship1.PrintShip();
             ship2.PrintShip();
-            ship1.Crew[3].Brawl(ship1.Captain);
+
+            ship1.Battle(ship2);
+
+            ship1.Captain.HowsItGoingMate();
+            ship2.Captain.HowsItGoingMate();
             ship1.PrintShip();
-
-
+            ship2.PrintShip();
             Console.ReadLine();
         }
     }
