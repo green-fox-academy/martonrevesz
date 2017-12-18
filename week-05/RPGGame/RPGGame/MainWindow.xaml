@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPGGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="500" KeyDown="WindowsKeyDown">
+        Title="MainWindow" Height="590" Width="520" KeyDown="WindowsKeyDown">
     <Grid>
         <Canvas Name="canvas"/>
     </Grid>

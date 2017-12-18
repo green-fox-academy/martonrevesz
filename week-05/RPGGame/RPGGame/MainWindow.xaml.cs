@@ -17,22 +17,44 @@ namespace RPGGame
 {
     public partial class MainWindow : Window
     {
-        private FoxDraw FoxDraw;
+        public FoxDraw FoxDraw;
 
         public MainWindow()
         {
             InitializeComponent();
             FoxDraw = new FoxDraw(canvas);
-            FoxDraw.AddImage("./Assets/boss.png", 0, 0);
+            var map = new Map(FoxDraw);
+            var hero = new Character("hero", "./Assets/hero-down.png");
+            map.DrawMap();
+            map.DrawCharacter(hero);
+            
         }
 
         private void WindowsKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F)
+            if (e.Key == Key.Right)
             {
-                double x = FoxDraw.GetLeft(FoxDraw.Tiles[0]) + 10;
-                double y = FoxDraw.GetTop(FoxDraw.Tiles[0]) + 10;
-                FoxDraw.SetPosition(FoxDraw.Tiles[0], x, y);
+                double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]) + 50;
+                double y = FoxDraw.GetTop(FoxDraw.Tiles[110]);
+                FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);                  
+            }
+            if (e.Key == Key.Left)
+            {
+                double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]) - 50;
+                double y = FoxDraw.GetTop(FoxDraw.Tiles[110]);
+                FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
+            }
+            if (e.Key == Key.Up)
+            {
+                double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]);
+                double y = FoxDraw.GetTop(FoxDraw.Tiles[110]) - 50;
+                FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
+            }
+            if (e.Key == Key.Down)
+            {
+                double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]);
+                double y = FoxDraw.GetTop(FoxDraw.Tiles[110]) + 50;
+                FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
             }
         }
     }
