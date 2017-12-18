@@ -22,15 +22,50 @@ namespace RPGGame
             CharacterCounter++;
         }
 
-        internal void MoveRight(Map map, FoxDraw foxDraw)
+        internal virtual void MoveRight(Map map, FoxDraw foxDraw)
         {
             if ((TileNumber % 10 != 9) && !map.WallTiles.Contains(TileNumber + 1))
             {
-                double x = foxDraw.GetLeft(foxDraw.Tiles[110]) + 50;
-                double y = foxDraw.GetTop(foxDraw.Tiles[110]);
-                foxDraw.SetPosition(foxDraw.Tiles[110], x, y);
+                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]) + 50;
+                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]);
+                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
                 TileNumber += 1;
             }
         }
+
+        internal virtual void MoveLeft(Map map, FoxDraw foxDraw)
+        {
+            if ((TileNumber % 10 != 0) && !map.WallTiles.Contains(TileNumber - 1))
+            {
+
+                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]) - 50;
+                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]);
+                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
+                TileNumber -= 1;
+            }
+        }
+
+        internal virtual void MoveUp(Map map, FoxDraw foxDraw)
+        {
+            if ((TileNumber / 10 != 0) && !map.WallTiles.Contains(TileNumber - 10))
+            {
+                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]);
+                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]) - 50;
+                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
+                TileNumber -= 10;
+            }
+        }
+
+        internal virtual void MoveDown(Map map, FoxDraw foxDraw)
+        {
+            if ((TileNumber / 10 != 10) && !map.WallTiles.Contains(TileNumber + 10))
+            {
+                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]);
+                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]) + 50;
+                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
+                TileNumber += 10;
+            }
+        }
+
     }
 }

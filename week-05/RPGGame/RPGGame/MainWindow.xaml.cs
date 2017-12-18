@@ -27,51 +27,25 @@ namespace RPGGame
             InitializeComponent();
             FoxDraw = new FoxDraw(canvas);
             InitializeGameBoardWithCharacters();
-
-
         }
 
         private void WindowsKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Right)
-            {
-                FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-right.png", UriKind.Relative));
-                hero.MoveRight(map, FoxDraw);
-                
+            {                
+                hero.MoveRight(map, FoxDraw);                
             }
             if (e.Key == Key.Left)
             {
-                FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-left.png", UriKind.Relative));
-                if ((hero.TileNumber % 10 != 0) && !map.WallTiles.Contains(hero.TileNumber - 1))
-                {
-
-                    double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]) - 50;
-                    double y = FoxDraw.GetTop(FoxDraw.Tiles[110]);               
-                    FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
-                    hero.TileNumber -= 1;
-                }
+                hero.MoveLeft(map, FoxDraw);
             }
             if (e.Key == Key.Up)
-            {
-                FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-up.png", UriKind.Relative));
-                if ((hero.TileNumber / 10 != 0) && !map.WallTiles.Contains(hero.TileNumber - 10))
-                {
-                    double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]);
-                    double y = FoxDraw.GetTop(FoxDraw.Tiles[110]) - 50;
-                    FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
-                    hero.TileNumber -= 10;
-                }
+            {               
+                hero.MoveUp(map, FoxDraw);
             }
             if (e.Key == Key.Down)
-            {
-                FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.Relative));
-                if ((hero.TileNumber / 10 != 10) && !map.WallTiles.Contains(hero.TileNumber + 10))
-                {
-                    double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]);
-                    double y = FoxDraw.GetTop(FoxDraw.Tiles[110]) + 50;
-                    FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
-                    hero.TileNumber += 10;
-                }
+            {                
+                hero.MoveDown(map, FoxDraw);
             }
         }
 

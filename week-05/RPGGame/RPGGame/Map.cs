@@ -51,7 +51,7 @@ namespace RPGGame
 
         public void DrawCharacter(Character character)
         {
-            MyFoxDraw.AddImage(character.ImageSource, ((character.TileNumber % 10) * 50), ((character.TileNumber / 10) * 50));
+            MyFoxDraw.AddImage(character.ImageSource, ((character.TileNumber % WidthUnits) * 50), ((character.TileNumber / WidthUnits) * 50));
         }
 
 
