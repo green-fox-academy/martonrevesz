@@ -26,17 +26,8 @@ namespace RPGGame
         {
             InitializeComponent();
             FoxDraw = new FoxDraw(canvas);
-            map = new Map(FoxDraw);
-            hero = new Hero("hero", 0);
+            InitializeGameBoardWithCharacters();
 
-            map.DrawMap();
-            map.DrawCharacter(hero);
-            var skeleton1 = new Skeleton("skeleton1", 56);
-            map.DrawCharacter(skeleton1);
-            var skeleton2 = new Skeleton("skeleton2", 11);
-            map.DrawCharacter(skeleton2);
-            var skeleton3 = new Skeleton("skeleton3", 104);
-            map.DrawCharacter(skeleton3);
 
         }
 
@@ -64,7 +55,6 @@ namespace RPGGame
                     hero.TileNumber -= 1;
                 }
             }
-
             if (e.Key == Key.Up)
             {
                 FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-up.png", UriKind.Relative));
@@ -76,7 +66,6 @@ namespace RPGGame
                     hero.TileNumber -= 10;
                 }
             }
-
             if (e.Key == Key.Down)
             {
                 FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.Relative));
@@ -88,6 +77,35 @@ namespace RPGGame
                     hero.TileNumber += 10;
                 }
             }
+        }
+
+        public void InitializeGameBoardWithCharacters()
+        {
+            map = new Map(FoxDraw);
+            hero = new Hero("hero", 0);
+
+            map.DrawMap();
+            map.DrawCharacter(hero);
+
+            int randomNumber1 = random.Next(map.FreeTiles.Count);
+            var skeleton1 = new Skeleton("skeleton1", map.FreeTiles[randomNumber1]);
+            map.FreeTiles.Remove(randomNumber1);
+            map.DrawCharacter(skeleton1);
+
+            int randomNumber2 = random.Next(map.FreeTiles.Count);
+            var skeleton2 = new Skeleton("skeleton2", map.FreeTiles[randomNumber2]);
+            map.FreeTiles.Remove(randomNumber2);
+            map.DrawCharacter(skeleton2);
+
+            int randomNumber3 = random.Next(map.FreeTiles.Count);
+            var skeleton3 = new Skeleton("skeleton3", map.FreeTiles[randomNumber3]);
+            map.FreeTiles.Remove(randomNumber3);
+            map.DrawCharacter(skeleton3);
+
+            int randomNumber4 = random.Next(map.FreeTiles.Count);
+            var boss = new Boss("boss", map.FreeTiles[randomNumber4]);
+            map.FreeTiles.Remove(randomNumber4);
+            map.DrawCharacter(boss);
         }
     }
 }
