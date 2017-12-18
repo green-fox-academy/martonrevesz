@@ -36,19 +36,15 @@ namespace RPGGame
             if (e.Key == Key.Right)
             {
                 FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-right.png", UriKind.Relative));
-                if ((hero.TileNumber % 10 != 9) && !map.WallTiles.Contains(hero.TileNumber + 1))
-                {
-                    double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]) + 50;
-                    double y = FoxDraw.GetTop(FoxDraw.Tiles[110]);
-                    FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
-                    hero.TileNumber += 1;
-                }
+                hero.MoveRight(map, FoxDraw);
+                
             }
             if (e.Key == Key.Left)
             {
                 FoxDraw.Tiles[110].Source = new BitmapImage(new Uri("./Assets/hero-left.png", UriKind.Relative));
                 if ((hero.TileNumber % 10 != 0) && !map.WallTiles.Contains(hero.TileNumber - 1))
                 {
+
                     double x = FoxDraw.GetLeft(FoxDraw.Tiles[110]) - 50;
                     double y = FoxDraw.GetTop(FoxDraw.Tiles[110]);               
                     FoxDraw.SetPosition(FoxDraw.Tiles[110], x, y);
