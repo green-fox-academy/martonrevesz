@@ -20,16 +20,24 @@ namespace RPGGame
         public FoxDraw FoxDraw;
         Character hero;
         Map map;
+        Random random = new Random();
 
         public MainWindow()
         {
             InitializeComponent();
             FoxDraw = new FoxDraw(canvas);
             map = new Map(FoxDraw);
-            hero = new Character("hero", "./Assets/hero-down.png");
+            hero = new Hero("hero", 0);
+
             map.DrawMap();
             map.DrawCharacter(hero);
-            
+            var skeleton1 = new Skeleton("skeleton1", 56);
+            map.DrawCharacter(skeleton1);
+            var skeleton2 = new Skeleton("skeleton2", 11);
+            map.DrawCharacter(skeleton2);
+            var skeleton3 = new Skeleton("skeleton3", 104);
+            map.DrawCharacter(skeleton3);
+
         }
 
         private void WindowsKeyDown(object sender, KeyEventArgs e)
