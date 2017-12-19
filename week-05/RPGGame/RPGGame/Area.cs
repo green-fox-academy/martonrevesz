@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace RPGGame
 {
-    class Map
+    public class Area
+
     {
         public const int WidthUnits = 10;
         public const int HeightUnits = 11;
+
 
         public FoxDraw MyFoxDraw { get; private set; }
         public List<int> WallTiles { get; private set; } = new List<int>()
@@ -18,7 +20,7 @@ namespace RPGGame
             68, 75, 76, 78, 81, 82, 83, 88, 93, 95, 96, 98, 101, 103, 105 };
         public List<int> FreeTiles { get; set; }
 
-        public Map(FoxDraw myFoxDraw)
+        public Area(FoxDraw myFoxDraw)
         {
             MyFoxDraw = myFoxDraw;
             FreeTiles = new List<int>();

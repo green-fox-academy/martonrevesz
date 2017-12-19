@@ -8,21 +8,24 @@ namespace RPGGame
 {
     public abstract class Character
     {
-        public static int CharacterCounter = Map.HeightUnits * Map.WidthUnits;
-        public string Name { get; private set; }
+        public static int CharacterCounter = Area.HeightUnits * Area.WidthUnits;
         public string ImageSource { get; set; }
         public int TileNumber { get;  set; }
         public int CharacterId { get; set; }
+        public int MaxHP { get; set; }
+        public int CurrentHP { get; set; }
+        public int DefendPoint { get; set; }
+        public int StrikePoint { get; set; }
+        public int Level { get; set; }
 
-        public Character(string name, int tileNumber)
+        public Character(int tileNumber)
         {
-            Name = name;
             TileNumber = tileNumber;
             CharacterId = CharacterCounter;
             CharacterCounter++;
         }
 
-        internal virtual void MoveRight(Map map, FoxDraw foxDraw)
+        internal virtual void MoveRight(Area map, FoxDraw foxDraw)
         {
             if ((TileNumber % 10 != 9) && !map.WallTiles.Contains(TileNumber + 1))
             {
@@ -33,7 +36,7 @@ namespace RPGGame
             }
         }
 
-        internal virtual void MoveLeft(Map map, FoxDraw foxDraw)
+        internal virtual void MoveLeft(Area map, FoxDraw foxDraw)
         {
             if ((TileNumber % 10 != 0) && !map.WallTiles.Contains(TileNumber - 1))
             {
@@ -45,7 +48,7 @@ namespace RPGGame
             }
         }
 
-        internal virtual void MoveUp(Map map, FoxDraw foxDraw)
+        internal virtual void MoveUp(Area map, FoxDraw foxDraw)
         {
             if ((TileNumber / 10 != 0) && !map.WallTiles.Contains(TileNumber - 10))
             {
@@ -56,7 +59,7 @@ namespace RPGGame
             }
         }
 
-        internal virtual void MoveDown(Map map, FoxDraw foxDraw)
+        internal virtual void MoveDown(Area map, FoxDraw foxDraw)
         {
             if ((TileNumber / 10 != 10) && !map.WallTiles.Contains(TileNumber + 10))
             {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPGGame
 {
-    public class Boss : Character
+    public class Boss : Monster
     {
-        public Boss(string name, int TileNumber) : base(name, TileNumber)
+        public Boss(int gameLevel, int TileNumber, int d6) : base(gameLevel, TileNumber, d6)
         {
             ImageSource = "./Assets/boss.png";
         }
