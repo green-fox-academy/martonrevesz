@@ -16,6 +16,7 @@ namespace RPGGame
             DefendPoint = 2 * d6;
             StrikePoint = 5 + d6;
             Level = 1;
+            MaxHP = 15;
         }
 
         internal override void MoveDown(Area map, FoxDraw foxDraw)

@@ -11,8 +11,6 @@ namespace RPGGame
     {
         public const int WidthUnits = 10;
         public const int HeightUnits = 11;
-
-
         public FoxDraw MyFoxDraw { get; private set; }
         public List<int> WallTiles { get; private set; } = new List<int>()
             { 3, 5, 13, 15, 17, 18, 21, 22, 23, 25, 27, 28, 35, 40,
@@ -55,7 +53,5 @@ namespace RPGGame
         {
             MyFoxDraw.AddImage(character.ImageSource, ((character.TileNumber % WidthUnits) * 50), ((character.TileNumber / WidthUnits) * 50));
         }
-
-
     }
 }

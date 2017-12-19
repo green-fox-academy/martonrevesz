@@ -55,7 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Boss.cs" />
-    <Compile Include="Evil.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Skeleton.cs" />

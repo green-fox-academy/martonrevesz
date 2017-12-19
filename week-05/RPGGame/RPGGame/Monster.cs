@@ -8,21 +8,34 @@ namespace RPGGame
 {
     public class Monster : Character
     {
+        Random random = new Random();
+        List<string> list;
         public Monster(int gameLevel, int tileNumber, int d6) : base(tileNumber)
         {
-            Level = gameLevel;
-            CurrentHP = gameLevel * 2 * d6 + d6;
-            DefendPoint = gameLevel / 2 * d6 + d6 / 2;
-            StrikePoint = gameLevel * d6 + gameLevel;
+            int levelDecide = random.Next(10);
+            if (levelDecide < 5)
+            {
+                Level = gameLevel;
+            }
+            else if (levelDecide < 9)
+            {
+                Level = gameLevel + 1;
+            }
+            else
+            {
+                Level = gameLevel + 2;
+            }
+            CurrentHP = gameLevel * 2 * d6;
+            DefendPoint = gameLevel / 2 * d6;
+            StrikePoint = gameLevel * d6;
         }
 
 
 
         public void Move(Area map, FoxDraw foxDraw)
         {
-            var random = new Random();
-            var list = FindOptions(map, foxDraw);
-            
+            list = FindOptions(map);
+
             int directionNumber = random.Next(list.Count);
             if (list[directionNumber] == "right")
             {
@@ -42,24 +55,24 @@ namespace RPGGame
             }
         }
 
-        private List<string> FindOptions(Area map, FoxDraw foxDraw)
+        private List<string> FindOptions(Area map)
         {
             var list = new List<string>();
             if ((TileNumber % 10) != 9 && !map.WallTiles.Contains(TileNumber + 1))
             {
                 list.Add("right");
             }
-            if ((TileNumber % 10) != 0 && !map.WallTiles.Contains(TileNumber - 1))
-            {
-                list.Add("left");
-            }
             if ((TileNumber / 10) != 0 && !map.WallTiles.Contains(TileNumber - 10))
             {
                 list.Add("up");
             }
-            if ((TileNumber / 10) != Area.HeightUnits - 1 && !map.WallTiles.Contains(TileNumber + 10))
+            if ((TileNumber / 10) != 10 && !map.WallTiles.Contains(TileNumber + 10))
             {
                 list.Add("down");
+            }
+            if ((TileNumber % 10) != 0 && !map.WallTiles.Contains(TileNumber - 1))
+            {
+                list.Add("left");
             }
             return list;
         }

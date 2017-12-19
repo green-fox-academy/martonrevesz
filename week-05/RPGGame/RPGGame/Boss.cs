@@ -11,6 +11,9 @@ namespace RPGGame
         public Boss(int gameLevel, int TileNumber, int d6) : base(gameLevel, TileNumber, d6)
         {
             ImageSource = "./Assets/boss.png";
+            CurrentHP += d6;
+            DefendPoint += d6 / 2;
+            StrikePoint += gameLevel;
         }
     }
 }

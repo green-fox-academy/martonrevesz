@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGGame
 {
-    public abstract class Character
+    public class Character 
     {
         public static int CharacterCounter = Area.HeightUnits * Area.WidthUnits;
         public string ImageSource { get; set; }
@@ -69,6 +69,5 @@ namespace RPGGame
                 TileNumber += 10;
             }
         }
-
     }
 }

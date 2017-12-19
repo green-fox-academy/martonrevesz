@@ -10,7 +10,6 @@ namespace RPGGame
     public class FoxDraw
     {
         private const int TileSize = 50;
-
         public Canvas Canvas { get; set; }
         public List<Image> Tiles { get; set; }
 
