@@ -1,0 +1,8 @@
+tiger
+cat
+lion
+elephant
+bear
+fish
+hedgehog
+turtle
