@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace RPGGame
 {
@@ -27,7 +22,6 @@ namespace RPGGame
         Random random = new Random();
         int heroStepCounter = 0;
         Hero hero = new Hero(0, new Random().Next(1,7));
-
         int gameLevel = 1;
 
         public MainWindow()
@@ -64,13 +58,11 @@ namespace RPGGame
                     {
                         InitializeGameBoardWithCharacters(++gameLevel);
                     }
-
                 }
             }
             textBlock.Text = "Hero (Level " + hero.Level + ") HP: " + hero.CurrentHP + "/" + hero.MaxHP + " | DP: "
                 + hero.DefendPoint + " | SP: " + hero.StrikePoint;
         }
-
 
         private void WindowsKeyDown(object sender, KeyEventArgs e)
         {
@@ -103,8 +95,6 @@ namespace RPGGame
                 }
             }           
         }
-
-
 
         public void InitializeGameBoardWithCharacters(int gameLevel)
         {

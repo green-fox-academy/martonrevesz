@@ -12,7 +12,7 @@ namespace RPGGame
         public Hero(int tileNumber, int d6) : base(  tileNumber)
         {
             ImageSource = "./Assets/hero-down.png";
-            MaxHP = 40;
+            MaxHP = 30;
             CurrentHP = Math.Min(20 + 3 * d6, MaxHP);
             DefendPoint = 2 * d6;
             StrikePoint = 5 + d6;

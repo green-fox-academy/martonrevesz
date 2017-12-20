@@ -30,7 +30,7 @@ namespace RPGGame
             if ((TileNumber % 10 != 9) && !map.WallTiles.Contains(TileNumber + 1))
             {
                 double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]) + 50;
-                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]);
+                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]);               
                 foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
                 TileNumber += 1;
             }

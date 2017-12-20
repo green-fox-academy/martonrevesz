@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RPGGame
@@ -16,9 +17,7 @@ namespace RPGGame
         {
             MyFoxDraw = myFoxDraw;
         }
-
-
-
+    
         public int CheckSameField(Character hero, List<Monster> monsterList)
         {
             for (int i = 0; i < monsterList.Count; i++)
@@ -38,17 +37,19 @@ namespace RPGGame
                 Strike(hero, monster);
                 if (monster.CurrentHP <= 0)
                 {
-                    MyFoxDraw.SetPosition(MyFoxDraw.Tiles[monster.CharacterId], 5000, 5000);
+                    MyFoxDraw.SetPosition(MyFoxDraw.Tiles[monster.CharacterId], -500, -500);
                     monsterList.Remove(monster);
                     hero.Level++;
                     hero.MaxHP += random.Next(1,7);
-                    hero.DefendPoint += random.Next(1, 7);
-                    hero.StrikePoint += random.Next(1, 7);
+                    hero.DefendPoint += random.Next(1, 7) / 2;
+                    hero.StrikePoint += random.Next(1, 7) / 2;
                     return true;
                 }
                 Strike(monster, hero);
                 if (hero.CurrentHP <= 0)
-                { 
+                {
+                    MyFoxDraw.SetPosition(MyFoxDraw.Tiles[hero.CharacterId], -500, -500);
+                    MessageBox.Show("Hero HP: 0 \n Game over");
                     return false;
                 }
             }

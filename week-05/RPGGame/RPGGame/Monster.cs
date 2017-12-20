@@ -27,7 +27,7 @@ namespace RPGGame
             }
             CurrentHP = gameLevel * 2 * d6;
             DefendPoint = gameLevel / 2 * d6;
-            StrikePoint = gameLevel * d6;
+            StrikePoint = gameLevel * 2 * d6;
         }
 
 
