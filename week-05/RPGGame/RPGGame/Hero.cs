@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 
 namespace RPGGame
 {
-    class Hero : Character
+    public class Hero : Character
     {
         public Hero(int tileNumber, int d6) : base(  tileNumber)
         {

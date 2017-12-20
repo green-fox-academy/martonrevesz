@@ -8,8 +8,8 @@ namespace RPGGame
 {
     public class Monster : Character
     {
-        Random random = new Random();
-        List<string> list;
+        static Random random = new Random();
+
         public Monster(int gameLevel, int tileNumber, int d6) : base(tileNumber)
         {
             int levelDecide = random.Next(10);
@@ -34,9 +34,10 @@ namespace RPGGame
 
         public void Move(Area map, FoxDraw foxDraw)
         {
-            list = FindOptions(map);
+            var list = FindOptions(map);
+            
+            int directionNumber = random.Next(0,list.Count);
 
-            int directionNumber = random.Next(list.Count);
             if (list[directionNumber] == "right")
             {
                 MoveRight(map, foxDraw);

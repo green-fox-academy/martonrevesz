@@ -36,20 +36,24 @@ namespace RPGGame
             foxDraw = new FoxDraw(canvas);
             gameLogic = new GameLogic(foxDraw);
             InitializeGameBoardWithCharacters(gameLevel);
+            textBlock.Text = "Hero Level: " + hero.Level + "Hero HP: " + hero.CurrentHP
+                + "Hero DP: " + hero.DefendPoint + "Hero SP: " + hero.StrikePoint;
+
 
         }
 
-        private void Game()
+        public void Game()
         {
-
             int monsterNumber = gameLogic.CheckSameField(hero, monsterList);
             if (monsterNumber > -1)
             {
-                bool winBattle = gameLogic.Battle(hero, monsterList[monsterNumber], monsterList, canvas);
+                bool winBattle = gameLogic.Battle(hero, monsterList[monsterNumber], monsterList);
             }
             textBlock.Text = "Hero Level: " + hero.Level + "Hero HP: " + hero.CurrentHP
                 + "Hero DP: " + hero.DefendPoint + "Hero SP: " + hero.StrikePoint;
+
         }
+
 
         private void WindowsKeyDown(object sender, KeyEventArgs e)
         {
@@ -73,14 +77,12 @@ namespace RPGGame
             {
                 Game();
             }
-
             heroStepCounter++;
             if (heroStepCounter % 2 == 0)
             {
-                foreach  (Monster monster in monsterList)
+                for (int i = 0; i < monsterList.Count; i++)
                 {
-                    
-                    monster.Move(area, foxDraw);
+                    monsterList[i].Move(area, foxDraw);
                 }
             }           
         }

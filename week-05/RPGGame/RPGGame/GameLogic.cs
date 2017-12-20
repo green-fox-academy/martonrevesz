@@ -17,6 +17,8 @@ namespace RPGGame
             MyFoxDraw = myFoxDraw;
         }
 
+
+
         public int CheckSameField(Character hero, List<Monster> monsterList)
         {
             for (int i = 0; i < monsterList.Count; i++)
@@ -29,7 +31,7 @@ namespace RPGGame
             return -1;
         }
 
-        internal bool Battle(Character hero, Monster monster, List<Monster> monsterList, Canvas canvas)
+        internal bool Battle(Character hero, Monster monster, List<Monster> monsterList)
         {
             while (true)
             {
