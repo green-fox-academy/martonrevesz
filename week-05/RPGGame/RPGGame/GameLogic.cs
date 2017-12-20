@@ -41,6 +41,9 @@ namespace RPGGame
                     MyFoxDraw.SetPosition(MyFoxDraw.Tiles[monster.CharacterId], 5000, 5000);
                     monsterList.Remove(monster);
                     hero.Level++;
+                    hero.MaxHP += random.Next(1,7);
+                    hero.DefendPoint += random.Next(1, 7);
+                    hero.StrikePoint += random.Next(1, 7);
                     return true;
                 }
                 Strike(monster, hero);
@@ -50,6 +53,7 @@ namespace RPGGame
                 }
             }
         }
+
         public void Strike(Character char1, Character char2)
         {
             int d6 = random.Next(1,7);

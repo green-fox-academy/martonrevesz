@@ -44,7 +44,6 @@ namespace RPGGame
             }
             else if (list[directionNumber] == "up")
             {
-                MoveUp(map, foxDraw);
             }
             else if (list[directionNumber] == "down")
             {
