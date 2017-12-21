@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpieSet
+namespace SharpieSetNS
 {
-    class Sharpie
+    public class Sharpie
     {
         public string Color { get; set; }
         public double Width { get; set; }

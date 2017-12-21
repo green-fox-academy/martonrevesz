@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpieSet", "Sharpie\SharpieSet.csproj", "{1714B67C-93AA-4B67-98F4-6A4A8AB15C76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{63D9DE02-4C80-44F2-B619-54A29F57D774}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1714B67C-93AA-4B67-98F4-6A4A8AB15C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1714B67C-93AA-4B67-98F4-6A4A8AB15C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1714B67C-93AA-4B67-98F4-6A4A8AB15C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63D9DE02-4C80-44F2-B619-54A29F57D774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D9DE02-4C80-44F2-B619-54A29F57D774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D9DE02-4C80-44F2-B619-54A29F57D774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D9DE02-4C80-44F2-B619-54A29F57D774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
