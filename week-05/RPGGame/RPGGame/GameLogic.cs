@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,43 +9,96 @@ namespace RPGGame
     {
         public FoxDraw MyFoxDraw { get; set; }
         Random random = new Random();
+        public int gameLevel = 1;
+        public Area MyArea { get; set; }
+        public Hero MyHero{ get; set; }
+        public TextBlock MyTextBlock { get; set; }
+        public List<Monster> MonsterList { get; set; }
 
-        public GameLogic(FoxDraw myFoxDraw)
+        public GameLogic(FoxDraw myFoxDraw, Area area, Hero hero, TextBlock textBlock, List<Monster> monsterList)
         {
-            MyFoxDraw = myFoxDraw;
+            MyArea = area;
+            MyHero = hero;
+            MyTextBlock = textBlock;
+            MonsterList = monsterList;
         }
-    
-        public int CheckSameField(Character hero, List<Monster> monsterList)
+
+        public void InitializeGameBoardWithCharacters(int gameLevel)
         {
-            for (int i = 0; i < monsterList.Count; i++)
+            int d6 = random.Next(1, 7);
+            MyArea.SetInvisible(MonsterList);
+            MonsterList.Clear();
+            MyArea.ResetPositionToZero(MyHero);
+            for (int i = 0; i < 3; i++)
             {
-                if (monsterList[i].TileNumber == hero.TileNumber)
+                int randomNumber = random.Next(MyArea.FreeTiles.Count);
+                MonsterList.Add(new Skeleton(gameLevel, MyArea.FreeTiles[randomNumber], random.Next(1, 7)));
+                if (i == 0)
+                    ((Skeleton)MonsterList[i]).HasTheKey = true;
+                MyArea.DrawCharacter(MonsterList[i]);
+            }
+            int randomNumber2 = random.Next(MyArea.FreeTiles.Count);
+            var boss = new Boss(gameLevel, MyArea.FreeTiles[randomNumber2], d6);
+            MonsterList.Add(boss);
+            MyArea.DrawCharacter(boss);
+            MyTextBlock.Text = "Hero (Level " + MyHero.Level + ") HP: " + MyHero.CurrentHP + "/" + MyHero.MaxHP + " | DP: "
+                + MyHero.DefendPoint + " | SP: " + MyHero.StrikePoint;
+        }
+
+        public void Game()
+        {
+            int monsterNumber = CheckSameField();
+            bool flag = true;
+            if (monsterNumber > -1)
+            {
+                bool winBattle = Battle(MonsterList[monsterNumber]);
+                if (winBattle)
                 {
-                    return i;
+                    foreach (Monster monster in MonsterList)
+                    {
+                        if (monster.GetType() == typeof(Boss) || ((Skeleton)monster).HasTheKey == true)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag)
+                        InitializeGameBoardWithCharacters(++gameLevel);
                 }
+            }
+            MyTextBlock.Text = "Hero (Level " + MyHero.Level + ") HP: " + MyHero.CurrentHP + "/" + MyHero.MaxHP + " | DP: "
+                + MyHero.DefendPoint + " | SP: " + MyHero.StrikePoint;
+        }
+
+        public int CheckSameField()
+        {
+            for (int i = 0; i < MonsterList.Count; i++)
+            {
+                if (MonsterList[i].TileNumber == MyHero.TileNumber)
+                    return i;
             }
             return -1;
         }
 
-        internal bool Battle(Character hero, Monster monster, List<Monster> monsterList)
+        public bool Battle(Monster monster)
         {
             while (true)
             {
-                Strike(hero, monster);
+                Strike(MyHero, monster);
                 if (monster.CurrentHP <= 0)
                 {
-                    MyFoxDraw.SetPosition(MyFoxDraw.Items[monster.CharacterId], -500, -500);
-                    monsterList.Remove(monster);
-                    hero.Level++;
-                    hero.MaxHP += random.Next(1,7);
-                    hero.DefendPoint += random.Next(1, 7);
-                    hero.StrikePoint += random.Next(1, 7);
+                    MyArea.SetInvisible(monster);
+                    MonsterList.Remove(monster);
+                    MyHero.Level++;
+                    MyHero.MaxHP += random.Next(1,7);
+                    MyHero.DefendPoint += random.Next(1, 7);
+                    MyHero.StrikePoint += random.Next(1, 7);
                     return true;
                 }
-                Strike(monster, hero);
-                if (hero.CurrentHP <= 0)
+                Strike(monster, MyHero);
+                if (MyHero.CurrentHP <= 0)
                 {
-                    MyFoxDraw.SetPosition(MyFoxDraw.Items[hero.CharacterId], -500, -500);
+                    MyArea.SetInvisible(MyHero);
                     MessageBox.Show("Hero HP: 0 \n Game over");
                     return false;
                 }
@@ -60,9 +110,7 @@ namespace RPGGame
             int d6 = random.Next(1,7);
             int SV = char1.StrikePoint + 2 * d6;
             if (SV > char2.DefendPoint)
-            {
                 char2.CurrentHP -= (SV - char2.DefendPoint);
-            }
         }
     }
 }

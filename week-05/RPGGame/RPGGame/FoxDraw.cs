@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace RPGGame
 {
     public class FoxDraw
     {
-        private const int TileSize = 50;
+        public const int TileSize = 50;
         public Canvas Canvas { get; set; }
         public List<Image> Items { get; set; }
 
