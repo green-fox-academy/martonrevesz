@@ -9,7 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
-
+using System.Windows.Media.Imaging;
 
 namespace RPGGame
 {
@@ -68,19 +68,23 @@ namespace RPGGame
         {
             if (e.Key == Key.Right)
             {
-                hero.MoveRight(area, foxDraw);
+                foxDraw.Items[hero.CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-right.png", UriKind.Relative));
+                area.MoveRight(hero);
             }
             if (e.Key == Key.Left)
             {
-                hero.MoveLeft(area, foxDraw);
+                foxDraw.Items[hero.CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-left.png", UriKind.Relative));
+                area.MoveLeft(hero);
             }
             if (e.Key == Key.Up)
             {
-                hero.MoveUp(area, foxDraw);
+                foxDraw.Items[hero.CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-up.png", UriKind.Relative));
+                area.MoveUp(hero);
             }
             if (e.Key == Key.Down)
             {
-                hero.MoveDown(area, foxDraw);
+                foxDraw.Items[hero.CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.Relative));
+                area.MoveDown(hero);
             }
             if (e.Key == Key.Space && (gameLogic.CheckSameField(hero, monsterList) > -1))
             {
@@ -91,7 +95,7 @@ namespace RPGGame
             {
                 for (int i = 0; i < monsterList.Count; i++)
                 {
-                    monsterList[i].Move(area, foxDraw);
+                    area.MoveRandom(monsterList[i]);
                 }
             }           
         }
@@ -101,32 +105,22 @@ namespace RPGGame
             int d6 = random.Next(1, 7);
             foreach (Monster monster in monsterList)
             {
-                foxDraw.SetPosition(foxDraw.Tiles[monster.CharacterId], -500, -500);
+                foxDraw.SetPosition(foxDraw.Items[monster.CharacterId], -500, -500);
             }
             monsterList.Clear();                     
             hero.TileNumber = 0;
-            foxDraw.SetPosition(foxDraw.Tiles[110], 0, 0);
+            foxDraw.SetPosition(foxDraw.Items[110], 0, 0);
 
-
-            int randomNumber1 = random.Next(area.FreeTiles.Count);
-            var skeleton1 = new Skeleton(gameLevel, area.FreeTiles[randomNumber1], d6);
-            skeleton1.HasTheKey = true;
-            monsterList.Add(skeleton1);
-            area.DrawCharacter(skeleton1);
-
-
+            for (int i = 0; i < 3; i++)
+            {
+                int randomNumber = random.Next(area.FreeTiles.Count);
+                monsterList.Add(new Skeleton(gameLevel, area.FreeTiles[randomNumber], random.Next(1,7)));
+                if (i == 0)
+                    ((Skeleton)monsterList[i]).HasTheKey = true;
+                area.DrawCharacter(monsterList[i]);
+            }
             int randomNumber2 = random.Next(area.FreeTiles.Count);
-            var skeleton2 = new Skeleton(gameLevel, area.FreeTiles[randomNumber2], d6);
-            monsterList.Add(skeleton2);
-            area.DrawCharacter(skeleton2);
-
-            int randomNumber3 = random.Next(area.FreeTiles.Count);
-            var skeleton3 = new Skeleton(gameLevel, area.FreeTiles[randomNumber3], d6);
-            monsterList.Add(skeleton3);
-            area.DrawCharacter(skeleton3);
-
-            int randomNumber4 = random.Next(area.FreeTiles.Count);
-            var boss = new Boss(gameLevel, area.FreeTiles[randomNumber4], d6);
+            var boss = new Boss(gameLevel, area.FreeTiles[randomNumber2], d6);
             monsterList.Add(boss);
             area.DrawCharacter(boss);
         }

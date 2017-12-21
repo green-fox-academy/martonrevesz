@@ -11,12 +11,12 @@ namespace RPGGame
     {
         private const int TileSize = 50;
         public Canvas Canvas { get; set; }
-        public List<Image> Tiles { get; set; }
+        public List<Image> Items { get; set; }
 
         public FoxDraw(Canvas canvas)
         {
             Canvas = canvas;
-            Tiles = new List<Image>();
+            Items = new List<Image>();
         }
 
         public void AddImage(string source, double x, double y)
@@ -28,7 +28,7 @@ namespace RPGGame
                 Source = new BitmapImage(new Uri(source, UriKind.Relative))
             };
 
-            Tiles.Add(image);
+            Items.Add(image);
             Canvas.Children.Add(image);
             SetPosition(image, x, y);
         }

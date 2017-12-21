@@ -9,6 +9,7 @@ namespace RPGGame
     public class Area
 
     {
+        static Random random = new Random();
         public const int WidthUnits = 10;
         public const int HeightUnits = 11;
         public FoxDraw MyFoxDraw { get; private set; }
@@ -37,7 +38,7 @@ namespace RPGGame
             {
                 for (int j = 0; j < WidthUnits; j++)
                 {
-                    if (WallTiles.Contains(10 * i + j))
+                    if (WallTiles.Contains(WidthUnits * i + j))
                     {
                         MyFoxDraw.AddImage("./Assets/wall.png", 50 * j, 50 * i);
                     }
@@ -52,6 +53,97 @@ namespace RPGGame
         public void DrawCharacter(Character character)
         {
             MyFoxDraw.AddImage(character.ImageSource, ((character.TileNumber % WidthUnits) * 50), ((character.TileNumber / WidthUnits) * 50));
+        }
+
+        internal virtual void MoveRight(Character character)
+        {
+            if ((character.TileNumber % WidthUnits != WidthUnits - 1) && !WallTiles.Contains(character.TileNumber + 1))
+            {
+                double x = MyFoxDraw.GetLeft(MyFoxDraw.Items[character.CharacterId]) + 50;
+                double y = MyFoxDraw.GetTop(MyFoxDraw.Items[character.CharacterId]);
+                MyFoxDraw.SetPosition(MyFoxDraw.Items[character.CharacterId], x, y);
+                character.TileNumber += 1;
+            }
+        }
+
+        internal void MoveLeft(Character character)
+        {
+            if ((character.TileNumber % WidthUnits != 0) && !WallTiles.Contains(character.TileNumber - 1))
+            {
+
+                double x = MyFoxDraw.GetLeft(MyFoxDraw.Items[character.CharacterId]) - 50;
+                double y = MyFoxDraw.GetTop(MyFoxDraw.Items[character.CharacterId]);
+                MyFoxDraw.SetPosition(MyFoxDraw.Items[character.CharacterId], x, y);
+                character.TileNumber -= 1;
+            }
+        }
+
+        internal void MoveUp(Character character)
+        {
+            if ((character.TileNumber / WidthUnits != 0) && !WallTiles.Contains(character.TileNumber - 10))
+            {
+                double x = MyFoxDraw.GetLeft(MyFoxDraw.Items[character.CharacterId]);
+                double y = MyFoxDraw.GetTop(MyFoxDraw.Items[character.CharacterId]) - 50;
+                MyFoxDraw.SetPosition(MyFoxDraw.Items[character.CharacterId], x, y);
+                character.TileNumber -= 10;
+            }
+        }
+
+        internal void MoveDown(Character character)
+        {
+            if ((character.TileNumber / WidthUnits != HeightUnits - 1) && !WallTiles.Contains(character.TileNumber + 10))
+            {
+                double x = MyFoxDraw.GetLeft(MyFoxDraw.Items[character.CharacterId]);
+                double y = MyFoxDraw.GetTop(MyFoxDraw.Items[character.CharacterId]) + 50;
+                MyFoxDraw.SetPosition(MyFoxDraw.Items[character.CharacterId], x, y);
+                character.TileNumber += 10;
+            }
+        }
+
+        public void MoveRandom(Character character)
+        {
+            var list = FindOptions(character);
+
+            int directionNumber = random.Next(list.Count);
+
+            if (list[directionNumber] == "right")
+            {
+                MoveRight(character);
+            }
+            else if (list[directionNumber] == "up")
+            {
+                MoveUp(character);
+            }
+            else if (list[directionNumber] == "down")
+            {
+                MoveDown(character);
+            }
+            else if (list[directionNumber] == "left")
+            {
+                MoveLeft(character);
+            }
+        }
+
+        private List<string> FindOptions(Character character)
+        {
+            var list = new List<string>();
+            if ((character.TileNumber % 10) != 9 && !WallTiles.Contains(character.TileNumber + 1))
+            {
+                list.Add("right");
+            }
+            if ((character.TileNumber / 10) != 0 && !WallTiles.Contains(character.TileNumber - 10))
+            {
+                list.Add("up");
+            }
+            if ((character.TileNumber / 10) != 10 && !WallTiles.Contains(character.TileNumber + 10))
+            {
+                list.Add("down");
+            }
+            if ((character.TileNumber % 10) != 0 && !WallTiles.Contains(character.TileNumber - 1))
+            {
+                list.Add("left");
+            }
+            return list;
         }
     }
 }

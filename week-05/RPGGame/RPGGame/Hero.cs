@@ -18,29 +18,5 @@ namespace RPGGame
             StrikePoint = 5 + d6;
             Level = 1;
         }
-
-        internal override void MoveDown(Area map, FoxDraw foxDraw)
-        {
-            foxDraw.Tiles[CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.Relative));
-            base.MoveDown(map, foxDraw);
-        }
-
-        internal override void MoveLeft(Area map, FoxDraw foxDraw)
-        {
-            foxDraw.Tiles[CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-left.png", UriKind.Relative));
-            base.MoveLeft(map, foxDraw);
-        }
-
-        internal override void MoveRight(Area map, FoxDraw foxDraw)
-        {
-            foxDraw.Tiles[CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-right.png", UriKind.Relative));
-            base.MoveRight(map, foxDraw);
-        }
-
-        internal override void MoveUp(Area map, FoxDraw foxDraw)
-        {
-            foxDraw.Tiles[CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-up.png", UriKind.Relative));
-            base.MoveUp(map, foxDraw);
-        }
     }
 }

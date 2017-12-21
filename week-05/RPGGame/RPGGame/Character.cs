@@ -24,50 +24,5 @@ namespace RPGGame
             CharacterId = CharacterCounter;
             CharacterCounter++;
         }
-
-        internal virtual void MoveRight(Area map, FoxDraw foxDraw)
-        {
-            if ((TileNumber % 10 != 9) && !map.WallTiles.Contains(TileNumber + 1))
-            {
-                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]) + 50;
-                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]);               
-                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
-                TileNumber += 1;
-            }
-        }
-
-        internal virtual void MoveLeft(Area map, FoxDraw foxDraw)
-        {
-            if ((TileNumber % 10 != 0) && !map.WallTiles.Contains(TileNumber - 1))
-            {
-
-                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]) - 50;
-                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]);
-                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
-                TileNumber -= 1;
-            }
-        }
-
-        internal virtual void MoveUp(Area map, FoxDraw foxDraw)
-        {
-            if ((TileNumber / 10 != 0) && !map.WallTiles.Contains(TileNumber - 10))
-            {
-                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]);
-                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]) - 50;
-                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
-                TileNumber -= 10;
-            }
-        }
-
-        internal virtual void MoveDown(Area map, FoxDraw foxDraw)
-        {
-            if ((TileNumber / 10 != 10) && !map.WallTiles.Contains(TileNumber + 10))
-            {
-                double x = foxDraw.GetLeft(foxDraw.Tiles[CharacterId]);
-                double y = foxDraw.GetTop(foxDraw.Tiles[CharacterId]) + 50;
-                foxDraw.SetPosition(foxDraw.Tiles[CharacterId], x, y);
-                TileNumber += 10;
-            }
-        }
     }
 }

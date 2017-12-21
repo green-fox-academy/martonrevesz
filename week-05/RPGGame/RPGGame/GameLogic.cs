@@ -37,18 +37,18 @@ namespace RPGGame
                 Strike(hero, monster);
                 if (monster.CurrentHP <= 0)
                 {
-                    MyFoxDraw.SetPosition(MyFoxDraw.Tiles[monster.CharacterId], -500, -500);
+                    MyFoxDraw.SetPosition(MyFoxDraw.Items[monster.CharacterId], -500, -500);
                     monsterList.Remove(monster);
                     hero.Level++;
                     hero.MaxHP += random.Next(1,7);
-                    hero.DefendPoint += random.Next(1, 7) / 2;
-                    hero.StrikePoint += random.Next(1, 7) / 2;
+                    hero.DefendPoint += random.Next(1, 7);
+                    hero.StrikePoint += random.Next(1, 7);
                     return true;
                 }
                 Strike(monster, hero);
                 if (hero.CurrentHP <= 0)
                 {
-                    MyFoxDraw.SetPosition(MyFoxDraw.Tiles[hero.CharacterId], -500, -500);
+                    MyFoxDraw.SetPosition(MyFoxDraw.Items[hero.CharacterId], -500, -500);
                     MessageBox.Show("Hero HP: 0 \n Game over");
                     return false;
                 }
