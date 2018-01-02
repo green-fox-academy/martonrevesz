@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominoes;
 
 namespace Domino 
 {
-    class Domino : IComparable
+    class Domino : IComparable, IPrintable
     {
         private readonly int[] Values;
 
@@ -42,6 +43,9 @@ namespace Domino
             return Values;
         }
 
-       
+        public void PrintAllFields()
+        {
+            Console.WriteLine("[" + Values[0] + ", " + Values[1] + "]");
+        }
     }
 }

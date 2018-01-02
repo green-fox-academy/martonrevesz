@@ -16,7 +16,7 @@ namespace Domino
             Console.WriteLine("***");
             foreach (Domino item in dominoes)
             {
-                Console.WriteLine("[" + item.GetValues()[0] + ", " + item.GetValues()[1] + "]");
+                item.PrintAllFields();
             }
             Console.ReadLine();
         }
@@ -33,7 +33,7 @@ namespace Domino
             dominoes.Sort();
             foreach (Domino item in dominoes)
             {
-                Console.WriteLine("[" + item.GetValues()[0] + ", " + item.GetValues()[1] + "]");
+                item.PrintAllFields();
             }
             return dominoes;
         }
