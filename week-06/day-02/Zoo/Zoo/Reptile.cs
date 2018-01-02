@@ -19,6 +19,10 @@ namespace Zoo
 
         public override string WantChild()
         {
+            if (name == "Frog")
+            {
+                return "want egg in a froggy way";
+            }
             return "want a child from an egg";
         }
     }
