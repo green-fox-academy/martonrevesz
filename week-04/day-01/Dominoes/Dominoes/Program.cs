@@ -13,6 +13,7 @@ namespace Domino
         {
             var dominoes = InitializeDominoes();
             dominoes = OrderDominoes(dominoes);
+            Console.WriteLine("***");
             foreach (Domino item in dominoes)
             {
                 Console.WriteLine("[" + item.GetValues()[0] + ", " + item.GetValues()[1] + "]");
@@ -29,6 +30,11 @@ namespace Domino
             dominoes.Add(new Domino(6, 7));
             dominoes.Add(new Domino(2, 4));
             dominoes.Add(new Domino(7, 1));
+            dominoes.Sort();
+            foreach (Domino item in dominoes)
+            {
+                Console.WriteLine("[" + item.GetValues()[0] + ", " + item.GetValues()[1] + "]");
+            }
             return dominoes;
         }
 
