@@ -8,7 +8,7 @@ namespace FleetOfThings
 {
     class Fleet
     {
-        private List<Thing> Things;
+        public List<Thing> Things;
 
         public Fleet()
         {

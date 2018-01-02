@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominoes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FleetOfThings 
 {
-    class Thing : IComparable
+    class Thing : IComparable, IPrintable
     {
         private string Name;
         private bool Completed;
@@ -24,7 +25,7 @@ namespace FleetOfThings
             else if (!Completed && anotherThing.Completed)
                 return -1;
 
-            return Name.CompareTo(((Thing)obj).Name);
+            return Name.CompareTo(anotherThing.Name);
         }
 
         public void Complete()
@@ -40,6 +41,11 @@ namespace FleetOfThings
         public string GetName()
         {
             return Name;
+        }
+
+        public void PrintAllFields()
+        {
+            Console.WriteLine($"{Name} , {Completed}");
         }
     }
 }
