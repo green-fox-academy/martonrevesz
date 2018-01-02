@@ -16,6 +16,7 @@ namespace GreenFoxOrganization
             Person jane = new Person();
             people.Add(jane);
             Student john = new Student("John Doe", 20, "male", "BME");
+            var johnTheClone = john.Clone();
             people.Add(john);
             Student student = new Student();
             people.Add(student);
