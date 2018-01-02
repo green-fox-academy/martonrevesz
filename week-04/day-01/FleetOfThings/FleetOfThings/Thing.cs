@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FleetOfThings
+namespace FleetOfThings 
 {
-    class Thing
+    class Thing : IComparable
     {
         private string Name;
         private bool Completed;
@@ -14,6 +14,17 @@ namespace FleetOfThings
         public Thing(string name)
         {
             this.Name = name;
+        }
+
+        public int CompareTo(object obj)
+        {
+            Thing anotherThing = obj as Thing;
+            if (Completed && !anotherThing.Completed)
+                return 1;
+            else if (!Completed && anotherThing.Completed)
+                return -1;
+
+            return Name.CompareTo(((Thing)obj).Name);
         }
 
         public void Complete()
