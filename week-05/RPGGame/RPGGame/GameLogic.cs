@@ -45,9 +45,8 @@ namespace RPGGame
                 + MyHero.DefendPoint + " | SP: " + MyHero.StrikePoint;
         }
 
-        public void Game()
+        public void Game(int monsterNumber)
         {
-            int monsterNumber = CheckSameField();
             bool flag = true;
             if (monsterNumber > -1)
             {
@@ -68,16 +67,6 @@ namespace RPGGame
             }
             MyTextBlock.Text = "Hero (Level " + MyHero.Level + ") HP: " + MyHero.CurrentHP + "/" + MyHero.MaxHP + " | DP: "
                 + MyHero.DefendPoint + " | SP: " + MyHero.StrikePoint;
-        }
-
-        public int CheckSameField()
-        {
-            for (int i = 0; i < MonsterList.Count; i++)
-            {
-                if (MonsterList[i].TileNumber == MyHero.TileNumber)
-                    return i;
-            }
-            return -1;
         }
 
         public bool Battle(Monster monster)

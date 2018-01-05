@@ -137,5 +137,20 @@ namespace RPGGame
             MyFoxDraw.SetPosition(MyFoxDraw.Items[character.CharacterId], 0, 0);
             character.TileNumber = 0;
         }
+
+
+
+        public int CheckSameField(List<Monster> monsterList, Hero hero)
+        {
+            for (int i = 0; i < monsterList.Count; i++)
+            {
+                if (monsterList[i].TileNumber == hero.TileNumber)
+                    return i;
+            }
+            return -1;
+        }
+
+
+
     }
 }

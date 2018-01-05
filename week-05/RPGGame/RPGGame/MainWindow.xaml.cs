@@ -50,8 +50,8 @@ namespace RPGGame
                 foxDraw.Items[hero.CharacterId].Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.Relative));
                 area.MoveDown(hero);
             }
-            if (e.Key == Key.Space && (gameLogic.CheckSameField() > -1))
-                gameLogic.Game();
+            if (e.Key == Key.Space && (area.CheckSameField(monsterList, hero) > -1))
+                gameLogic.Game(area.CheckSameField(monsterList, hero));
             heroStepCounter++;
             if (heroStepCounter % 2 == 0)
                 area.MoveRandom(monsterList);        
