@@ -1,0 +1,14 @@
+﻿@model SayHello.Models.Container
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+@for (int i = 0; i < Model.Hellos.Length; i++)
+{
+    Random random = new Random();
+    <span style="color:rgb(@random.Next(255),@random.Next(255), @random.Next(255));
+    font-size: @random.Next(8, 50)">@Model.Hellos[i]</span>
+}
+</body>
+</html>
