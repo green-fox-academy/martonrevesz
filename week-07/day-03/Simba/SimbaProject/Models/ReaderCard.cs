@@ -7,8 +7,17 @@ namespace SimbaProject.Models
 {
     public class ReaderCard
     {
+        public static int counter = 0;
+
+        public int Id { get; set; }
         public string Name{ get; set; }
-        public string Balance { get; set; }
+        public int Fine { get; set; }
         public string UserType { get; set; }
+        public bool VIP { get; set; }
+
+        public ReaderCard()
+        {
+            Id = counter++;
+        }
     }
 }

@@ -20,32 +20,34 @@ namespace SimbaProject.ViewModels
             ReaderList.Add(new ReaderCard()
             {
                 Name = "Gerzson",
-                Balance = "0",
-                UserType = "Professor"
+                Fine = 0,
+                UserType = "Professor",
+                VIP = true
             });
             ReaderList.Add(new ReaderCard()
             {
                 Name = "Barnabas",
-                Balance = "-30",
+                Fine = 30,
                 UserType = "Student"
             });
             ReaderList.Add(new ReaderCard()
             {
                 Name = "Lena",
-                Balance = "0",
+                Fine = 0,
                 UserType = "Child"
             });
             ReaderList.Add(new ReaderCard()
             {
                 Name = "Benedek",
-                Balance = "-50",
+                Fine = 50,
                 UserType = "Teacher"
             });
             ReaderList.Add(new ReaderCard()
             {
                 Name = "Zorka",
-                Balance = "2000",
-                UserType = "Director"
+                Fine = 20,
+                UserType = "Director",
+                VIP = true
             });
         }
     }

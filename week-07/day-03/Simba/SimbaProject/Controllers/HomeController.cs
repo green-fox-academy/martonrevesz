@@ -8,28 +8,53 @@ using SimbaProject.ViewModels;
 
 namespace SimbaProject.Controllers
 {
-    
 
-    [Route("")]
     public class HomeController : Controller
     {
         public static ReaderCardViewModel readerCardViewModel= new ReaderCardViewModel();
 
-        [Route("list")]
+        [Route("")]
+        public IActionResult Index()
+        {
+            return View();
+        }
+        
+        [HttpGet("list")]
         public IActionResult List()
         {
             return View(readerCardViewModel);
         }
-        [Route("gerzson")]
-        public IActionResult Index()
+
+        [Route("form")]
+        public IActionResult Form()
         {
-            var account = new ReaderCard()
-            {
-                Name = "Gerzson",
-                Balance = "0",
-                UserType = "Professor"
-            };                            
-            return View(account);
+            return View();
+        }
+
+        [Route("feeform")]
+        public IActionResult FeeForm()
+        {
+            return View();
+        }
+
+        [Route("add")]
+        public IActionResult Add(ReaderCard reader)
+        {
+            readerCardViewModel.ReaderList.Add(reader);
+            return RedirectToAction("list");
+        }
+
+        [Route("fee")]
+        public IActionResult Fee(int id)
+        {
+            readerCardViewModel.ReaderList[id].Fine += 10;
+            return RedirectToAction("list");
+        }
+
+        [Route("single/{id?}")]
+        public IActionResult SingleReader(int  id)
+        {                 
+            return View(readerCardViewModel.ReaderList[id]);
         }
     }
 }
