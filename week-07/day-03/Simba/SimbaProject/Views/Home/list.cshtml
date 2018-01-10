@@ -1,0 +1,24 @@
+﻿@model SimbaProject.ViewModels.ReaderCardViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reader Catalogue</title>
+</head>
+<body>
+    <table style="width:30%">
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Reader Type</th>
+        </tr>
+        @foreach (var readerCard in @Model.ReaderList)
+        {
+            <tr>
+                <td>@readerCard.Name</td>
+                <td>@readerCard.Balance</td>
+                <td>@readerCard.UserType</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
