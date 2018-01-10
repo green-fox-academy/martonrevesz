@@ -8,10 +8,12 @@
 <body>
     <nav>
         <center>
-            <a href="/list">To the user list</a>
-            <a href="/form">Add new user</a>
+            <a href="/">Home</a>
+            <a href="/list">Reader list</a>
+            <a href="/form">New Reader</a>
         </center>
     </nav>
+
     <center>
         <table style="width:30%">
             <tr>
@@ -21,10 +23,11 @@
             {
                 var style = @Model.ReaderList[i].VIP ? "green" : "black";
                 <tr>
-                    <td> <a href="/single/i"> @Model.ReaderList[i].Name</a></td>
+                    <td> <a href="/single/@i"> @Model.ReaderList[i].Name</a></td>
                 </tr>
             }
         </table>
+        
     </center>
 </body>
 </html>

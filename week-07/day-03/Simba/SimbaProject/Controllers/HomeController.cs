@@ -26,15 +26,9 @@ namespace SimbaProject.Controllers
         }
 
         [Route("form")]
-        public IActionResult Form()
+        public IActionResult Form(ReaderCard reader)
         {
-            return View();
-        }
-
-        [Route("feeform")]
-        public IActionResult FeeForm()
-        {
-            return View();
+            return View(reader);
         }
 
         [Route("add")]
@@ -44,17 +38,40 @@ namespace SimbaProject.Controllers
             return RedirectToAction("list");
         }
 
-        [Route("fee")]
+        [Route("updateForm/{id}")]
+        public IActionResult UpdateForm(int id)
+        {
+            return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
+        }
+
+        [Route("updateData/{id}")]
+        public IActionResult Update(ReaderCard reader, int id)
+        {
+            readerCardViewModel.ReaderList.First(x => x.Id == id).Name = reader.Name;
+            readerCardViewModel.ReaderList.First(x => x.Id == id).Fine = reader.Fine;
+            readerCardViewModel.ReaderList.First(x => x.Id == id).UserType= reader.UserType;
+            readerCardViewModel.ReaderList.First(x => x.Id == id).VIP = reader.VIP;
+            return RedirectToAction("list");
+        }
+
+        [Route("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            readerCardViewModel.ReaderList.Remove(readerCardViewModel.ReaderList.First(x => x.Id == id));
+            return RedirectToAction("list");
+        }
+
+        [Route("fee/{id}")]
         public IActionResult Fee(int id)
         {
-            readerCardViewModel.ReaderList[id].Fine += 10;
+            readerCardViewModel.ReaderList.First(x => x.Id == id).Fine += 10;
             return RedirectToAction("list");
         }
 
         [Route("single/{id?}")]
         public IActionResult SingleReader(int  id)
         {                 
-            return View(readerCardViewModel.ReaderList[id]);
+            return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
         }
     }
 }
