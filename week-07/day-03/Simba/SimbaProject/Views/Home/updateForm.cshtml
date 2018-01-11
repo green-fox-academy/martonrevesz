@@ -13,7 +13,7 @@
             <a href="/list">Reader list</a>
         </center>
     </nav>
-    <form action="/updateData/@Model.Id" method="get"   >
+    <form action="/updateData/@Model.Id" method="get">
         Name:
         <input type="text" name="Name" value=@Model.Name required><br>
         Fine:
@@ -21,7 +21,7 @@
         ReaderType:
         <input type="text" name="UserType" value=@Model.UserType /><br>
         VIP:
-        <input type="checkbox" name="VIP" value="1" checked="@Model.VIP" />
+        <input type="checkbox" name="VIP" value="1" checked="@Model.VIP" style="width:30px ; height: 30px" />
         <br><br>
 
         <input type="submit"  />

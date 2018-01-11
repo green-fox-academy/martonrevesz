@@ -29,7 +29,6 @@ namespace SimbaProject.Controllers
         {
             return View(readerCardViewModel);
         }
-
         [HttpGet("form")]
         public IActionResult Form()
         {
@@ -77,9 +76,11 @@ namespace SimbaProject.Controllers
         }
 
         [HttpGet("single/{id}")]
-        public IActionResult SingleReader(int  id)
-        {                 
+        public IActionResult SingleReader(int id)
+        {
             return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
         }
+
+
     }
 }
