@@ -16,5 +16,17 @@ namespace AnagramApp.Controllers
         {
             return View();
         }
+
+        [HttpPost("check")]
+        public IActionResult Check()
+        {
+            return RedirectToAction("result");
+        }
+
+        [HttpGet("result")]
+        public IActionResult Result()
+        {
+            return View();
+        }
     }
 }
