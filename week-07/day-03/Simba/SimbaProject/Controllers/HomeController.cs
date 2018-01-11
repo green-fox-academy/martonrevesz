@@ -26,9 +26,9 @@ namespace SimbaProject.Controllers
         }
 
         [Route("form")]
-        public IActionResult Form(ReaderCard reader)
+        public IActionResult Form()
         {
-            return View(reader);
+            return View();
         }
 
         [Route("add")]
@@ -68,7 +68,7 @@ namespace SimbaProject.Controllers
             return RedirectToAction("list");
         }
 
-        [Route("single/{id?}")]
+        [Route("single/{id}")]
         public IActionResult SingleReader(int  id)
         {                 
             return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
