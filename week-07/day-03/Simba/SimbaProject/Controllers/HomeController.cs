@@ -11,7 +11,12 @@ namespace SimbaProject.Controllers
 
     public class HomeController : Controller
     {
-        public static ReaderCardViewModel readerCardViewModel= new ReaderCardViewModel();
+        public ReaderCardViewModel readerCardViewModel;
+
+        public HomeController(ReaderCardViewModel readerCardViewModel)
+        {
+            this.readerCardViewModel = readerCardViewModel;
+        }
 
         [Route("")]
         public IActionResult Index()
@@ -25,50 +30,53 @@ namespace SimbaProject.Controllers
             return View(readerCardViewModel);
         }
 
-        [Route("form")]
+        [HttpGet("form")]
         public IActionResult Form()
         {
             return View();
         }
 
-        [Route("add")]
+        [HttpPost("add")]
         public IActionResult Add(ReaderCard reader)
         {
             readerCardViewModel.ReaderList.Add(reader);
             return RedirectToAction("list");
         }
 
-        [Route("updateForm/{id}")]
-        public IActionResult UpdateForm(int id)
+        [HttpGet("updateForm/{id}")]
+        public IActionResult UpdateForm([FromRoute]int id)
         {
             return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
         }
 
-        [Route("updateData/{id}")]
-        public IActionResult Update(ReaderCard reader, int id)
+        [HttpGet("updateData/{id}")]
+        public IActionResult Update(
+            [FromQuery]string name, [FromQuery]int fine, [FromQuery]string userType, [FromQuery]string VIP, [FromRoute] int id)
         {
-            readerCardViewModel.ReaderList.First(x => x.Id == id).Name = reader.Name;
-            readerCardViewModel.ReaderList.First(x => x.Id == id).Fine = reader.Fine;
-            readerCardViewModel.ReaderList.First(x => x.Id == id).UserType= reader.UserType;
-            readerCardViewModel.ReaderList.First(x => x.Id == id).VIP = reader.VIP;
+            var reader = readerCardViewModel.ReaderList.First(x => x.Id == id);
+            reader.Name = name;
+            reader.Fine = fine;
+            reader.UserType = userType;
+            reader.VIP = VIP == "1" ? true : false;
+
             return RedirectToAction("list");
         }
 
-        [Route("delete/{id}")]
-        public IActionResult Delete(int id)
+        [HttpGet("delete/{id}")]
+        public IActionResult Delete([FromRoute]int id)
         {
             readerCardViewModel.ReaderList.Remove(readerCardViewModel.ReaderList.First(x => x.Id == id));
             return RedirectToAction("list");
         }
 
-        [Route("fee/{id}")]
+        [HttpGet("fee/{id}")]
         public IActionResult Fee(int id)
         {
             readerCardViewModel.ReaderList.First(x => x.Id == id).Fine += 10;
             return RedirectToAction("list");
         }
 
-        [Route("single/{id}")]
+        [HttpGet("single/{id}")]
         public IActionResult SingleReader(int  id)
         {                 
             return View(readerCardViewModel.ReaderList.First(x => x.Id == id));

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using SimbaProject.ViewModels;
 
 namespace SimbaProject
 {
@@ -17,6 +18,7 @@ namespace SimbaProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<ReaderCardViewModel>();
             
         }
 

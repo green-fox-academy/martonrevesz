@@ -1,8 +1,10 @@
 ﻿@model SimbaProject.Models.ReaderCard
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="~/style.css">
+    <meta charset="UTF-8">
 </head>
 <body>
     <nav>
@@ -11,16 +13,18 @@
             <a href="/list">Reader list</a>
         </center>
     </nav>
-    <form action="/updateData/@Model.Id" method="post">
+    <form action="/updateData/@Model.Id" method="get"   >
         Name:
-        <input type="text" name="Name" value=@Model.Name><br>
+        <input type="text" name="Name" value=@Model.Name required><br>
         Fine:
-        <input type="text" name="Fine" value=@Model.Fine><br>
+        <input type="number" name="Fine" value=@Model.Fine><br>
         ReaderType:
         <input type="text" name="UserType" value=@Model.UserType /><br>
         VIP:
-        <input type="text" name="VIP" value=@Model.VIP><br><br>
-        <input type="submit" />
+        <input type="checkbox" name="VIP" value="1" checked="@Model.VIP" />
+        <br><br>
+
+        <input type="submit"  />
     </form>
 
 </body>
