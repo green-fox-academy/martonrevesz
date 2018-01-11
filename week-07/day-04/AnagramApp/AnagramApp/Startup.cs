@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using AnagramApp.Models;
 
 namespace AnagramApp
 {
@@ -17,6 +18,7 @@ namespace AnagramApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<AnagramChecker>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
