@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using AnagramApp.Models;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AnagramApp.Controllers
 {
@@ -26,16 +20,16 @@ namespace AnagramApp.Controllers
         }
 
         [HttpPost("check")]
-        public IActionResult Check()
+        public IActionResult Check(string anagram1, string anagram2)
         {
-
+            AnagramChecker.AreAnagrams(anagram1, anagram2);
             return RedirectToAction("result");
         }
 
         [HttpGet("result")]
         public IActionResult Result()
         {
-            return View();
+            return View(AnagramChecker);
         }
     }
 }

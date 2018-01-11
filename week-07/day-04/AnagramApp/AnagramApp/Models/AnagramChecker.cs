@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AnagramApp.Models
 {
     public class AnagramChecker
     {
         public bool IsTrue { get; set; }
-
 
         public void AreAnagrams(string anagram, string anagram2)
         {
@@ -19,18 +16,18 @@ namespace AnagramApp.Models
                 List<char> sortedAnagram2 = anagram2.ToList();
                 sortedAnagram2.Sort();
 
-
                 for (int i = 0; i < sortedAnagram.Count; i++)
                 {
                     if (sortedAnagram2[i] != sortedAnagram[i])
                     {
-                        this.IsTrue = false;
+                        IsTrue = false;
+                        return;
                     }
-                    this.IsTrue = true;
                 }
-
+                IsTrue = true;
+                return;
             }
-            this.IsTrue = false;
+            IsTrue = false;            
         }
     }
 }
