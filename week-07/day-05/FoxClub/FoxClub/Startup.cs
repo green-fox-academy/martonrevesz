@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using FoxClub.Models;
+using FoxClub.ViewModels;
 
 namespace FoxClub
 {
@@ -15,7 +16,7 @@ namespace FoxClub
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<Fox>();
+            services.AddSingleton<FoxContainer>();
             
         }
 
