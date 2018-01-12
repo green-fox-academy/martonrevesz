@@ -18,9 +18,11 @@ namespace FoxClub.Controllers
             FoxContainer = foxContainer;
         }
 
+        [Route("")]
         public IActionResult Index(string name)
         {
-            return View();
+            var fox = FoxContainer.FoxList.First(x => x.Name == name);
+            return View(fox);
         }
         
     }

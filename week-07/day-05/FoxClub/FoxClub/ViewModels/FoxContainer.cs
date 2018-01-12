@@ -18,7 +18,7 @@ namespace FoxClub.ViewModels
         private void InitializeList()
         {
             FoxList.Add(
-                new Fox() { Name = "Vuk" });
+                new Fox() { Name = "Vuk", Drink="coctail" });
             FoxList.Add(
             new Fox() { Name = "Fox" });
             FoxList.Add(
