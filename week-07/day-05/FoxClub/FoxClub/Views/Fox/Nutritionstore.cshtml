@@ -1,1 +1,31 @@
-﻿nutrition
+﻿@model FoxClub.Models.Fox
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Nutrition Store</title>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Information</a></li>
+        <li><a href="/fox/nutritionstore/@Model.Name">Nutrition Store</a></li>
+    </ul>
+    <form action="/fox/nutritionUpdate/@Model.Name" method="get">
+        Food:
+        <select name="food">
+            <option selected="selected" value="Pencake">Pencake</option>
+            <option value="Icecream">Icecream</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Kakaos csiga">Kakaos csiga</option>
+        </select>
+        Drink:
+        <select name="drink">
+            <option selected="selected" value="Lemonade">Lemonade</option>
+            <option value="Pepsi">Pepsi</option>
+            <option value="Tea">Tea</option>
+            <option value="Coctail">Coctail</option>
+        </select>
+        <input type="submit" name="name" value="Change" />
+    </form>
+</body>
+</html>
