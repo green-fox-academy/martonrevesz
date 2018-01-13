@@ -24,6 +24,7 @@ namespace FoxClub.Controllers
             return View(FoxContainer.FoxList.First(x => x.Name == name));
         }
 
+
         [HttpGet("nutritionUpdate/{name}")]
         public IActionResult NutritionUpdate(string food, string drink, string name)
         {
@@ -31,6 +32,12 @@ namespace FoxClub.Controllers
             currentfox.Food = food;
             currentfox.Drink = drink;
             return Redirect($"/main/{name}");
+        }
+
+        [HttpGet("trickcenter/{name}")]
+        public IActionResult TrickCenter(string name)
+        {
+            return View(FoxContainer.FoxList.First(x => x.Name == name));
         }
     }
 }
