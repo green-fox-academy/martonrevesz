@@ -39,5 +39,14 @@ namespace FoxClub.Controllers
         {
             return View(FoxContainer.FoxList.First(x => x.Name == name));
         }
+
+        [HttpGet("trickUpdate/{name}")]
+        public IActionResult trickUpdate(string trick, string name)
+        {
+            Fox currentfox = FoxContainer.FoxList.First(x => x.Name == name);
+            currentfox.TrickList.Add(trick);
+            currentfox.PossibleTricks.Remove(trick);
+            return Redirect($"/main/{name}");
+        }
     }
 }

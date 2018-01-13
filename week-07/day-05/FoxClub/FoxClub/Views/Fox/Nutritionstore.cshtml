@@ -1,5 +1,4 @@
 ﻿@model FoxClub.Models.Fox
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +8,7 @@
     <ul>
         <li><a href="/main/@Model.Name">Information</a></li>
         <li><a href="/fox/nutritionstore/@Model.Name">Nutrition Store</a></li>
+        <li><a href="/fox/trickcenter/@Model.Name">Trick center</a></li>
     </ul>
     <form action="/fox/nutritionUpdate/@Model.Name" method="get">
         Food:

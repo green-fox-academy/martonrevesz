@@ -16,8 +16,7 @@ namespace FoxClub
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<FoxContainer>();
-            
+            services.AddSingleton<FoxContainer>();            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -26,9 +25,7 @@ namespace FoxClub
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseStaticFiles();
-
             app.UseMvc();
         }
     }

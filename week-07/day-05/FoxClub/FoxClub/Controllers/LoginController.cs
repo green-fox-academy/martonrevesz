@@ -36,7 +36,6 @@ namespace FoxClub.Controllers
                 }                
             }
             return Redirect("/");
-
         }
     }
 }

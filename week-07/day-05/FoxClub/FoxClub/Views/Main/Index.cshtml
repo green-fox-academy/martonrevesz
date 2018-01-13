@@ -1,5 +1,4 @@
 ﻿@model FoxClub.Models.Fox
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,28 +8,24 @@
     <ul>
         <li><a href="/main/@Model.Name">Information</a></li>
         <li><a href="/fox/nutritionstore/@Model.Name">Nutrition Store</a></li>
+        <li><a href="/fox/trickcenter/@Model.Name">Trick center</a></li>
     </ul>
     <img src="~/greenfox.png" alt="Green Fox Logo" />
     <p>This is @Model.Name. Currently living on @(Model.Food ?? "pizza ") and @(Model.Drink ?? "lemonade") . He knows @Model.TrickList.Count tricks. </p>
-    <h2>Known tricks</h2>
+    <h2>Known tricks</h2> 
+    @if (Model.TrickList.Count != 0)
+    {
+        <ul>
+            @foreach (var item in Model.TrickList)
+            {
+            <li>@item</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Know no tricks yet. Go andd learn some.</p>
 
-    
-
-        @if (Model.TrickList.Count != 0)
-        {
-            <ul>
-                @foreach (var item in Model.TrickList)
-                {
-                <li>@item</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <p>Know no tricks yet. Go andd learn some.</p>
-
-        }
-
-
+    }
 </body>
 </html>
