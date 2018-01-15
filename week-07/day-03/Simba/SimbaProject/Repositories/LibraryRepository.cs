@@ -25,5 +25,29 @@ namespace SimbaProject.Repositories
         {
             return LibraryContext.Readers.FirstOrDefault(x => x.Id == id);
         }
+
+        public void UpdateReader(Reader inputReader, int id)
+        {
+            var reader = GetSingleReader(id);
+            reader.Name = inputReader.Name;
+            reader.Fine = inputReader.Fine;
+            reader.UserType = inputReader.UserType;
+            reader.VIP = inputReader.VIP;
+            LibraryContext.SaveChanges();
+        }
+
+        public void RemoveReader(int id)
+        {
+            var reader = GetSingleReader(id);
+            LibraryContext.Remove(reader);
+            LibraryContext.SaveChanges();
+        }
+
+        public void FineReader(int id)
+        {
+            var reader = GetSingleReader(id);
+            reader.Fine += 10;
+            LibraryContext.SaveChanges();
+        }
     }
 }

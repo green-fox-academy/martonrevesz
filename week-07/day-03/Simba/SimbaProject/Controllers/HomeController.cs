@@ -17,9 +17,7 @@ namespace SimbaProject.Controllers
             LibraryRepository = libraryRepository;
         }
 
-        public LibraryRepository LibraryRepository{ get; set; }
-
-        
+        public LibraryRepository LibraryRepository{ get; set; }        
 
         [Route("")]
         public IActionResult Index()
@@ -34,7 +32,7 @@ namespace SimbaProject.Controllers
             return View(readerList);
         }
 
-        [HttpGet("form")]
+        [HttpGet("add")]
         public IActionResult Form()
         {
             return View();
@@ -48,38 +46,32 @@ namespace SimbaProject.Controllers
             return RedirectToAction("list");
         }
 
-        //[HttpGet("updateForm/{id}")]
-        //public IActionResult UpdateForm([FromRoute]int id)
-        //{
-        //    return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
-        //}
+        [HttpGet("update/{id}")]
+        public IActionResult UpdateForm([FromRoute]int id)
+        {
+            return View(LibraryRepository.GetSingleReader(id));
+        }
 
-        //[HttpGet("updateData/{id}")]
-        //public IActionResult Update(
-        //    [FromQuery]string name, [FromQuery]int fine, [FromQuery]string userType, [FromQuery]string VIP, [FromRoute] int id)
-        //{
-        //    var reader = readerCardViewModel.ReaderList.First(x => x.Id == id);
-        //    reader.Name = name;
-        //    reader.Fine = fine;
-        //    reader.UserType = userType;
-        //    reader.VIP = VIP == "1" ? true : false;
+        [HttpPost("update/{id}")]
+        public IActionResult Update(Reader inputReader, [FromRoute] int id)
+        {
+            LibraryRepository.UpdateReader(inputReader, id);
+            return RedirectToAction("list");
+        }
 
-        //    return RedirectToAction("list");
-        //}
+        [HttpGet("delete/{id}")]
+        public IActionResult Delete([FromRoute]int id)
+        {
+            LibraryRepository.RemoveReader(id);
+            return RedirectToAction("list");
+        }
 
-        //[HttpGet("delete/{id}")]
-        //public IActionResult Delete([FromRoute]int id)
-        //{
-        //    readerCardViewModel.ReaderList.Remove(readerCardViewModel.ReaderList.First(x => x.Id == id));
-        //    return RedirectToAction("list");
-        //}
-
-        //[HttpGet("fee/{id}")]
-        //public IActionResult Fee(int id)
-        //{
-        //    readerCardViewModel.ReaderList.First(x => x.Id == id).Fine += 10;
-        //    return RedirectToAction("list");
-        //}
+        [HttpGet("fee/{id}")]
+        public IActionResult Fee(int id)
+        {
+            LibraryRepository.FineReader(id);
+            return RedirectToAction("list");
+        }
 
         [HttpGet("single/{id}")]
         public IActionResult SingleReader(int id)
@@ -87,7 +79,5 @@ namespace SimbaProject.Controllers
             var reader = LibraryRepository.GetSingleReader(id);
             return View(reader);
         }
-
-
     }
 }
