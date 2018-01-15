@@ -1,4 +1,5 @@
 ﻿using SimbaProject.Entities;
+using SimbaProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,15 @@ namespace SimbaProject.Repositories
         }
 
         public LibraryContext LibraryContext { get; set; }
+
+        public List<Reader> GetReaders()
+        {
+            return LibraryContext.Readers.ToList();
+        }
+
+        public Reader GetSingleReader(int id)
+        {
+            return LibraryContext.Readers.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

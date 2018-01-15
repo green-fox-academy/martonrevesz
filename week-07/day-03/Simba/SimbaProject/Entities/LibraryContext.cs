@@ -14,6 +14,6 @@ namespace SimbaProject.Entities
 
         }
 
-        public DbSet<Reader> ReaderCards { get; set; }
+        public DbSet<Reader> Readers { get; set; }
     }
 }

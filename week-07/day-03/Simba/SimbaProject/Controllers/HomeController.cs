@@ -27,11 +27,12 @@ namespace SimbaProject.Controllers
             return View();
         }
 
-        //[HttpGet("list")]
-        //public IActionResult List()
-        //{
-        //    return View(readerCardViewModel);
-        //}
+        [HttpGet("list")]
+        public IActionResult List()
+        {
+            var readerList = LibraryRepository.GetReaders();
+            return View(readerList);
+        }
 
         [HttpGet("form")]
         public IActionResult Form()
@@ -39,12 +40,13 @@ namespace SimbaProject.Controllers
             return View();
         }
 
-        //[HttpPost("add")]
-        //public IActionResult Add(ReaderCard reader)
-        //{
-        //    readerCardViewModel.ReaderList.Add(reader);
-        //    return RedirectToAction("list");
-        //}
+        [HttpPost("add")]
+        public IActionResult Add(Reader reader)
+        {
+            LibraryRepository.LibraryContext.Readers.Add(reader);
+            LibraryRepository.LibraryContext.SaveChanges();
+            return RedirectToAction("list");
+        }
 
         //[HttpGet("updateForm/{id}")]
         //public IActionResult UpdateForm([FromRoute]int id)
@@ -79,11 +81,12 @@ namespace SimbaProject.Controllers
         //    return RedirectToAction("list");
         //}
 
-        //[HttpGet("single/{id}")]
-        //public IActionResult SingleReader(int id)
-        //{
-        //    return View(readerCardViewModel.ReaderList.First(x => x.Id == id));
-        //}
+        [HttpGet("single/{id}")]
+        public IActionResult SingleReader(int id)
+        {
+            var reader = LibraryRepository.GetSingleReader(id);
+            return View(reader);
+        }
 
 
     }
