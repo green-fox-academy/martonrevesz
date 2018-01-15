@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using TodoApp.Repositories;
+using TodoApp.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace TodoApp
 {
@@ -14,6 +17,10 @@ namespace TodoApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<TodoContext>(options =>
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=todoDB;Integrated Security=True;" +
+                "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddSingleton<TodoRepository>();
 
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
