@@ -20,8 +20,7 @@ namespace TodoApp
             services.AddDbContext<TodoContext>(options =>
                 options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=todoDB;Integrated Security=True;" +
                 "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
-            services.AddSingleton<TodoRepository>();
-
+            services.AddScoped<TodoRepository>();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
