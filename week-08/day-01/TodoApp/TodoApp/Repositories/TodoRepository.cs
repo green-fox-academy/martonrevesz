@@ -42,6 +42,15 @@ namespace TodoApp.Repositories
             }            
             TodoContext.SaveChanges();
         }
+
+        public void SaveEdit(Todo todo, int id)
+        {
+            var todoToUpdate = TodoContext.Todos.FirstOrDefault(x => x.Id == id);
+            todoToUpdate.Title = todo.Title;
+            todoToUpdate.IsDone = todo.IsDone;
+            todoToUpdate.IsUrgent= todo.IsUrgent;
+            TodoContext.SaveChanges();
+        }
     }
 }
 

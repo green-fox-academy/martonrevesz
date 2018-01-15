@@ -40,7 +40,6 @@ namespace TodoApp.Controllers
         public IActionResult SubmitTodo(Todo todo)
         {
             TodoRepository.Create(todo);
-
             return RedirectToAction("index");
         }
 
@@ -48,6 +47,20 @@ namespace TodoApp.Controllers
         public IActionResult Delete(int id)
         {
             TodoRepository.Delete(id);
+            return RedirectToAction("index");
+        }
+
+        [HttpGet("edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            var currentTodo = TodoRepository.TodoContext.Todos.FirstOrDefault(x => x.Id == id);
+            return View(currentTodo);
+        }
+
+        [HttpPost("edit/{id}")]
+        public IActionResult SaveEdit(Todo todo, int id)
+        {
+            TodoRepository.SaveEdit(todo, id);
             return RedirectToAction("index");
         }
     }

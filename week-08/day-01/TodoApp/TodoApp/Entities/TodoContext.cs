@@ -13,7 +13,6 @@ namespace TodoApp.Entities
         {
              
         }
-
         public DbSet<Todo> Todos { get; set; }
 
     }
