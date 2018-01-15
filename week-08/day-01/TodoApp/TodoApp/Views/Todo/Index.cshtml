@@ -6,7 +6,8 @@
 </head>
 <body>
     <h2>Todos for today</h2>
-    <table style="width:100%">
+    <a href="/todo/create">Add todo</a><br>
+    <table style="width:70%">
             <tr>
                 <th>Id</th>
                 <th>Title</th>
@@ -20,6 +21,7 @@
                 <td>@item.Title</td>
                 <td>@item.IsUrgent</td>
                 <td>@item.IsDone</td>
+                <td><a href= "/todo/delete/@item.Id">Delete</a></td>
             </tr>
         }
     </table>

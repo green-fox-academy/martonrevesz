@@ -11,42 +11,44 @@ namespace TodoApp.Controllers
     [Route("todo")]
     public class TodoController : Controller
     {
+
+        public TodoRepository TodoRepository { get; set; }
+
         public TodoController(TodoRepository todoRepository)
         {
             TodoRepository = todoRepository;
         }
 
-        public TodoRepository TodoRepository { get; set; }
-
         [Route("")]
         [Route("list")]
-        public IActionResult Index([FromQuery] string isActive)
+        public IActionResult Index([FromQuery] bool isActive)
         {
-            //var todo = new Todo()
-            //{
-            //    IsDone = true,
-            //    IsUrgent = true,
-            //    Title = "New thing to read"
-            //};
-
-            //TodoRepository.TodoContext.Todos.Add(todo);
-            //TodoRepository.TodoContext.SaveChanges();
-            List<Todo> returnList;
-            if(isActive == null)
+            if (isActive == false)
             {
-                returnList = TodoRepository.GetAll();
+                return View(TodoRepository.GetAll());
             }
-            else if (isActive.Equals("true"))
-            {
-                returnList = TodoRepository.GetActive();
-            }
-            else
-            {
-                returnList = TodoRepository.GetAll();
-            }
+            return View(TodoRepository.GetActive());
+        }
 
+        [HttpGet("create")]
+        public IActionResult CreateTodo()
+        {
+            return View();
+        }
 
-            return View(returnList);
+        [HttpPost("create")]
+        public IActionResult SubmitTodo(Todo todo)
+        {
+            TodoRepository.Create(todo);
+
+            return RedirectToAction("index");
+        }
+
+        [HttpGet("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            TodoRepository.Delete(id);
+            return RedirectToAction("index");
         }
     }
 }

@@ -21,10 +21,27 @@ namespace TodoApp.Repositories
             return TodoContext.Todos.ToList();
         }
 
-        internal List<Todo> GetActive()
+        public List<Todo> GetActive()
         {
             return TodoContext.Todos.Where(x => x.IsDone == false).ToList();
         }
+
+        public void Create(Todo todo)
+        {
+
+            TodoContext.Todos.Add(todo);
+            TodoContext.SaveChanges();  
+        }
+
+        public void Delete(int id)
+        {
+            var todo = TodoContext.Todos.FirstOrDefault(x => x.Id == id);
+            if (todo != null)
+            {
+                TodoContext.Todos.Remove(todo);
+            }            
+            TodoContext.SaveChanges();
+        }
     }
-    }
+}
 
