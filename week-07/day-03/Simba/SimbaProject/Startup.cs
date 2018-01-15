@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using SimbaProject.ViewModels;
+using SimbaProject.Entities;
+using Microsoft.EntityFrameworkCore;
+using SimbaProject.Repositories;
 
 namespace SimbaProject
 {
@@ -18,8 +21,11 @@ namespace SimbaProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<ReaderCardViewModel>();
-            
+            services.AddDbContext<LibraryContext>(options =>
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=library;Integrated Security=True;" +
+                "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddScoped<LibraryRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
