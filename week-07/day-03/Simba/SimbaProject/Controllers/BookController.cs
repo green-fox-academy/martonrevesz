@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace SimbaProject.Controllers
 {
-    [Route("")]
-    public class HomeController : Controller
+    [Route("book")]
+    public class BookController : Controller
     {
-        public HomeController(LibraryRepository libraryRepository)
+        public BookController(LibraryRepository libraryRepository)
         {
             LibraryRepository = libraryRepository;
         }
 
         public LibraryRepository LibraryRepository { get; set; }
 
-        [Route("")]
-        public IActionResult Index()
+        [Route("list")]
+        public IActionResult Books()
         {
-            return View();
+            return View(LibraryRepository.GetBooks());
         }
     }
 }

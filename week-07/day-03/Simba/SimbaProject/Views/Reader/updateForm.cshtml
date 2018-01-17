@@ -10,10 +10,10 @@
     <nav>
         <center>
             <a href="/">Home</a>
-            <a href="/list">Reader list</a>
+            <a href="/reader/list">Reader list</a>
         </center>
     </nav>
-    <form action="/update/@Model.Id" method="post">
+    <form action="/reader/update/@Model.ReaderId" method="post">
         Name:
         <input type="text" name="Name" value=@Model.Name required><br>
         Fine:
@@ -24,7 +24,7 @@
         <input type="checkbox" name="VIP" value="true" checked="@Model.VIP" style="width:30px ; height: 30px" />
         <br><br>
 
-        <input type="submit"  />
+        <input type="submit"/>
     </form>
 
 </body>

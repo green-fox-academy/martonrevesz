@@ -11,9 +11,10 @@ using System;
 namespace SimbaProject.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20180117212353_DeleteReaderIdRow")]
+    partial class DeleteReaderIdRow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,11 +26,7 @@ namespace SimbaProject.Migrations
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BorrowedCopies");
-
                     b.Property<string>("Title");
-
-                    b.Property<int>("TotalCopies");
 
                     b.HasKey("BookId");
 
@@ -53,8 +50,6 @@ namespace SimbaProject.Migrations
                 {
                     b.Property<int>("ReaderId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CurrentBorrow");
 
                     b.Property<int>("Fine");
 

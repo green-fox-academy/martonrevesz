@@ -8,11 +8,13 @@ namespace SimbaProject.Models
 {
     public class Reader
     {
-        public int Id { get; set; }
+        private static int totalBorrow = 5;
+        public int ReaderId { get; set; }
         public string Name{ get; set; }
         public int Fine { get; set; }
         public string UserType { get; set; }
         public bool VIP { get; set; }
-        
+        public IList<BookReader> BooksReaders { get; set; } = new List<BookReader>();
+        public int CurrentBorrow { get; set; }
     }
 }

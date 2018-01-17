@@ -23,7 +23,12 @@ namespace SimbaProject.Repositories
 
         public Reader GetSingleReader(int id)
         {
-            return LibraryContext.Readers.FirstOrDefault(x => x.Id == id);
+            return LibraryContext.Readers.FirstOrDefault(x => x.ReaderId == id);
+        }
+
+        public List<Book> GetBooks()
+        {
+            return LibraryContext.Books.ToList();
         }
 
         public void UpdateReader(Reader inputReader, int id)
@@ -49,5 +54,6 @@ namespace SimbaProject.Repositories
             reader.Fine += 10;
             LibraryContext.SaveChanges();
         }
+
     }
 }

@@ -11,9 +11,10 @@ using System;
 namespace SimbaProject.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20180117212047_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +26,13 @@ namespace SimbaProject.Migrations
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BorrowedCopies");
+                    b.Property<int?>("ReaderId");
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("TotalCopies");
-
                     b.HasKey("BookId");
+
+                    b.HasIndex("ReaderId");
 
                     b.ToTable("Books");
                 });
@@ -54,8 +55,6 @@ namespace SimbaProject.Migrations
                     b.Property<int>("ReaderId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CurrentBorrow");
-
                     b.Property<int>("Fine");
 
                     b.Property<string>("Name");
@@ -67,6 +66,13 @@ namespace SimbaProject.Migrations
                     b.HasKey("ReaderId");
 
                     b.ToTable("Readers");
+                });
+
+            modelBuilder.Entity("SimbaProject.Models.Book", b =>
+                {
+                    b.HasOne("SimbaProject.Models.Reader", "Reader")
+                        .WithMany()
+                        .HasForeignKey("ReaderId");
                 });
 
             modelBuilder.Entity("SimbaProject.Models.BookReader", b =>

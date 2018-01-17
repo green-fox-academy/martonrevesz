@@ -11,9 +11,10 @@ using System;
 namespace SimbaProject.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20180117213729_AddFieldsToReaderAndBook")]
+    partial class AddFieldsToReaderAndBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,6 +60,8 @@ namespace SimbaProject.Migrations
                     b.Property<int>("Fine");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("TotalBorrow");
 
                     b.Property<string>("UserType");
 
