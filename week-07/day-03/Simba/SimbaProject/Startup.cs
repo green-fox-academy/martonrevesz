@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using SimbaProject.ViewModels;
 using SimbaProject.Entities;
 using Microsoft.EntityFrameworkCore;
 using SimbaProject.Repositories;
@@ -23,7 +22,6 @@ namespace SimbaProject
                 options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=library;Integrated Security=True;" +
                 "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
             services.AddScoped<LibraryRepository>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimbaProject.Models;
-using SimbaProject.ViewModels;
 using SimbaProject.Repositories;
 
 namespace SimbaProject.Controllers
@@ -17,13 +16,13 @@ namespace SimbaProject.Controllers
             LibraryRepository = libraryRepository;
         }
 
-        public LibraryRepository LibraryRepository{ get; set; }        
+        public LibraryRepository LibraryRepository { get; set; }
+
 
         [HttpGet("list")]
         public IActionResult List()
-        {
-            var readerList = LibraryRepository.GetReaders();
-            return View(readerList);
+        {        
+            return View(LibraryRepository.GetReaders());
         }
 
         [HttpGet("add")]
@@ -40,35 +39,35 @@ namespace SimbaProject.Controllers
             return RedirectToAction("list");
         }
 
-        [HttpGet("update/{id}")]
-        public IActionResult UpdateForm([FromRoute]int id)
+        [HttpGet("update")]
+        public IActionResult UpdateForm([FromQuery]int id)
         {
             return View(LibraryRepository.GetSingleReader(id));
         }
 
-        [HttpPost("update/{id}")]
-        public IActionResult Update(Reader inputReader, [FromRoute] int id)
+        [HttpPost("update")]
+        public IActionResult Update(Reader inputReader, [FromQuery] int id)
         {
             LibraryRepository.UpdateReader(inputReader, id);
             return RedirectToAction("list");
         }
 
-        [HttpGet("delete/{id}")]
-        public IActionResult Delete([FromRoute]int id)
+        [HttpGet("delete")]
+        public IActionResult Delete([FromQuery]int id)
         {
             LibraryRepository.RemoveReader(id);
             return RedirectToAction("list");
         }
 
-        [HttpGet("fee/{id}")]
-        public IActionResult Fee(int id)
+        [HttpGet("fee")]
+        public IActionResult Fee([FromQuery] int id)
         {
             LibraryRepository.FineReader(id);
             return RedirectToAction("list");
         }
 
-        [HttpGet("single/{id}")]
-        public IActionResult SingleReader(int id)
+        [HttpGet("single")]
+        public IActionResult SingleReader([FromQuery] int id)
         {
             var reader = LibraryRepository.GetSingleReader(id);
             return View(reader);

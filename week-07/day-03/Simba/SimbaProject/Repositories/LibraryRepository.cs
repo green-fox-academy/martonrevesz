@@ -9,6 +9,8 @@ namespace SimbaProject.Repositories
 {
     public class LibraryRepository
     {
+        public int CurrentId { get; set; }
+
         public LibraryRepository(LibraryContext libraryContext)
         {
             LibraryContext = libraryContext;

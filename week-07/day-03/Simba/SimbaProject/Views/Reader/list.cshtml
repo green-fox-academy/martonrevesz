@@ -8,7 +8,7 @@
 <body>
     <nav>
         <center>
-            <a href="/">Home</a>
+            <a href="/index">Home</a>
             <a href="/reader/list">Reader list</a>
             <a href="/reader/add">New Reader</a>
         </center>
@@ -23,7 +23,7 @@
             {
                 var style = @Model[i].VIP ? "green" : "black";
                 <tr>
-                    <td> <a href="/reader/single/@Model[i].ReaderId"> @Model[i].Name</a></td>
+                    <td> <a href="/reader/single?id=@Model[i].ReaderId"> @Model[i].Name</a></td>
                 </tr>
             }
         </table>

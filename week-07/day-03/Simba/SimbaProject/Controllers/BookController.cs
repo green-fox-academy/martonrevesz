@@ -19,15 +19,16 @@ namespace SimbaProject.Controllers
         public LibraryRepository LibraryRepository { get; set; }
 
         [Route("list")]
-        public IActionResult Books()
+        public IActionResult Books(int id)
         {
             return View(LibraryRepository.GetBooks());
         }
 
         [HttpGet("single/{id}")]
-        public IActionResult SingleBook(int id)
+        public IActionResult SingleBook([FromRoute] int id)
         {
             var book = LibraryRepository.GetSingleBook(id);
+
             return View(book);
         }
 

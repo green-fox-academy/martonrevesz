@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SimbaProject.Models;
 using SimbaProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,30 @@ namespace SimbaProject.Controllers
 
         public LibraryRepository LibraryRepository { get; set; }
 
-        [Route("")]
+        [Route("index")]
         public IActionResult Index()
+        {            
+            return View();
+        }
+
+        [HttpGet("")]
+        public IActionResult LoginForm()
         {
             return View();
+        }
+
+        [HttpPost("")]
+        public IActionResult Login(string name)
+        {
+            foreach (Reader reader in LibraryRepository.LibraryContext.Readers)
+            {
+                if (reader.Name == name)
+                {
+                    LibraryRepository.CurrentId = reader.ReaderId;
+                    return Redirect("index");
+                }
+            }
+            return Redirect("/");
         }
     }
 }
