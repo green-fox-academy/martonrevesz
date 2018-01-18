@@ -3,16 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Edit</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form action="/todo/edit/@Model.Id" method="post">
-        Title:
-        <input type="text" name="title" value="@Model.Title"/><br>
-        Is Urgent:
-        <input type="checkbox" name="isUrgent" value="true" checked= "@Model.IsUrgent"/><br>
-        Is Done:
-        <input type="checkbox" name="isDone" value="true" checked="@Model.IsDone" /><br>
-        <input type="submit" name="name" value="Send" />
+    <form action="/edit/@Model.Id" method="post" style="width:30%">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" type="text" name="title" value="@Model.Title"/>
+        </div>
+        <div class="form-check">
+            <label for="urgent">Urgent</label>
+            <input type="checkbox" id="urgent"class="form-check-input" name="isUrgent" value="true" checked= "@Model.IsUrgent" /><br>
+        </div>
+        <div class="form-check">
+            <label for="done">Done</label>
+            <input type="checkbox" id="done" class="form-check-input" name="isDone" value="true" checked="@Model.IsDone" /><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

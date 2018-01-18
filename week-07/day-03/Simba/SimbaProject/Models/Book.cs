@@ -9,7 +9,7 @@ namespace SimbaProject.Models
     {
         public int BookId { get; set; }
         public string Title { get; set; }
-        public ICollection<BookReader> BookReaders { get; set; }
+        public ICollection<BookReader> BookReaders { get; set; } = new List<BookReader>();
         public int TotalCopies { get; set; }
         public int BorrowedCopies { get; set; }
     }

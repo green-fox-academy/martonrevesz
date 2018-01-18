@@ -1,14 +1,21 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Create</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form action="/todo/create" method="post">
-        Title:
-        <input type="text" name="title" /><br>
-        Is Urgent:
-        <input type="checkbox" name="isUrgent" value="true" /><br>
-        <input type="submit" name="name" value="Send" />
-    </form>
+    <form action="/create" method="post" style="width:30%">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" type="text" name="title" />
+        </div>
+        <div class="form-check">
+            <label for="urgent">Urgent</label>
+            <input type="checkbox" class="form-check-input" name="isUrgent" value="true" /><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

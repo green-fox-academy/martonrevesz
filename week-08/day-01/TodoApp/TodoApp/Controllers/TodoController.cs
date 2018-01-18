@@ -8,7 +8,7 @@ using TodoApp.Repositories;
 
 namespace TodoApp.Controllers
 {
-    [Route("todo")]
+    [Route("")]
     public class TodoController : Controller
     {
 
