@@ -23,22 +23,19 @@ namespace TodoApp.Controllers
         [Route("list")]
         public IActionResult Index([FromQuery] bool isActive)
         {
-            if (isActive == false)
-            {
-                return View(TodoRepository.GetAll());
-            }
-            return View(TodoRepository.GetActive());
+            return View(TodoRepository.GetViewModel());
         }
 
         [HttpGet("create")]
         public IActionResult CreateTodo()
         {
-            return View();
+            return View(TodoRepository.GetViewModel());
         }
 
         [HttpPost("create")]
-        public IActionResult SubmitTodo(Todo todo)
+        public IActionResult SubmitTodo(Todo todo, string User)
         {
+            todo.User = TodoRepository.GetUser(User);
             TodoRepository.Create(todo);
             return RedirectToAction("index");
         }
@@ -53,7 +50,7 @@ namespace TodoApp.Controllers
         [HttpGet("edit/{id}")]
         public IActionResult Edit(int id)
         {
-            var currentTodo = TodoRepository.TodoContext.Todos.FirstOrDefault(x => x.Id == id);
+            var currentTodo = TodoRepository.TodoContext.Todos.FirstOrDefault(x => x.TodoId == id);
             return View(currentTodo);
         }
 
@@ -61,6 +58,32 @@ namespace TodoApp.Controllers
         public IActionResult SaveEdit(Todo todo, int id)
         {
             TodoRepository.SaveEdit(todo, id);
+            return RedirectToAction("index");
+        }
+
+        [HttpGet("user")]
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+
+        [HttpPost("user")]
+        public IActionResult SaveUser(User user)
+        {
+            TodoRepository.CreateUser(user);
+            return RedirectToAction("index");
+        }
+
+        [HttpGet("deleteuser")]
+        public IActionResult DeleteUser()
+        {
+            return View(TodoRepository.GetViewModel());
+        }
+
+        [HttpPost("deleteuser")]
+        public IActionResult Delete(string name)
+        {
+            TodoRepository.DeleteUser(name);
             return RedirectToAction("index");
         }
     }

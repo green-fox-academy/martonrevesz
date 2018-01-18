@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TodoApp.Repositories;
 using TodoApp.Entities;
 using Microsoft.EntityFrameworkCore;
+using TodoApp.ViewModels;
 
 namespace TodoApp
 {
@@ -21,6 +22,7 @@ namespace TodoApp
                 options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=todoDB;Integrated Security=True;" +
                 "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
             services.AddScoped<TodoRepository>();
+            services.AddScoped<TodoViewModel>();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {

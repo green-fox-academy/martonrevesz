@@ -11,9 +11,10 @@ using TodoApp.Entities;
 namespace TodoApp.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    partial class TodoContextModelSnapshot : ModelSnapshot
+    [Migration("20180118210714_CreateUsers")]
+    partial class CreateUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +23,7 @@ namespace TodoApp.Migrations
 
             modelBuilder.Entity("TodoApp.Models.Todo", b =>
                 {
-                    b.Property<int?>("TodoId")
+                    b.Property<int>("TodoId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("IsDone");
@@ -31,7 +32,7 @@ namespace TodoApp.Migrations
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("TodoId");
 
@@ -42,7 +43,7 @@ namespace TodoApp.Migrations
 
             modelBuilder.Entity("TodoApp.Models.User", b =>
                 {
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
@@ -56,8 +57,7 @@ namespace TodoApp.Migrations
                 {
                     b.HasOne("TodoApp.Models.User", "User")
                         .WithMany("Todos")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

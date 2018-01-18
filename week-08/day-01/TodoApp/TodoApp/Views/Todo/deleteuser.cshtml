@@ -6,24 +6,16 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form action="/create" method="post" style="width:30%">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input class="form-control" id="title" type="text" name="title" />
-        </div>
-        <div class="form-check">
-            <label for="urgent">Urgent</label>
-            <input type="checkbox" class="form-check-input" name="isUrgent" value="true" /><br>
-        </div>
-
-        <select class="form-control" name="User" required="required">
+    <form action="/deleteuser" method="post" style="width:30%">
+        <label for="delete">Select a user to delete</label>
+        <select class="form-control" name="name" id="delete" required="required">
             @foreach (var user in Model.Users)
             {
                 <option value="@user.Name" >@user.Name</option>
-            }            
+            }
         </select><br>
         <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    </form>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
