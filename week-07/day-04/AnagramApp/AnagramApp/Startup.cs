@@ -22,6 +22,7 @@ namespace AnagramApp
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
 
             app.UseMvc();
         }

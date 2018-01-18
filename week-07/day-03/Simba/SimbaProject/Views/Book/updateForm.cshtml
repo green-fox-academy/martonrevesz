@@ -1,0 +1,27 @@
+﻿@model SimbaProject.Models.Book
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title>Update book</title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <nav>
+        <center>
+            <a href="/">Home</a>
+            <a href="/book/list">Book list</a>
+        </center>
+    </nav>
+    <form action="/book/update/@Model.BookId" method="post">
+        Title:
+        <input type="text" name="Title" value=@Model.Title required><br>
+        Total Copies:
+        <input type="number" name="TotalCopies" value=@Model.TotalCopies><br>
+        <br><br>
+
+        <input type="submit" />
+    </form>
+
+</body>
+</html>

@@ -9,7 +9,7 @@
     <nav>
         <center>
             <a href="/">Home</a>
-            <a href="/reader/list">Reader list</a>
+            <a href="/book/add">New Book</a>
         </center>
     </nav>
 
@@ -21,7 +21,7 @@
             @for (int i = 0; i < @Model.Count; i++)
             {
                 <tr>
-                    <td> <a href="/reader/single/@Model[i].Id"> @Model[i].Title</a></td>
+                    <td> <a href="/book/single/@Model[i].BookId"> @Model[i].Title</a></td>
                 </tr>
             }
         </table>

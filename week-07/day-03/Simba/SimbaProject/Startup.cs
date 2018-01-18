@@ -34,9 +34,10 @@ namespace SimbaProject
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseMvc();
 
-            app.UseStaticFiles();
         }
     }
 }

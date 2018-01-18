@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <nav>
+        <center>
+            <a href="/">Home</a>
+            <a href="/book/list">Book list</a>
+        </center>
+    </nav>
+    <form action="/book/add" method="post">
+        Title:
+        <input type="text" name="Title" required><br>
+        Total copies:
+        <input type="number" name="TotalCopies" /><br>
+
+        <input type="submit" />
+    </form>
+
+</body>
+</html>

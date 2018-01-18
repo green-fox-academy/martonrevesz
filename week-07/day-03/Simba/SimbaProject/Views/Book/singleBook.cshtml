@@ -1,0 +1,33 @@
+﻿@model SimbaProject.Models.Book
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Single Reader</title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <nav>
+        <center>
+            <a href="/">Home</a>
+            <a href="/book/list">Book list</a>
+            <a href="/book/update/@Model.BookId">Update book</a>
+            <a href="/book/delete/@Model.BookId">Delete</a>
+        </center>
+    </nav>
+    <center>
+        <table style="width:30%">
+            <tr>
+                <td>Title</td>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <td>TotalCopies</td>
+                <td>@Model.TotalCopies</td>
+            </tr>
+            <tr>
+                <td>AvailableCopies</td>
+                <td>@(Model.TotalCopies-Model.BorrowedCopies)</td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

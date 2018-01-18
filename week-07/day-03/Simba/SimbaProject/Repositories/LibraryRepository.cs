@@ -31,6 +31,11 @@ namespace SimbaProject.Repositories
             return LibraryContext.Books.ToList();
         }
 
+        internal Book GetSingleBook(int id)
+        {
+            return LibraryContext.Books.FirstOrDefault(x => x.BookId == id);
+        }
+
         public void UpdateReader(Reader inputReader, int id)
         {
             var reader = GetSingleReader(id);
@@ -55,5 +60,19 @@ namespace SimbaProject.Repositories
             LibraryContext.SaveChanges();
         }
 
+        public void UpdateBook(Book inputBook, int id)
+        {
+            var book = GetSingleBook(id);
+            book.Title = inputBook.Title;
+            book.TotalCopies= inputBook.TotalCopies;
+            LibraryContext.SaveChanges();
+        }
+
+        public void RemoveBook(int id)
+        {
+            var book = GetSingleBook(id);
+            LibraryContext.Remove(book);
+            LibraryContext.SaveChanges();
+        }
     }
 }
