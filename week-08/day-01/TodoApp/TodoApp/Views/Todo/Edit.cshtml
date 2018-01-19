@@ -6,21 +6,30 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form action="/edit/@Model.TodoId" method="post" style="width:30%">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input class="form-control" id="title" type="text" name="title" value="@Model.Title"/>
+    <nav class="navbar navbar-default navbar-inverse bg-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/list">Home</a>
+            </div>
         </div>
-        <div class="form-check">
-            <label for="urgent">Urgent</label>
-            <input type="checkbox" id="urgent"class="form-check-input" name="isUrgent" value="true" checked= "@Model.IsUrgent" /><br>
-        </div>
-        <div class="form-check">
-            <label for="done">Done</label>
-            <input type="checkbox" id="done" class="form-check-input" name="isDone" value="true" checked="@Model.IsDone" /><br>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </nav>
+    <center>
+        <form action="/edit/@Model.TodoId" method="post" style="width:30%">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" id="title" type="text" name="title" value="@Model.Title" />
+            </div>
+            <div class="form-check">
+                <label for="urgent">Urgent</label>
+                <input type="checkbox" id="urgent" class="form-check-input" name="isUrgent" value="true" checked="@Model.IsUrgent" /><br>
+            </div>
+            <div class="form-check">
+                <label for="done">Done</label>
+                <input type="checkbox" id="done" class="form-check-input" name="isDone" value="true" checked="@Model.IsDone" /><br>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </center>    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>

@@ -6,24 +6,35 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form action="/create" method="post" style="width:30%">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input class="form-control" id="title" type="text" name="title" />
+    <nav class="navbar navbar-default navbar-inverse bg-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/list">Home</a>
+            </div>
         </div>
-        <div class="form-check">
-            <label for="urgent">Urgent</label>
-            <input type="checkbox" class="form-check-input" name="isUrgent" value="true" /><br>
-        </div>
+    </nav>
+    <center>
+        <form action="/create" method="post" style="width:30%">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" id="title" type="text" name="title" />
+            </div>
 
-        <select class="form-control" name="User" required="required">
-            @foreach (var user in Model.Users)
+
+            <select class="form-control" name="User" required="required">
+                @foreach (var user in Model.Users)
             {
-                <option value="@user.Name" >@user.Name</option>
-            }            
-        </select><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+                    <option value="@user.Name">@user.Name</option>
+                }
+            </select><br>
+            <div class="form-check">
+                <label for="urgent">Urgent</label>
+                <input type="checkbox" class="form-check-input" name="isUrgent" value="true" /><br>
+            </div><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </center>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>

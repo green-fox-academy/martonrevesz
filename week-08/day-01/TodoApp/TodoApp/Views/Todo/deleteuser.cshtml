@@ -6,16 +6,26 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form action="/deleteuser" method="post" style="width:30%">
-        <label for="delete">Select a user to delete</label>
-        <select class="form-control" name="name" id="delete" required="required">
-            @foreach (var user in Model.Users)
+    <nav class="navbar navbar-default navbar-inverse bg-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/list">Home</a>
+            </div>
+        </div>
+    </nav>
+    <center>
+        <form action="/deleteuser" method="post" style="width:30%">
+            <label for="delete">Select a user to delete</label>
+            <select class="form-control" name="name" id="delete" required="required">
+                @foreach (var user in Model.Users)
             {
-                <option value="@user.Name" >@user.Name</option>
-            }
-        </select><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                    <option value="@user.Name">@user.Name</option>
+                }
+            </select><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </center>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
