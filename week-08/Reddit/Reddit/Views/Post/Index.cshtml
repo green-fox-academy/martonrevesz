@@ -1,1 +1,38 @@
-﻿Index
+﻿@model System.Collections.Generic.List<Reddit.Models.Post>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Posts</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Score</th>
+                <th scope="col">Uprate</th>
+                <th scope="col">Downrate</th>
+                <th scope="col">Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.PostId</td>
+                    <td>@item.Score</td>
+                    <td>+</td>
+                    <td>-</td>
+                    <td>@item.Content/td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

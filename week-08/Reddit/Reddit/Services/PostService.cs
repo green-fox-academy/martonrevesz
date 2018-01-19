@@ -1,4 +1,5 @@
-﻿using Reddit.Repositories;
+﻿using Reddit.Models;
+using Reddit.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,10 @@ namespace Reddit.Services
         }
 
         public PostRepository PostRepository { get; set; }
+
+        public List<Post> GetPosts()
+        {
+            return PostRepository.GetPosts();
+        }
     }
 }

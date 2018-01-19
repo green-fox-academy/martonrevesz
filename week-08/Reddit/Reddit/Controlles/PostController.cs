@@ -20,7 +20,7 @@ namespace Reddit.Controlles
 
         public IActionResult Index()
         {
-            return View();
+            return View(PostService.GetPosts());
         }
     }
 }

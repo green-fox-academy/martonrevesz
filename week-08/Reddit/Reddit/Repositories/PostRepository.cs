@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Reddit.Models;
 
 namespace Reddit.Repositories
 {
@@ -14,5 +15,10 @@ namespace Reddit.Repositories
         }
 
         public PostContext PostContext { get; set; }
+
+        public List<Post> GetPosts()
+        {
+            return PostContext.Posts.ToList();
+        }
     }
 }
