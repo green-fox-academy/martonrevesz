@@ -25,5 +25,15 @@ namespace Reddit.Services
         {
             PostRepository.CreatePost(post);
         }
+
+        public void Up(long id)
+        {
+            PostRepository.Up(id);
+        }
+
+        public void Down(long id)
+        {
+            PostRepository.Down(id);
+        }
     }
 }

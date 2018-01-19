@@ -24,8 +24,8 @@
                 <tr>
                     <td>@item.PostId</td>
                     <td>@item.Score</td>
-                    <td>+</td>
-                    <td>-</td>
+                    <td><a href="/posts/up?id=@item.PostId"> + </a></td>
+                    <td><a href="/posts/down?id=@item.PostId"> - </a></td>
                     <td>@item.Content</td>
                 </tr>
             }

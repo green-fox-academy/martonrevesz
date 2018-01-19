@@ -26,5 +26,17 @@ namespace Reddit.Repositories
             PostContext.Posts.Add(post);
             PostContext.SaveChanges();
         }
+
+        public void Up(long id)
+        {
+            PostContext.Posts.FirstOrDefault(x => x.PostId == id).Score++;
+            PostContext.SaveChanges();
+        }
+
+        public void Down(long id)
+        {
+            PostContext.Posts.FirstOrDefault(x => x.PostId == id).Score--;
+            PostContext.SaveChanges();
+        }
     }
 }

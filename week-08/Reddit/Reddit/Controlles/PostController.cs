@@ -17,7 +17,7 @@ namespace Reddit.Controlles
         }
 
         public PostService PostService { get; set; }
-        
+
         public IActionResult Index()
         {
             return View(PostService.GetPosts());
@@ -35,5 +35,20 @@ namespace Reddit.Controlles
             PostService.CreatePost(post);
             return RedirectToAction("index");
         }
+
+        [HttpGet("up")]
+        public IActionResult Up(long id)
+        {
+            PostService.Up(id);
+            return RedirectToAction("index");
+        }
+
+        [HttpGet("down")]
+        public IActionResult Down(long id)
+        {
+            PostService.Down(id);
+            return RedirectToAction("index");
+        }
     }
+
 }
