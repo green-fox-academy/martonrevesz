@@ -13,7 +13,7 @@ namespace Reddit.Entities
         {
 
         }
-        public DbSet<Post> Todos { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
     }
 }

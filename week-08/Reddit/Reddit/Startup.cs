@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Reddit.Entities;
 using Microsoft.EntityFrameworkCore;
+using Reddit.Services;
 
 namespace Reddit
 {
@@ -17,8 +18,9 @@ namespace Reddit
         {
             services.AddMvc();
             services.AddDbContext<PostContext>(options =>
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=todoDB;Integrated Security=True;" +
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=post;Integrated Security=True;" +
                 "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddScoped<PostService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
