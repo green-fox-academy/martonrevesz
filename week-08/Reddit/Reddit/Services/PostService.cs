@@ -20,5 +20,10 @@ namespace Reddit.Services
         {
             return PostRepository.GetPosts();
         }
+
+        public void CreatePost(Post post)
+        {
+            PostRepository.CreatePost(post);
+        }
     }
 }

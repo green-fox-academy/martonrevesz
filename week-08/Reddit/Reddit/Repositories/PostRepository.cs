@@ -20,5 +20,11 @@ namespace Reddit.Repositories
         {
             return PostContext.Posts.ToList();
         }
+
+        public void CreatePost(Post post)
+        {
+            PostContext.Posts.Add(post);
+            PostContext.SaveChanges();
+        }
     }
 }

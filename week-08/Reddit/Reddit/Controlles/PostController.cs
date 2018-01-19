@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Reddit.Models;
 using Reddit.Services;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,23 @@ namespace Reddit.Controlles
         }
 
         public PostService PostService { get; set; }
-
-
+        
         public IActionResult Index()
         {
             return View(PostService.GetPosts());
+        }
+
+        [HttpGet("add")]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost("add")]
+        public IActionResult AddPost(Post post)
+        {
+            PostService.CreatePost(post);
+            return RedirectToAction("index");
         }
     }
 }
