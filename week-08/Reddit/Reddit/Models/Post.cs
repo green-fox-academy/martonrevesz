@@ -10,6 +10,7 @@ namespace Reddit.Models
         public long? PostId { get; set; }
         public int Score { get; set; }
         public string Content { get; set; }
+        public string CreatonTime { get; set; } = DateTime.Now.ToString("dd/MMM/yy");
 
     }
 }

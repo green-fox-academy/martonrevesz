@@ -16,6 +16,7 @@
                 <th scope="col">Uprate</th>
                 <th scope="col">Downrate</th>
                 <th scope="col">Content</th>
+                <th scope="col">Creation time</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                     <td><a href="/posts/up?id=@item.PostId"> + </a></td>
                     <td><a href="/posts/down?id=@item.PostId"> - </a></td>
                     <td>@item.Content</td>
+                    <td>@item.CreatonTime</td>
                 </tr>
             }
         </tbody>
