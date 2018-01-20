@@ -32,6 +32,7 @@ namespace SimbaProject.Entities
                 .HasOne(br => br.Reader)
                 .WithMany(r => r.BooksReaders)
                 .HasPrincipalKey(b => b.ReaderId);
+
         }
     }
 }

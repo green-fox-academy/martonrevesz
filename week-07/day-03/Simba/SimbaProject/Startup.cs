@@ -19,7 +19,8 @@ namespace SimbaProject
         {
             services.AddMvc();
             services.AddDbContext<LibraryContext>(options =>
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=library;Integrated Security=True;" +
+                
+            options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=library;Integrated Security=True;" +
                 "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
             services.AddScoped<LibraryRepository>();
         }
