@@ -19,18 +19,46 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @for (int i = 0; i < Math.Min(10, Model.Count); i++)
             {
-                <tr>
-                    <td>@item.Score</td>
-                    <td><a href="/posts/up?id=@item.PostId"> + </a></td>
-                    <td><a href="/posts/down?id=@item.PostId"> - </a></td>
-                    <td>@item.Content</td>
-                    <td>@item.CreatonTime</td>
-                </tr>
+                if (i == 0)
+                {
+                    <tr>
+                        <td>@Model[i].Score</td>
+                        <td><a href="/posts/up?id=@Model[i].PostId"> + </a></td>
+                        <td><a href="/posts/down?id=@Model[i].PostId"> - </a></td>
+                        <td>@Model[i].Content</td>
+                        <td>@Model[i].CreatonTime</td>
+                    </tr>
+                }
+                else if (Model[i-1].Score >= Model[i].Score)
+                {
+                    <tr>
+                        <td>@Model[i].Score</td>
+                        <td><a href="/posts/up?id=@Model[i].PostId"> + </a></td>
+                        <td><a href="/posts/down?id=@Model[i].PostId"> - </a></td>
+                        <td>@Model[i].Content</td>
+                        <td>@Model[i].CreatonTime</td>
+                    </tr>
+                }
+                else
+                {
+                    break;
+
+                }
             }
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            @for (int i = 0; i < ((Model.Count % 10 == 0) ? Model.Count /10 : Model.Count / 10 + 1) ; i++)
+            {
+                <li class="page-item"><a class="page-link" href="/posts/@i">@i</a></li>
+            }            
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>

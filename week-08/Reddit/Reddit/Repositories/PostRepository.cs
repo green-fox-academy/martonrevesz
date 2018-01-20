@@ -33,15 +33,17 @@ namespace Reddit.Repositories
             PostContext.SaveChanges();
         }
 
-        public List<Post> GetTopTenPosts()
+        public List<Post> GetTenPosts(int i)
         {
             var listAll = GetPosts();
             var resultList = new List<Post>();
             var sortedList = listAll.OrderByDescending(x => x.Score).ToList();
-            for (int i = 0; i < 10 ; i++)
+            for (int j = 10 * i ; j < Math.Min(sortedList.Count, 10 * i + 10) ; j++)
             {
-                resultList.Add(sortedList[i]);
+                resultList.Add(sortedList[j]);
             }
+            resultList.AddRange(sortedList
+                .Where(x => (10 * i  > sortedList.IndexOf(x)) || (sortedList.IndexOf(x) >= Math.Min(sortedList.Count, 10 * i + 10))));
             return resultList;
         }
 

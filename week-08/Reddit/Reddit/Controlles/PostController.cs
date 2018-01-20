@@ -18,9 +18,12 @@ namespace Reddit.Controlles
 
         public PostService PostService { get; set; }
 
-        public IActionResult Index()
+        [HttpGet("{i?}")]
+        public IActionResult Index(int i)
+
         {
-            return View(PostService.GetTopTenPosts());
+
+            return View(PostService.GetTenPosts(i));
         }
 
         [HttpGet("add")]
