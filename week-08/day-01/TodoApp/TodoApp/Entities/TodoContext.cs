@@ -23,7 +23,6 @@ namespace TodoApp.Entities
                 .HasMany(x => x.Todos)
                 .WithOne(x => x.User)
                 .HasPrincipalKey(x => x.UserId);
-
         }
     }
 }
