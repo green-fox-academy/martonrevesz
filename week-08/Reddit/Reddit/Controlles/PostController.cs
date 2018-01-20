@@ -20,7 +20,7 @@ namespace Reddit.Controlles
 
         public IActionResult Index()
         {
-            return View(PostService.GetPosts());
+            return View(PostService.GetTopTenPosts());
         }
 
         [HttpGet("add")]

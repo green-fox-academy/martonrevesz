@@ -33,6 +33,18 @@ namespace Reddit.Repositories
             PostContext.SaveChanges();
         }
 
+        public List<Post> GetTopTenPosts()
+        {
+            var listAll = GetPosts();
+            var resultList = new List<Post>();
+            var sortedList = listAll.OrderByDescending(x => x.Score).ToList();
+            for (int i = 0; i < 10 ; i++)
+            {
+                resultList.Add(sortedList[i]);
+            }
+            return resultList;
+        }
+
         public void Down(long id)
         {
             PostContext.Posts.FirstOrDefault(x => x.PostId == id).Score--;

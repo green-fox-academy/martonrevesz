@@ -26,6 +26,11 @@ namespace Reddit.Services
             PostRepository.CreatePost(post);
         }
 
+        public List<Post> GetTopTenPosts()
+        {
+            return PostRepository.GetTopTenPosts();
+        }
+
         public void Up(long id)
         {
             PostRepository.Up(id);
