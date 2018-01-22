@@ -8,5 +8,10 @@ namespace MondayFirst.Models
     public class Item
     {
         public int? Until { get; set; }
+
+        public override string ToString()
+        {
+            return $"[Until]: {Until}";
+        }
     }
 }

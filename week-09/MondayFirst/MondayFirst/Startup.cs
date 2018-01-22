@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MondayFirst.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MondayFirst
 {
@@ -22,6 +24,9 @@ namespace MondayFirst
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<LogContext>(options =>
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=logger;Integrated Security=True;" +
+                "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
             services.AddMvc();
         }
 

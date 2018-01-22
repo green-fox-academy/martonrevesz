@@ -4,22 +4,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MondayFirst.Models;
+using MondayFirst.Entities;
 
 namespace MondayFirst.Controllers
 {
     [Route("api")]
     public class HomeController : Controller
     {
+        public HomeController(LogContext logContext)
+        {
+            LogContext = logContext;
+        }
 
-        [Route("")]
+        public LogContext LogContext { get; set; }
+
+        [Route("")] 
         public IActionResult Index()
         {
+            LogContext.Logs.Add(new Log() { Endpoint = "" , Data = ""});
+            LogContext.SaveChanges();
+
             return File("index.html", "text/html");
         }
 
         [HttpGet("doubling")]
         public IActionResult Doubling(int? input)
         {
+            LogContext.Logs.Add(new Log() { Endpoint = "doubling", Data = $"{input}" });
+            LogContext.SaveChanges();
+
             if (input == null)
             {
                 return Json(new { error = "Please provide an input!" });
@@ -30,6 +43,9 @@ namespace MondayFirst.Controllers
         [HttpGet("greeter")]
         public IActionResult Greeter(string name, string title)
         {
+            LogContext.Logs.Add(new Log() { Endpoint = "greeter", Data = $"{name}, {title}" });
+            LogContext.SaveChanges();
+
             if (name == null)
             {
                 return Json(new { error = "Please provide a name!" });
@@ -44,6 +60,10 @@ namespace MondayFirst.Controllers
         [HttpGet("appenda/{appendable}")]
         public IActionResult AppendA (string appendable)
         {
+
+            LogContext.Logs.Add(new Log() { Endpoint = "appenda", Data = $"{appendable}" });
+            LogContext.SaveChanges();
+
             if (appendable == null)
             {
                 return NotFound();
@@ -54,6 +74,9 @@ namespace MondayFirst.Controllers
         [HttpPost("dountil/{what}")]
         public IActionResult DoUntil ([FromBody] Item item, [FromRoute ]string what)
         {
+            LogContext.Logs.Add(new Log() { Endpoint = "dountil", Data = $"{item.ToString()}, {what}" });
+            LogContext.SaveChanges();
+
             if (item.Until == null)
             {
                 return Json(new { error = "Please provide a number!"});
@@ -79,6 +102,9 @@ namespace MondayFirst.Controllers
         [HttpPost("arrays")]
         public IActionResult Arrays([FromBody] MyArray array)
         {
+            LogContext.Logs.Add(new Log() { Endpoint = "arrays", Data = $"{array.ToString()}" });
+            LogContext.SaveChanges();
+
             int result = 0;
             if(array.What.Equals("sum"))
             {
@@ -109,5 +135,13 @@ namespace MondayFirst.Controllers
             return Json(new { error = "Please provide what to do with the numbers!" });
         }
 
+        [HttpGet("log")]
+        public IActionResult Log()
+        {
+            LogContext.Logs.Add(new Log() { Endpoint = "log", Data=""});
+            LogContext.SaveChanges();
+
+            return Ok();
+        }
     }
 }
