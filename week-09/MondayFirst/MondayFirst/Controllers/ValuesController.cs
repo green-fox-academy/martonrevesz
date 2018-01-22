@@ -6,14 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MondayFirst.Controllers
 {
-    [Route("/api/[controller]")]
-    public class ValuesController : Controller
+    [Route("api")]
+    public class HomeController : Controller
     {
 
         [Route("")]
         public IActionResult Index()
         {
             return File("index.html", "text/html");
+        }
+
+        [HttpGet("doubling")]
+        public IActionResult Doubling(int? input)
+        {
+            if (input == null)
+            {
+                return Json(new { error = "Please provide an input!" });
+            }
+            return Json(new { received = input, result = input * 2 });
         }
 
     }
