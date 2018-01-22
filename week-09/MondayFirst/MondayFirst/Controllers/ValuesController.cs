@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MondayFirst.Models;
 
 namespace MondayFirst.Controllers
 {
@@ -48,6 +49,31 @@ namespace MondayFirst.Controllers
                 return NotFound();
             }
             return Json(new { appended = appendable + "a" });
+        }
+
+        [HttpPost("dountil/{what}")]
+        public IActionResult DoUntil ([FromBody] Item item, [FromRoute ]string what)
+        {
+            if (item.Until == null)
+            {
+                return Json(new { error = "Please provide a number!"});
+            }
+            if (what.Equals("sum"))
+            {
+                int result = (int)item.Until * ((int)item.Until + 1) / 2;
+                return Json(new { result = result });
+            }
+            if (what.Equals("factor"))
+            {
+                int result = 1;
+                while ((int)item.Until != 1)
+                {
+                    result *= (int)item.Until;
+                    item.Until--;
+                }
+                return Json(new { result = result });
+            }
+            return NotFound();
         }
 
     }
