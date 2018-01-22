@@ -5,25 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MondayFirst.Models;
 using MondayFirst.Entities;
+using MondayFirst.Services;
 
 namespace MondayFirst.Controllers
 {
     [Route("api")]
     public class HomeController : Controller
     {
-        public HomeController(LogContext logContext)
+        public HomeController(LogService logService)
         {
-            LogContext = logContext;
+            LogService = logService;
+            LogContext = LogContext;
         }
 
+        public LogService LogService { get; set; }
         public LogContext LogContext { get; set; }
+
 
         [Route("")] 
         public IActionResult Index()
         {
-            LogContext.Logs.Add(new Log() { Endpoint = "" , Data = ""});
-            LogContext.SaveChanges();
-
+            LogService.LogIndex();
             return File("index.html", "text/html");
         }
 
