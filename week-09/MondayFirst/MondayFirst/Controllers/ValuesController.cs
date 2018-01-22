@@ -143,5 +143,30 @@ namespace MondayFirst.Controllers
 
             return Json(new { entries = LogContext.Logs, entry_count = LogContext.Logs.ToList().Count});
         }
+
+
+        [HttpPost("sith")]
+        public IActionResult Sith([FromBody] Text text)
+        {
+
+            LogContext.Logs.Add(new Log() { Endpoint = "sith", Data = text.Words });
+            LogContext.SaveChanges();
+
+            if (text.Words is null || text.Words.Equals(string.Empty))
+            {
+                return Json(new {error = "Feed me some text you have to, padawan young you are. Hmmm."});
+            }
+            string[] myArray = text.Words.Split();
+            for (int i = 0; i < myArray.Length - 1; i+=2)
+            {
+                string temp = myArray[i];
+                myArray[i] = myArray[i + 1];
+                myArray[i + 1] = temp;
+            }
+            string final = string.Join(' ', myArray);
+            final += " random text at the end";
+
+            return Json( new { sith_text = final});
+        }
     }
 }
