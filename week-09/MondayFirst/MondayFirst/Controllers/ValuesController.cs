@@ -76,5 +76,38 @@ namespace MondayFirst.Controllers
             return NotFound();
         }
 
+        [HttpPost("arrays")]
+        public IActionResult Arrays([FromBody] MyArray array)
+        {
+            int result = 0;
+            if(array.What.Equals("sum"))
+            {
+                for (int i = 0; i < array.Numbers.Length; i++)
+                {
+                    result += array.Numbers[i];
+                }
+                return Json(new { result = result });
+            } 
+            else if(array.What.Equals("multiply"))
+            {
+                result = 1;
+                for (int i = 0; i < array.Numbers.Length; i++)
+                {
+                    result *= array.Numbers[i];
+                    
+                }
+                return Json(new { result = result });
+            }
+            else if (array.What.Equals("double"))
+            {
+                for (int i = 0; i < array.Numbers.Length; i++)
+                {
+                    array.Numbers[i] *= 2;
+                }
+                return Json(new { result = array.Numbers });
+            }
+            return Json(new { error = "Please provide what to do with the numbers!" });
+        }
+
     }
 }
