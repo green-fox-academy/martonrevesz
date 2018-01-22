@@ -40,5 +40,15 @@ namespace MondayFirst.Controllers
             return Json(new { welcome_message = $"Oh, hi there {name}, my dear student!" });
         }
 
+        [HttpGet("appenda/{appendable}")]
+        public IActionResult AppendA (string appendable)
+        {
+            if (appendable == null)
+            {
+                return NotFound();
+            }
+            return Json(new { appended = appendable + "a" });
+        }
+
     }
 }
