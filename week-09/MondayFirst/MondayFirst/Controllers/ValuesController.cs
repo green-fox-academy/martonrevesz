@@ -141,7 +141,7 @@ namespace MondayFirst.Controllers
             LogContext.Logs.Add(new Log() { Endpoint = "log", Data=""});
             LogContext.SaveChanges();
 
-            return Ok();
+            return Json(new { entries = LogContext.Logs, entry_count = LogContext.Logs.ToList().Count});
         }
     }
 }
