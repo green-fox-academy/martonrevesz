@@ -32,8 +32,8 @@ namespace MondayFirst.Controllers
         [HttpGet("doubling")]
         public IActionResult Doubling(int? input)
         {
-            LogContext.Logs.Add(new Log() { Endpoint = "doubling", Data = $"{input}" });
-            LogContext.SaveChanges();
+            //LogContext.Logs.Add(new Log() { Endpoint = "doubling", Data = $"{input}" });
+            //LogContext.SaveChanges();
 
             if (input == null)
             {
