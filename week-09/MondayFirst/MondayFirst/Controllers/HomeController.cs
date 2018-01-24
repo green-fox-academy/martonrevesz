@@ -32,7 +32,7 @@ namespace MondayFirst.Controllers
         [HttpGet("doubling")]
         public IActionResult Doubling(int? input)
         {
-            //LogContext.Logs.Add(new Log() { Endpoint = "doubling", Data = $"{input}" });
+           // LogContext.Logs.Add(new Log() { Endpoint = "doubling", Data = $"{input}" });
             //LogContext.SaveChanges();
 
             if (input == null)
@@ -63,8 +63,8 @@ namespace MondayFirst.Controllers
         public IActionResult AppendA (string appendable)
         {
 
-            LogContext.Logs.Add(new Log() { Endpoint = "appenda", Data = $"{appendable}" });
-            LogContext.SaveChanges();
+           // LogContext.Logs.Add(new Log() { Endpoint = "appenda", Data = $"{appendable}" });
+            //LogContext.SaveChanges();
 
             if (appendable == null)
             {

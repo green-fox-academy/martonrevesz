@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using MondayFirst;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -21,14 +22,19 @@ namespace XUnitTestProject
 
 
         [Fact]
-        public async Task ReturnOkStatus()
+        public async Task ReturnJson()
         {
             var response = await client.GetAsync("/api/doubling?input=4");
-
-
             string json = await response.Content.ReadAsStringAsync();
             Assert.Equal( "{\"received\":4,\"result\":8}", json);
+        }
 
+        [Fact]
+        public async Task ReturnOkStatus()
+        {
+            var response = await client.GetAsync("/api/appenda/kuty");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"appended\":\"kutya\"}", json);
         }
     }
 }
