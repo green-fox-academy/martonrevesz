@@ -24,9 +24,21 @@ namespace XUnitTestProject
         [Fact]
         public async Task IndexShouldReturnOkStatus()
         {
-            var response = await client.GetAsync("/api");
+            var response = await client.GetAsync("/api/groot?message=hello");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"received\":\"hello\",\"translated\":\"I am Groot!\"}", json);
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task IndexShouldReturnNotOkStatus()
+        {
+            var response = await client.GetAsync("/api/groot");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"error\":\"I am Groot!\"}", json);
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }

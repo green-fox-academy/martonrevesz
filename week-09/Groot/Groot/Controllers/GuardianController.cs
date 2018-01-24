@@ -15,16 +15,10 @@ namespace Groot.Controllers
         {
             if (message is null || message.Length == 0)
             {
-                return Json(new { error = "I am Groot!" });
+                return BadRequest(new { error = "I am Groot!" });
             }
             return Json(new {received=message, translated="I am Groot!"});
         }
 
-
-        [HttpGet("")]
-        public IActionResult Index()
-        {
-            return Ok();
-        }
     }
 }
