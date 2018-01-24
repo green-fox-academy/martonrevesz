@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrow", "Arrow\Arrow.csproj", "{033D1340-2E2D-4480-AF83-55F63D610724}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{F446999E-EFC0-46F4-AE56-F95CFC2DD378}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{033D1340-2E2D-4480-AF83-55F63D610724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033D1340-2E2D-4480-AF83-55F63D610724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033D1340-2E2D-4480-AF83-55F63D610724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033D1340-2E2D-4480-AF83-55F63D610724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F446999E-EFC0-46F4-AE56-F95CFC2DD378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F446999E-EFC0-46F4-AE56-F95CFC2DD378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F446999E-EFC0-46F4-AE56-F95CFC2DD378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F446999E-EFC0-46F4-AE56-F95CFC2DD378}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {550F54AD-193A-4477-91BE-A8865C453311}
+	EndGlobalSection
+EndGlobal
