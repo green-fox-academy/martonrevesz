@@ -24,11 +24,31 @@ namespace Cargos.Controllers
                 caliber50 = Cargo.Caliber50, shipstatus = Cargo.ShipStatus , ready = Cargo.Ready });
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("fill")]
+        public IActionResult Fill([FromQuery]int caliber,[FromQuery] int amount)
         {
-            return "value";
+            if (caliber == 25)
+                Cargo.Caliber25 += amount;
+            if (caliber == 30)
+                Cargo.Caliber30 += amount;
+            if (caliber == 50)
+                Cargo.Caliber50 += amount;
+            int total = Cargo.Caliber25 + Cargo.Caliber30 + Cargo.Caliber50;
+            Cargo.ShipStatus = Convert.ToString(total / 12500);
+            if (Cargo.ShipStatus == "0")
+            {
+                Cargo.ShipStatus = "empty";
+            }
+            if (total >= 12500)
+                Cargo.Ready = true;
+
+            return Json(new
+            {
+                received = caliber,
+                amount = amount,
+                shipstatus = Cargo.ShipStatus,
+                ready = Cargo.Ready
+            });
         }
     }
 }

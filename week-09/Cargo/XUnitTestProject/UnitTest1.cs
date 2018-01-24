@@ -27,6 +27,14 @@ namespace XUnitTestProject
             Assert.Equal("{\"caliber25\":0,\"caliber30\":0,\"caliber50\":0,\"shipstatus\":\"empty\",\"ready\":false}", json);
         }
 
+        [Fact]
+        public async Task FillReturnJson()
+        {
+            var response = await client.GetAsync("api/fill?caliber=30&amount=5000");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"received\":30,\"amount\":5000,\"shipstatus\":\"empty\",\"ready\":false}", json);
+        }
+
     }
 }
 
