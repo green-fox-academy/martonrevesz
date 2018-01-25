@@ -14,6 +14,14 @@ namespace Reddit.Entities
 
         }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasMany(x => x.Posts)
+                .WithOne(x => x.User)
+                .HasPrincipalKey(x => x.Id);
+        }
     }
 }
