@@ -40,5 +40,15 @@ namespace Reddit.Services
         {
             PostRepository.Down(id);
         }
+
+        public List<Post> FilterUser(string user)
+        {
+            return PostRepository.FilterUser(user);
+        }
+
+        public List<Post> FilterPositive()
+        {
+            return PostRepository.FilterPositive();
+        }
     }
 }

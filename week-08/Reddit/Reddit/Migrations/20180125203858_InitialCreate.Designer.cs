@@ -11,8 +11,8 @@ using System;
 namespace Reddit.Migrations
 {
     [DbContext(typeof(PostContext))]
-    [Migration("20180119103938_UpdateTableName")]
-    partial class UpdateTableName
+    [Migration("20180125203858_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,37 @@ namespace Reddit.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<string>("CreatonTime");
+
                     b.Property<int>("Score");
+
+                    b.Property<long>("UserId");
 
                     b.HasKey("PostId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Reddit.Models.User", b =>
+                {
+                    b.Property<long?>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Reddit.Models.Post", b =>
+                {
+                    b.HasOne("Reddit.Models.User", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

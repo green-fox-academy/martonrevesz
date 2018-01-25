@@ -41,6 +41,20 @@ namespace Reddit.Repositories
             PostContext.SaveChanges();
         }
 
+        public List<Post> FilterUser(string user)
+        {
+            PostContext.Users.Load();
+            return PostContext.Posts.Where(p => p.User.Name.Equals(user)).OrderByDescending(x => x.Score).ToList();
+        }
+
+        public List<Post> FilterPositive()
+        {
+            return PostContext.Posts
+                .Where(p => p.Score > 0)
+                .OrderByDescending(x => x.Score)
+                .ToList();
+        }
+
         public List<Post> GetTenPosts(int i)
         {
             var listAll = GetPosts();

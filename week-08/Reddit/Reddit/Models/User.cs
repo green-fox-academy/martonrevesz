@@ -6,6 +6,6 @@ namespace Reddit.Models
     {
         public long? Id { get; set; }
         public string Name { get; set; }
-        public List<Post> Posts { get; set; }
+        public List<Post> Posts { get; set; } = new List<Post>();
     }
 }

@@ -52,6 +52,18 @@ namespace Reddit.Controlles
             PostService.Down(id);
             return RedirectToAction("index");
         }
+
+        [HttpPost("userfilter")]
+        public IActionResult FilterUser(string user)
+        {
+            return View("Index", PostService.FilterUser(user));
+        }
+
+        [HttpGet("positive")]
+        public IActionResult Positive()
+        {
+            return View("Index", PostService.FilterPositive());
+        }
     }
 
 }

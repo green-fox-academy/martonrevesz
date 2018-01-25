@@ -11,7 +11,7 @@ namespace Reddit.Models
         public int Score { get; set; }
         public string Content { get; set; }
         public string CreatonTime { get; set; } = DateTime.Now.ToString("dd/MMM/yy");
-        public long? UserId { get; set; }
+        public long UserId { get; set; }
         public User User { get; set; }
 
     }

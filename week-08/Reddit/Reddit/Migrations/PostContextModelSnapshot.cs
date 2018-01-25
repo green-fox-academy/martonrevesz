@@ -31,7 +31,7 @@ namespace Reddit.Migrations
 
                     b.Property<int>("Score");
 
-                    b.Property<long?>("UserId");
+                    b.Property<long>("UserId");
 
                     b.HasKey("PostId");
 
@@ -56,7 +56,8 @@ namespace Reddit.Migrations
                 {
                     b.HasOne("Reddit.Models.User", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
