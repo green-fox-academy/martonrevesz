@@ -40,5 +40,10 @@ namespace RedditClone.Services
         {
             return PostRepository.GetPost(id);
         }
+
+        public void DownvotePost(long id)
+        {
+            PostRepository.DownvotePost(id);
+        }
     }
 }

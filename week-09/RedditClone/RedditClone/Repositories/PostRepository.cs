@@ -42,5 +42,11 @@ namespace RedditClone.Repositories
         {
             return PostContext.Posts.FirstOrDefault(p => p.Id == id);
         }
+
+        public void DownvotePost(long id)
+        {
+            PostContext.Posts.FirstOrDefault(x => x.Id == id).Score--;
+            PostContext.SaveChanges();
+        }
     }
 }
