@@ -32,6 +32,14 @@ namespace RedditClone.Controllers
             return Json(PostService.GetLastPost());
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete([FromRoute] long id)
+        {
+            var post = PostService.GetPost(id);
+            PostService.DeletePost(id);
+            return Json(post);
+        }
+
         [HttpPut("{id}/upvote")]
         public IActionResult Upvote([FromRoute] long id)
         {

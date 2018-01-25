@@ -48,5 +48,11 @@ namespace RedditClone.Repositories
             PostContext.Posts.FirstOrDefault(x => x.Id == id).Score--;
             PostContext.SaveChanges();
         }
+
+        public void DeletePost(long id)
+        {
+            PostContext.Posts.Remove(PostContext.Posts.FirstOrDefault(x => x.Id == id));
+            PostContext.SaveChanges();
+        }
     }
 }
