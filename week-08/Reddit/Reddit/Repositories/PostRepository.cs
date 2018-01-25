@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Reddit.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Reddit.Repositories
 {
@@ -18,13 +19,20 @@ namespace Reddit.Repositories
 
         public List<Post> GetPosts()
         {
+            PostContext.Users.Load();
             return PostContext.Posts.ToList();
         }
 
-        public void CreatePost(Post post)
+        public void CreatePost(Post post, string user)
         {
+            post.User = GetUser(user);
             PostContext.Posts.Add(post);
             PostContext.SaveChanges();
+        }
+
+        private User GetUser(string user)
+        {
+            return PostContext.Users.FirstOrDefault(u => u.Name == user);
         }
 
         public void Up(long id)

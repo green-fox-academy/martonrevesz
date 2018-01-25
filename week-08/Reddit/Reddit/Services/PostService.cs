@@ -21,9 +21,9 @@ namespace Reddit.Services
             return PostRepository.GetPosts();
         }
 
-        public void CreatePost(Post post)
+        public void CreatePost(Post post, string user)
         {
-            PostRepository.CreatePost(post);
+            PostRepository.CreatePost(post, user);
         }
 
         public List<Post> GetTenPosts(int i)

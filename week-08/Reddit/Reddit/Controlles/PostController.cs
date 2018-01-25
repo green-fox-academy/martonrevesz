@@ -33,9 +33,9 @@ namespace Reddit.Controlles
         }
 
         [HttpPost("add")]
-        public IActionResult AddPost(Post post)
+        public IActionResult AddPost(Post post, string user)
         {
-            PostService.CreatePost(post);
+            PostService.CreatePost(post, user);
             return RedirectToAction("index");
         }
 

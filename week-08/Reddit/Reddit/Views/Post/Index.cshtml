@@ -16,6 +16,7 @@
                 <th scope="col">Downrate</th>
                 <th scope="col">Content</th>
                 <th scope="col">Creation time</th>
+                <th scope="col">User</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                         <td><a href="/posts/down?id=@Model[i].PostId"> - </a></td>
                         <td>@Model[i].Content</td>
                         <td>@Model[i].CreatonTime</td>
+                        <td>@(Model[i].User is null ?  "": Model[i].User.Name )</td>
                     </tr>
                 }
                 else if (Model[i-1].Score >= Model[i].Score)
@@ -39,6 +41,7 @@
                         <td><a href="/posts/down?id=@Model[i].PostId"> - </a></td>
                         <td>@Model[i].Content</td>
                         <td>@Model[i].CreatonTime</td>
+                        <td>@(Model[i].User is null ? "" : Model[i].User.Name )</td>
                     </tr>
                 }
                 else
