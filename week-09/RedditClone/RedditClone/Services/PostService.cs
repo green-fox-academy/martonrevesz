@@ -20,5 +20,15 @@ namespace RedditClone.Services
         {
             return PostRepository.GetAllPosts();
         }
+
+        public void CreatePost(Post post)
+        {
+            PostRepository.CreatePost(post);
+        }
+
+        public Post GetLastPost()
+        {
+            return PostRepository.GetLastPost();
+        }
     }
 }

@@ -20,5 +20,16 @@ namespace RedditClone.Repositories
         {
             return PostContext.Posts.ToList();
         }
+
+        public void CreatePost(Post post)
+        {
+            PostContext.Posts.Add(post);
+            PostContext.SaveChanges();
+        }
+
+        public Post GetLastPost()
+        {
+            return PostContext.Posts.Last();
+        }
     }
 }
