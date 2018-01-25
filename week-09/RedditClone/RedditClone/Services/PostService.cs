@@ -30,5 +30,15 @@ namespace RedditClone.Services
         {
             return PostRepository.GetLastPost();
         }
+
+        public void UpvotePost(long id)
+        {
+            PostRepository.UpvotePost(id);
+        }
+
+        public Post GetPost(long id)
+        {
+            return PostRepository.GetPost(id);
+        }
     }
 }

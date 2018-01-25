@@ -31,5 +31,16 @@ namespace RedditClone.Repositories
         {
             return PostContext.Posts.Last();
         }
+
+        public void UpvotePost(long id)
+        {
+            PostContext.Posts.FirstOrDefault(x => x.Id == id).Score++;
+            PostContext.SaveChanges();
+        }
+
+        public Post GetPost(long id)
+        {
+            return PostContext.Posts.FirstOrDefault(p => p.Id == id);
+        }
     }
 }

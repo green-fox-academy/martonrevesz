@@ -7,10 +7,7 @@ using RedditClone.Services;
 using RedditClone.Models;
 
 namespace RedditClone.Controllers
-{
-    
-
-
+{    
     [Route("[controller]")]
     public class PostsController : Controller
     {
@@ -35,11 +32,12 @@ namespace RedditClone.Controllers
             return Json(PostService.GetLastPost());
         }
 
-        //[HttpPut("{id}/upvote")]
-        //public IActionResult Upvote()
-        //{
-        //    return Ok();
-        //}
+        [HttpPut("{id}/upvote")]
+        public IActionResult Upvote([FromRoute] long id)
+        {
+            PostService.UpvotePost(id);
+            return Json(PostService.GetPost(id));
+        }
 
         //[HttpPut("{id}/downvote")]
         //public IActionResult Downvote()
