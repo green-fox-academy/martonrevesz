@@ -50,5 +50,10 @@ namespace RedditClone.Services
         {
             PostRepository.DeletePost(id);
         }
+
+        public void UpdatePost(long id, Post post)
+        {
+            PostRepository.UpdatePost(id, post);
+        }
     }
 }

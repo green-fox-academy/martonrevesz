@@ -54,5 +54,17 @@ namespace RedditClone.Repositories
             PostContext.Posts.Remove(PostContext.Posts.FirstOrDefault(x => x.Id == id));
             PostContext.SaveChanges();
         }
+
+        public void UpdatePost(long id, Post post)
+        {
+            var currentPost = PostContext.Posts.FirstOrDefault(x => x.Id == id);
+            if (post.Title != null)
+                currentPost.Title = post.Title;
+            if (post.Url != null)
+                currentPost.Url = post.Url;
+            if (post.Score !=null)
+                currentPost.Score = post.Score;
+            PostContext.SaveChanges();
+        }
     }
 }

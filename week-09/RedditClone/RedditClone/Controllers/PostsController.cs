@@ -47,6 +47,13 @@ namespace RedditClone.Controllers
             return Json(PostService.GetPost(id));
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update([FromRoute] long id, [FromBody] Post post)
+        {
+            PostService.UpdatePost(id, post);
+            return Json(PostService.GetPost(id));
+        }
+
         [HttpPut("{id}/downvote")]
         public IActionResult Downvote([FromRoute] long id)
         {

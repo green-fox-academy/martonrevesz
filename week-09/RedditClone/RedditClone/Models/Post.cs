@@ -11,6 +11,6 @@ namespace RedditClone.Models
         public string Title { get; set; }
         public string Url { get; set; } 
         public string TimeStamp { get; set; } = DateTime.Now.ToString("dd/MMM/yy");
-        public int Score { get; set; }
+        public int? Score { get; set; }
     }
 }
