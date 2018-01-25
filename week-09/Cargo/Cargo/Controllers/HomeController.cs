@@ -34,7 +34,7 @@ namespace Cargos.Controllers
             if (caliber == 50)
                 Cargo.Caliber50 += amount;
             int total = Cargo.Caliber25 + Cargo.Caliber30 + Cargo.Caliber50;
-            Cargo.ShipStatus = Convert.ToString(total / 12500);
+            Cargo.ShipStatus = (total / 125).ToString();
             if (Cargo.ShipStatus == "0")
             {
                 Cargo.ShipStatus = "empty";

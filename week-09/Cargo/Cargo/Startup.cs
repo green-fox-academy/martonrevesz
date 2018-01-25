@@ -25,7 +25,7 @@ namespace Cargos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<Cargo>();
+            services.AddSingleton<Cargo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

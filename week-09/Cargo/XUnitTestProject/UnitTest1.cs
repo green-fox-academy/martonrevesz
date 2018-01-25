@@ -32,7 +32,7 @@ namespace XUnitTestProject
         {
             var response = await client.GetAsync("api/fill?caliber=30&amount=5000");
             string json = await response.Content.ReadAsStringAsync();
-            Assert.Equal("{\"received\":30,\"amount\":5000,\"shipstatus\":\"empty\",\"ready\":false}", json);
+            Assert.Equal("{\"received\":30,\"amount\":5000,\"shipstatus\":\"40\",\"ready\":false}", json);
         }
 
     }
