@@ -49,6 +49,7 @@ namespace Reddit.Repositories
 
         public List<Post> FilterPositive()
         {
+            PostContext.Users.Load();
             return PostContext.Posts
                 .Where(p => p.Score > 0)
                 .OrderByDescending(x => x.Score)
