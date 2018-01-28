@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SimbaProject.Entities;
 using Microsoft.EntityFrameworkCore;
 using SimbaProject.Repositories;
+using SimbaProject.Services;
 
 namespace SimbaProject
 {
@@ -22,7 +23,13 @@ namespace SimbaProject
                 
             options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=library;Integrated Security=True;" +
                 "Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
-            services.AddScoped<LibraryRepository>();
+            services.AddScoped<ReaderRepository>();
+            services.AddScoped<BookRepository>();
+            services.AddScoped<BorrowRepository>();
+            services.AddScoped<ReaderService>();
+            services.AddScoped<BookService>();
+            services.AddScoped<BorrowService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

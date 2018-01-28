@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SimbaProject.Models;
 using SimbaProject.Repositories;
+using SimbaProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,23 +12,24 @@ namespace SimbaProject.Controllers
     [Route("book")]
     public class BookController : Controller
     {
-        public BookController(LibraryRepository libraryRepository)
+        public BookController(BookService bookService)
         {
-            LibraryRepository = libraryRepository;
+            BookService = bookService;
         }
 
-        public LibraryRepository LibraryRepository { get; set; }
+        public BookService BookService { get; set; }
+
 
         [Route("list")]
         public IActionResult Books(int id)
         {
-            return View(LibraryRepository.GetBooks());
+            return View(BookService.GetBooks());
         }
 
         [HttpGet("single/{id}")]
         public IActionResult SingleBook([FromRoute] int id)
         {
-            var book = LibraryRepository.GetSingleBook(id);
+            var book = BookService.GetSingleBook(id);
 
             return View(book);
         }
@@ -41,28 +43,27 @@ namespace SimbaProject.Controllers
         [HttpPost("add")]
         public IActionResult Add(Book book)
         {
-            LibraryRepository.LibraryContext.Books.Add(book);
-            LibraryRepository.LibraryContext.SaveChanges();
+            BookService.Add(book);
             return RedirectToAction("books");
         }
 
         [HttpGet("update/{id}")]
         public IActionResult UpdateForm([FromRoute]int id)
         {
-            return View(LibraryRepository.GetSingleBook(id));
+            return View(BookService.GetSingleBook(id));
         }
 
         [HttpPost("update/{id}")]
         public IActionResult Update(Book inputBook, [FromRoute] int id)
         {
-            LibraryRepository.UpdateBook(inputBook, id);
+            BookService.UpdateBook(inputBook, id);
             return RedirectToAction("books");
         }
 
         [HttpGet("delete/{id}")]
         public IActionResult Delete([FromRoute]int id)
         {
-            LibraryRepository.RemoveBook(id);
+            BookService.RemoveBook(id);
             return RedirectToAction("books");
         }
     }

@@ -10,42 +10,44 @@ using System.Threading.Tasks;
 namespace SimbaProject.Controllers
 {
     [Route("borrow")]
-    public class BookReaderController : Controller
+    public class BorrowController : Controller
     {
-        public BookReaderController(LibraryRepository libraryRepository)
+        public BorrowController(ReaderRepository readerRepository, BookRepository bookRepository)
         {
-            LibraryRepository = libraryRepository;
+            ReaderRepository = readerRepository;
+            BookRepository = bookRepository;
         }
 
-        public LibraryRepository LibraryRepository { get; set; }
+        public ReaderRepository ReaderRepository { get; set; }
+        public BookRepository BookRepository { get; set; }
 
         [HttpGet("borrow")]
         public IActionResult Borrow()
         {
-            int bookId = 5;
-            int readerId = 4;
+            int bookId = 3;
+            int readerId = 1;
 
-            var book = LibraryRepository.GetSingleBook(bookId);
-            var reader = LibraryRepository.GetSingleReader(readerId);
+            var book = BookRepository.GetSingleBook(bookId);
+            var reader = ReaderRepository.GetSingleReader(readerId);
             var bookreader = new BookReader() { Book = book, Reader = reader };
             book.BookReaders.Add(bookreader);
             reader.BooksReaders.Add(bookreader);
-            LibraryRepository.LibraryContext.SaveChanges();
+            ReaderRepository.LibraryContext.SaveChanges();
             return Ok();
         }
 
         [HttpGet("back")]
         public IActionResult Back()
         {
-            int bookId = 1;
-            int readerId = 2;
+            int bookId = 3;
+            int readerId = 1;
             
-            var book = LibraryRepository.GetSingleBook(bookId);
-            var reader = LibraryRepository.GetSingleReader(readerId);
-            LibraryRepository.LibraryContext.Entry(book)
+            var book = BookRepository.GetSingleBook(bookId);
+            var reader = ReaderRepository.GetSingleReader(readerId);
+            ReaderRepository.LibraryContext.Entry(book)
                 .Collection(b => b.BookReaders)
                 .Load();
-            LibraryRepository.LibraryContext.Entry(reader)
+            ReaderRepository.LibraryContext.Entry(reader)
                 .Collection(b => b.BooksReaders)
                 .Load();
 
@@ -53,7 +55,7 @@ namespace SimbaProject.Controllers
 
             book.BookReaders.Remove(bookReader);
             reader.BooksReaders.Remove(bookReader);
-            LibraryRepository.LibraryContext.SaveChanges();
+            ReaderRepository.LibraryContext.SaveChanges();
             return Ok();
         }
     }

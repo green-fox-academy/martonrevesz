@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SimbaProject.Repositories
 {
-    public class LibraryRepository
+    public class ReaderRepository
     {
         public static int CurrentId { get; set; } = 3;
 
-        public LibraryRepository(LibraryContext libraryContext)
+        public ReaderRepository(LibraryContext libraryContext)
         {
             LibraryContext = libraryContext;
         }
@@ -28,14 +28,10 @@ namespace SimbaProject.Repositories
             return LibraryContext.Readers.FirstOrDefault(x => x.ReaderId == id);
         }
 
-        public List<Book> GetBooks()
+        public void Add(Reader reader)
         {
-            return LibraryContext.Books.ToList();
-        }
-
-        internal Book GetSingleBook(int id)
-        {
-            return LibraryContext.Books.FirstOrDefault(x => x.BookId == id);
+            LibraryContext.Readers.Add(reader);
+            LibraryContext.SaveChanges();
         }
 
         public void UpdateReader(Reader inputReader, int id)
@@ -62,19 +58,6 @@ namespace SimbaProject.Repositories
             LibraryContext.SaveChanges();
         }
 
-        public void UpdateBook(Book inputBook, int id)
-        {
-            var book = GetSingleBook(id);
-            book.Title = inputBook.Title;
-            book.TotalCopies= inputBook.TotalCopies;
-            LibraryContext.SaveChanges();
-        }
 
-        public void RemoveBook(int id)
-        {
-            var book = GetSingleBook(id);
-            LibraryContext.Remove(book);
-            LibraryContext.SaveChanges();
-        }
     }
 }

@@ -11,12 +11,12 @@ namespace SimbaProject.Controllers
     [Route("")]
     public class HomeController : Controller
     {
-        public HomeController(LibraryRepository libraryRepository)
+        public HomeController(ReaderRepository readerRepository)
         {
-            LibraryRepository = libraryRepository;
+            ReaderRepository = readerRepository;
         }
 
-        public LibraryRepository LibraryRepository { get; set; }
+        public ReaderRepository ReaderRepository { get; set; }
 
         [Route("index")]
         public IActionResult Index()
@@ -33,11 +33,11 @@ namespace SimbaProject.Controllers
         [HttpPost("")]
         public IActionResult Login(string name)
         {
-            foreach (Reader reader in LibraryRepository.LibraryContext.Readers)
+            foreach (Reader reader in ReaderRepository.LibraryContext.Readers)
             {
                 if (reader.Name == name)
                 {
-                    LibraryRepository.CurrentId = reader.ReaderId;
+                    ReaderRepository.CurrentId = reader.ReaderId;
                     return Redirect("index");
                 }
             }
