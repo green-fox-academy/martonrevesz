@@ -2,6 +2,7 @@
 using SimbaProject.Entities;
 using SimbaProject.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace SimbaProject.Repositories
 {
@@ -32,9 +33,23 @@ namespace SimbaProject.Repositories
 
             book.BookReaders.Remove(bookReader);
             reader.BooksReaders.Remove(bookReader);
-            ReaderRepository.LibraryContext.SaveChanges();
             book.BorrowedCopies--;
             reader.CurrentBorrow--;
+            ReaderRepository.LibraryContext.SaveChanges();
+        }
+
+        public IList<Book> GetBooksForReader(int currentId)
+        {
+            var reader = ReaderRepository.GetSingleReader(ReaderRepository.CurrentId);
+            ReaderRepository.LibraryContext.Entry(reader)
+                .Collection(b => b.BooksReaders)
+                .Load();
+            List<BookReader> brList = reader.BooksReaders.Where(br => br.ReaderId == currentId).ToList();
+            return BookRepository.GetBooks()
+                .Where(b => (b.BookReaders.ToList()
+                    .Intersect(brList)
+                    .ToList().Count != 0))
+                    .ToList();
         }
 
         public void Borrow(int bookId)
@@ -46,9 +61,10 @@ namespace SimbaProject.Repositories
             var bookreader = new BookReader() { Book = book, Reader = reader };
             book.BookReaders.Add(bookreader);
             reader.BooksReaders.Add(bookreader);
-            LibraryContext.SaveChanges();
             book.BorrowedCopies++;
             reader.CurrentBorrow++;
+            LibraryContext.SaveChanges();
+
         }
 
     }

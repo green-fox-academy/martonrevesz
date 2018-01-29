@@ -1,4 +1,4 @@
-﻿@model SimbaProject.Models.Book
+﻿@model SimbaProject.Viewmodels.ReaderBookViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Single Reader</title>
@@ -9,24 +9,30 @@
         <center>
             <a href="/index">Home</a>
             <a href="/book/list">Book list</a>
-            <a href="/book/update/@Model.BookId">Update book</a>
-            <a href="/book/delete/@Model.BookId">Delete</a>
+            <a href="/book/update/@Model.Book.BookId">Update book</a>
+            <a href="/book/delete/@Model.Book.BookId">Delete</a>
         </center>
     </nav>
     <center>
         <table style="width:30%">
             <tr>
                 <td>Title</td>
-                <td>@Model.Title</td>
+                <td>@Model.Book.Title</td>
             </tr>
             <tr>
                 <td>TotalCopies</td>
-                <td>@Model.TotalCopies</td>
+                <td>@Model.Book.TotalCopies</td>
             </tr>
             <tr>
                 <td>AvailableCopies</td>
-                <td>@(Model.TotalCopies-Model.BorrowedCopies)</td>
+                <td>@(Model.Book.TotalCopies-Model.Book.BorrowedCopies)</td>
             </tr>
+            @if((Model.Book.TotalCopies > Model.Book.BorrowedCopies) && (Model.Reader.CurrentBorrow < 3))
+            {
+                <tr>
+                    <td colspan="2"><a href="/borrow/borrow?bookId=@Model.Book.BookId">Borrow book</a></td>
+                </tr>
+            }
         </table>
     </center>
 </body>

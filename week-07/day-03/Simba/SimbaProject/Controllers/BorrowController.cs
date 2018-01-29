@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SimbaProject.Models;
 using SimbaProject.Repositories;
 using SimbaProject.Services;
+using SimbaProject.Viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,16 +24,20 @@ namespace SimbaProject.Controllers
         [HttpGet("borrow")]
         public IActionResult Borrow([FromQuery] int bookId)
         {
-            bookId = 3;
-            BorrowService.Borrow(bookId);
-            return Ok();
+            ReaderBooksViewModel viewModel = BorrowService.Borrow(bookId);
+            return View("mybooks", viewModel);
+        }
+
+        [HttpGet("mybooks")]
+        public IActionResult MyBooks([FromQuery] int bookId)
+        {
+            ReaderBooksViewModel viewModel = BorrowService.GetReaderBooks(bookId);
+            return View(viewModel);
         }
 
         [HttpGet("back")]
         public IActionResult Back([FromQuery] int bookId)
         {
-            bookId = 3;
-
             BorrowService.Back(bookId);
             return Ok();
         }

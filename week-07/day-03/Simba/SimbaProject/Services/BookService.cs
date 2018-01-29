@@ -1,5 +1,6 @@
 ﻿using SimbaProject.Models;
 using SimbaProject.Repositories;
+using SimbaProject.Viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,28 @@ namespace SimbaProject.Services
 {
     public class BookService
     {
-        public BookService(BookRepository bookRepository)
+        public BookService(BookRepository bookRepository, ReaderRepository readerRepository)
         {
             BookRepository = bookRepository;
+            ReaderRepository = readerRepository;
         }
 
         public BookRepository BookRepository { get; set; }
+        public ReaderRepository ReaderRepository { get; set; }
 
         public List<Book> GetBooks()
         {
             return BookRepository.GetBooks();
         }
 
-        public Book GetSingleBook(int id)
+        public ReaderBookViewModel GetSingleBook(int id)
         {
-            return BookRepository.GetSingleBook(id);
+            var readerBookViewModel = new ReaderBookViewModel()
+            {
+                Book = BookRepository.GetSingleBook(id),
+                Reader = ReaderRepository.GetSingleReader(ReaderRepository.CurrentId)
+            };
+            return readerBookViewModel;
         }
 
         public void Add(Book book)
