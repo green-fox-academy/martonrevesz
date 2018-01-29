@@ -21,7 +21,7 @@ namespace SimbaProject.Controllers
         [Route("index")]
         public IActionResult Index()
         {            
-            return View();
+            return View(ReaderRepository.GetSingleReader(ReaderRepository.CurrentId));
         }
 
         [HttpGet("")]

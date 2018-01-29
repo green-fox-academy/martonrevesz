@@ -24,6 +24,15 @@ namespace SimbaProject.Services
             return BookRepository.GetBooks();
         }
 
+        public ReaderBooksViewModel GetReaderBooksViewModel()
+        {
+            return new ReaderBooksViewModel()
+            {
+                Reader = ReaderRepository.GetSingleReader(ReaderRepository.CurrentId),
+                Books = BookRepository.GetBooks()
+            };
+        }
+
         public ReaderBookViewModel GetSingleBook(int id)
         {
             var readerBookViewModel = new ReaderBookViewModel()

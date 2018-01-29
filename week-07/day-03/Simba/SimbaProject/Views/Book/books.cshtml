@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<SimbaProject.Models.Book>
+﻿@model SimbaProject.Viewmodels.ReaderBooksViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,7 +9,10 @@
     <nav>
         <center>
             <a href="/index">Home</a>
+            @if (Model.Reader.UserType.Equals("admin"))
+            {
             <a href="/book/add">New Book</a>
+            }
         </center>
     </nav>
 
@@ -18,14 +21,13 @@
             <tr>
                 <th>Title</th>
             </tr>
-            @for (int i = 0; i < @Model.Count; i++)
+            @for (int i = 0; i < @Model.Books.Count; i++)
             {
                 <tr>
-                    <td> <a href="/book/single/@Model[i].BookId"> @Model[i].Title</a></td>
+                    <td> <a href="/book/single/@Model.Books[i].BookId"> @Model.Books[i].Title</a></td>
                 </tr>
             }
         </table>
-
     </center>
 </body>
 </html>

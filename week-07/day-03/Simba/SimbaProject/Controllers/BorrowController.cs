@@ -33,7 +33,7 @@ namespace SimbaProject.Controllers
         public IActionResult Back([FromQuery] int bookId)
         {
             BorrowService.Back(bookId);
-            return Ok();
+            return RedirectToAction("mybooks", bookId);
         }
     }
 }

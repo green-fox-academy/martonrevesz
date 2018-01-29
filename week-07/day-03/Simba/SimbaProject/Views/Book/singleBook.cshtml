@@ -9,12 +9,14 @@
         <center>
             <a href="/index">Home</a>
             <a href="/book/list">Book list</a>
-            <a href="/book/update/@Model.Book.BookId">Update book</a>         
-            @if (Model.Reader.BooksReaders.Count == 0)
+            @if (Model.Reader.UserType.Equals("admin"))
             {
-                <a href="/book/delete/@Model.Book.BookId">Delete</a>
-            }
-
+                <a href="/book/update/@Model.Book.BookId">Update book</a>
+                @if (Model.Book.BorrowedCopies == 0)
+                {
+                    <a href="/book/delete/@Model.Book.BookId">Delete</a>
+                }
+            }      
         </center>
     </nav>
     <center>

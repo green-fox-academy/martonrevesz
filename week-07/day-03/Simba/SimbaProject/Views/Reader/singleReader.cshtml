@@ -9,9 +9,15 @@
         <center>
             <a href="/index">Home</a>
             <a href="/reader/list">Reader list</a>
-            <a href="/reader/update?id=@Model.ReaderId">Update data</a>
-            <a href="/reader/fee?id=@Model.ReaderId">Fine reader</a>
-            <a href="/reader/delete?id=@Model.ReaderId">Delete</a>           
+            @if (Model.UserType.Equals("admin"))
+            {
+                <a href="/reader/update?id=@Model.ReaderId">Update data</a>
+                <a href="/reader/fee?id=@Model.ReaderId">Fine reader</a>
+                @if (Model.CurrentBorrow == 0)
+                {
+                    <a href="/reader/delete?id=@Model.ReaderId">Delete</a>
+                }
+            }           
         </center>
     </nav>
     <center>
