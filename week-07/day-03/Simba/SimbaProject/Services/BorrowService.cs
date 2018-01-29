@@ -42,7 +42,6 @@ namespace SimbaProject.Services
 
         public void Back(int bookId)
         {
-            bookId = 4;
             BorrowRepository.Back(bookId);
         }
     }

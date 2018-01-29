@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SimbaProject.Models;
-using SimbaProject.Repositories;
 using SimbaProject.Services;
 using SimbaProject.Viewmodels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace SimbaProject.Controllers
 {
