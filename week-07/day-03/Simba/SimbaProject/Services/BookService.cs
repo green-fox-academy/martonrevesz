@@ -40,5 +40,6 @@ namespace SimbaProject.Services
         {
             BookRepository.RemoveBook(id);
         }
+
     }
 }

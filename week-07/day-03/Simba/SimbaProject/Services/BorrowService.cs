@@ -19,5 +19,10 @@ namespace SimbaProject.Services
         {
             BorrowRepository.Borrow(bookId);
         }
+
+        public void Back(int bookId)
+        {
+            BorrowRepository.Back(bookId);
+        }
     }
 }

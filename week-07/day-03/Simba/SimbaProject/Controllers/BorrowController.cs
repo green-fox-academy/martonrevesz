@@ -29,25 +29,11 @@ namespace SimbaProject.Controllers
         }
 
         [HttpGet("back")]
-        public IActionResult Back()
+        public IActionResult Back([FromQuery] int bookId)
         {
-            //int bookId = 3;
-            //int readerId = 1;
-            
-            //var book = BookRepository.GetSingleBook(bookId);
-            //var reader = ReaderRepository.GetSingleReader(readerId);
-            //ReaderRepository.LibraryContext.Entry(book)
-            //    .Collection(b => b.BookReaders)
-            //    .Load();
-            //ReaderRepository.LibraryContext.Entry(reader)
-            //    .Collection(b => b.BooksReaders)
-            //    .Load();
+            bookId = 3;
 
-            //var bookReader = book.BookReaders.FirstOrDefault(x => x.Book == book && x.Reader == reader);
-
-            //book.BookReaders.Remove(bookReader);
-            //reader.BooksReaders.Remove(bookReader);
-            //ReaderRepository.LibraryContext.SaveChanges();
+            BorrowService.Back(bookId);
             return Ok();
         }
     }
