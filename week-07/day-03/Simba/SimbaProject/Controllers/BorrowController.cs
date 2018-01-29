@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SimbaProject.Models;
 using SimbaProject.Repositories;
+using SimbaProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,50 +13,41 @@ namespace SimbaProject.Controllers
     [Route("borrow")]
     public class BorrowController : Controller
     {
-        public BorrowController(ReaderRepository readerRepository, BookRepository bookRepository)
+        public BorrowController(BorrowService borrowService)
         {
-            ReaderRepository = readerRepository;
-            BookRepository = bookRepository;
+            BorrowService = borrowService;
         }
 
-        public ReaderRepository ReaderRepository { get; set; }
-        public BookRepository BookRepository { get; set; }
-
+        public BorrowService BorrowService { get; set; }
+        
         [HttpGet("borrow")]
-        public IActionResult Borrow()
+        public IActionResult Borrow([FromQuery] int bookId)
         {
-            int bookId = 3;
-            int readerId = 1;
-
-            var book = BookRepository.GetSingleBook(bookId);
-            var reader = ReaderRepository.GetSingleReader(readerId);
-            var bookreader = new BookReader() { Book = book, Reader = reader };
-            book.BookReaders.Add(bookreader);
-            reader.BooksReaders.Add(bookreader);
-            ReaderRepository.LibraryContext.SaveChanges();
+            bookId = 3;
+            BorrowService.Borrow(bookId);
             return Ok();
         }
 
         [HttpGet("back")]
         public IActionResult Back()
         {
-            int bookId = 3;
-            int readerId = 1;
+            //int bookId = 3;
+            //int readerId = 1;
             
-            var book = BookRepository.GetSingleBook(bookId);
-            var reader = ReaderRepository.GetSingleReader(readerId);
-            ReaderRepository.LibraryContext.Entry(book)
-                .Collection(b => b.BookReaders)
-                .Load();
-            ReaderRepository.LibraryContext.Entry(reader)
-                .Collection(b => b.BooksReaders)
-                .Load();
+            //var book = BookRepository.GetSingleBook(bookId);
+            //var reader = ReaderRepository.GetSingleReader(readerId);
+            //ReaderRepository.LibraryContext.Entry(book)
+            //    .Collection(b => b.BookReaders)
+            //    .Load();
+            //ReaderRepository.LibraryContext.Entry(reader)
+            //    .Collection(b => b.BooksReaders)
+            //    .Load();
 
-            var bookReader = book.BookReaders.FirstOrDefault(x => x.Book == book && x.Reader == reader);
+            //var bookReader = book.BookReaders.FirstOrDefault(x => x.Book == book && x.Reader == reader);
 
-            book.BookReaders.Remove(bookReader);
-            reader.BooksReaders.Remove(bookReader);
-            ReaderRepository.LibraryContext.SaveChanges();
+            //book.BookReaders.Remove(bookReader);
+            //reader.BooksReaders.Remove(bookReader);
+            //ReaderRepository.LibraryContext.SaveChanges();
             return Ok();
         }
     }
