@@ -1,7 +1,7 @@
 ﻿@model SimbaProject.Viewmodels.ReaderBookViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Single Reader</title>
+    <title>Single Book</title>
     <link rel="stylesheet" type="text/css" href="~/style.css">
 </head>
 <body>
@@ -9,8 +9,12 @@
         <center>
             <a href="/index">Home</a>
             <a href="/book/list">Book list</a>
-            <a href="/book/update/@Model.Book.BookId">Update book</a>
-            <a href="/book/delete/@Model.Book.BookId">Delete</a>
+            <a href="/book/update/@Model.Book.BookId">Update book</a>         
+            @if (Model.Reader.BooksReaders.Count == 0)
+            {
+                <a href="/book/delete/@Model.Book.BookId">Delete</a>
+            }
+
         </center>
     </nav>
     <center>

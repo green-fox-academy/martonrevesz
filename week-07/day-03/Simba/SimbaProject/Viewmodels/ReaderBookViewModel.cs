@@ -1,4 +1,5 @@
-﻿using SimbaProject.Models;
+﻿using SimbaProject.Entities;
+using SimbaProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -32,10 +32,9 @@ namespace SimbaProject.Services
         public ReaderBooksViewModel GetReaderBooks(int bookId)
         {
             ReaderBooksViewModel viewModel = new ReaderBooksViewModel()
-            {
+            {                
                 Reader = ReaderRepository.GetSingleReader(ReaderRepository.CurrentId),
                 Books = BorrowRepository.GetBooksForReader(ReaderRepository.CurrentId)
-
             };
             return viewModel;
         }

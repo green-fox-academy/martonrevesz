@@ -27,6 +27,7 @@ namespace SimbaProject.Repositories
 
         public void RemoveBook(int id)
         {
+
             var book = GetSingleBook(id);
             LibraryContext.Remove(book);
             LibraryContext.SaveChanges();
