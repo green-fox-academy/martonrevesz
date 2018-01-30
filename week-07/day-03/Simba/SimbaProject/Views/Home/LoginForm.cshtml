@@ -1,18 +1,44 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@model SimbaProject.Models.WeatherShortly
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Welcome page</title>
     <link rel="stylesheet" type="text/css" href="~/style.css">
+    <style>
+        #map {
+            height: 400px;
+            width: 45%;
+            position: center;
+            float: right;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 <body>
-
-    <center>
+    <h3 style="color: white">@Model.City , @Model.Temp , @Model.Summary</h3>
+    <div id="map"></div>
         <h2>Welcome to Green Fox Library!</h2>
         <p>Please provide a reader name:</p>
         <form action="/" method="post">
             Name:
             <input type="text" name="name" />
             <input type="submit" />
-        </form>
-    </center>
+        </form>        
+
+    <script>
+      function initMap() {
+          var uluru = { lat: 47.5074181, lng: 19.0661997};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5oxgWIg_10OYjIwW-ekzMrYAvJbPWCDY&callback=initMap">
+    </script>
 </body>
 </html>

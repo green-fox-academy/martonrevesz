@@ -10,6 +10,7 @@ namespace SimbaProject.Repositories
     public class ReaderRepository
     {
         public static int CurrentId { get; set; } = 3;
+        public static double CurrentTemperature;
 
         public ReaderRepository(LibraryContext libraryContext)
         {
