@@ -1,4 +1,5 @@
 ﻿using PallidaWareHouse.Entities;
+using PallidaWareHouse.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,10 @@ namespace PallidaWareHouse.Repositories
         }
 
         public ClothesContext ClothesContext { get; set; }
+
+        public List<Clothing> GetAll()
+        {
+            return ClothesContext.Clothes.ToList();
+        }
     }
 }

@@ -1,22 +1,45 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@model List<PallidaWareHouse.Models.Clothing>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Web Store</title>
 </head>
 <body>
     <h2>Green Fox Fashion Web Store</h2>
-    <select>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <select>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <input type="text" name="quantity" value="" />
-    <input type="submit" name="name" value="get total" />
+    <form action="/warehouse/summary" method="post">
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
+        <input type="text" name="quantity" value="" />
+        <input type="submit" name="name" value="get total" />
+    </form>   
+    <table style="width:100%">
+        <tr>
+            <th>Item name</th>
+            <th>Manufacturer</th>
+            <th>Category</th>
+            <th>Size</th>
+            <th>Unit price</th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].ItemName</td>
+                <td>@Model[i].Manufacturer</td>
+                <td>@Model[i].Category</td>
+                <td>@Model[i].Size</td>
+                <td>@Model[i].UnitPrice</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>
