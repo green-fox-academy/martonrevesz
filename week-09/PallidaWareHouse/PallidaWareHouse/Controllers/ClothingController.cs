@@ -20,7 +20,7 @@ namespace PallidaWareHouse.Controllers
         [HttpGet("")]
         public IActionResult Warehouse()
         {
-            return View(ClothingRepository.GetAll());
+            return View(ClothingRepository.GetShoppingViewModel());
         }
 
         [HttpPost("summary")]

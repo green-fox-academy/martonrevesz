@@ -1,4 +1,4 @@
-﻿@model List<PallidaWareHouse.Models.Clothing>
+﻿@model PallidaWareHouse.ViewModels.ShoppingViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,17 +7,17 @@
 <body>
     <h2>Green Fox Fashion Web Store</h2>
     <form action="/warehouse/summary" method="post">
-        <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+        <select>   
+            @for (int i = 0; i < Model.UniqueNames.Count; i++)
+            {
+                <option value="@Model.UniqueNames[i]">@Model.UniqueNames[i]</option>
+            }            
         </select>
         <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            @for (int i = 0; i < Model.UniqueSizes.Count; i++)
+            {
+                <option value="@Model.UniqueSizes[i]">@Model.UniqueSizes[i]</option>
+            }
         </select>
         <input type="text" name="quantity" value="" />
         <input type="submit" name="name" value="get total" />
@@ -30,14 +30,14 @@
             <th>Size</th>
             <th>Unit price</th>
         </tr>
-        @for (int i = 0; i < Model.Count; i++)
+        @for (int i = 0; i < Model.ClothesList.Count; i++)
         {
             <tr>
-                <td>@Model[i].ItemName</td>
-                <td>@Model[i].Manufacturer</td>
-                <td>@Model[i].Category</td>
-                <td>@Model[i].Size</td>
-                <td>@Model[i].UnitPrice</td>
+                <td>@Model.ClothesList[i].ItemName</td>
+                <td>@Model.ClothesList[i].Manufacturer</td>
+                <td>@Model.ClothesList[i].Category</td>
+                <td>@Model.ClothesList[i].Size</td>
+                <td>@Model.ClothesList[i].UnitPrice</td>
             </tr>
         }
     </table>
