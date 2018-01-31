@@ -33,7 +33,7 @@ namespace SimbaProject.Services
             };
         }
 
-        public ReaderBookViewModel GetSingleBook(int id)
+        public ReaderBookViewModel GetReaderBook(int id)
         {
             var readerBookViewModel = new ReaderBookViewModel()
             {
@@ -46,6 +46,11 @@ namespace SimbaProject.Services
         public void Add(Book book)
         {
             BookRepository.Add(book);
+        }
+
+        public Book GetSingleBook(int id)
+        {
+            return BookRepository.GetSingleBook(id);
         }
 
         public void UpdateBook(Book inputBook, int id)

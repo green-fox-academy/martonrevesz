@@ -30,7 +30,7 @@ namespace SimbaProject.Controllers
         [HttpGet("single/{id}")]
         public IActionResult SingleBook([FromRoute] int id)
         {
-            var readerBookViewModel = BookService.GetSingleBook(id);
+            var readerBookViewModel = BookService.GetReaderBook(id);
             return View(readerBookViewModel);
         }
 

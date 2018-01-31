@@ -9,7 +9,7 @@
         <center>
             <a href="/index">Home</a>
             <a href="/reader/list">Reader list</a>
-            @if (Model.UserType.Equals("admin"))
+            @if (SimbaProject.Repositories.ReaderRepository.CurrentId ==1)
             {
                 <a href="/reader/update?id=@Model.ReaderId">Update data</a>
                 <a href="/reader/fee?id=@Model.ReaderId">Fine reader</a>
