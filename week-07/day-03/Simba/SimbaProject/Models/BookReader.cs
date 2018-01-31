@@ -9,6 +9,6 @@ namespace SimbaProject.Models
         public int ReaderId { get; set; }
         public Reader Reader { get; set; }
         public DateTime BorrowedTime { get; set; } = DateTime.Now;
-        public DateTime DueTime { get; set; } = DateTime.Now.AddHours(1);
+        public DateTime DueTime { get; set; } = DateTime.Now.AddMinutes(3);
     }
 }

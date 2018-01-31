@@ -30,7 +30,10 @@ namespace SimbaProject.Repositories
                 .Collection(b => b.BooksReaders)
                 .Load();
             var bookReader = book.BookReaders.FirstOrDefault(x => x.Book == book && x.Reader == reader);
-
+            if (bookReader.DueTime.CompareTo(DateTime.Now) < 0)
+            {
+                reader.Fine += 10;
+            }
             book.BookReaders.Remove(bookReader);
             reader.BooksReaders.Remove(bookReader);
             book.BorrowedCopies--;
