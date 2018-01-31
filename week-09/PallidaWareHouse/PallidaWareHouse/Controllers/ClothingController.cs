@@ -30,9 +30,13 @@ namespace PallidaWareHouse.Controllers
         }
 
         [HttpGet("query")]
-        public IActionResult Query([FromQuery] int price, [FromQuery] string type)
+        public IActionResult Query([FromQuery] int? price, [FromQuery] string type)
         {
-            return Json(null);
+            if (price == null || type == null)
+            {
+                return BadRequest();
+            }
+            return Json(new { result = "ok", clothes = ClothingRepository.GetQueryList(price, type) });
         }
     }
 }

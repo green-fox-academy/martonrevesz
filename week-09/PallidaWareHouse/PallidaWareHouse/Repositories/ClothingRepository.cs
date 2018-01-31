@@ -43,5 +43,23 @@ namespace PallidaWareHouse.Repositories
                 SubTotal = clothing.UnitPrice * quantity
             };
         }
+
+        public List<Clothing> GetQueryList(int? price, string type)
+        {
+            if (type.Equals("equal"))
+            {
+                return ClothesContext.Clothes.Where(c => c.UnitPrice == price).ToList();
+            }
+            else if (type.Equals("higher"))
+            {
+                return ClothesContext.Clothes.Where(c => c.UnitPrice > price).ToList();
+            }
+            else if (type.Equals("lower"))
+            {
+                return ClothesContext.Clothes.Where(c => c.UnitPrice < price).ToList();
+            }
+            var list = new List<Clothing>();
+            return list;
+        }
     }
 }
