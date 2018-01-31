@@ -1,0 +1,28 @@
+﻿@model PallidaWareHouse.ViewModels.SummaryViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Summary</title>
+</head>
+<body>
+    <h2>Green Fox Fashion Web Store</h2>
+    <h2>Summary</h2>
+    <table style="width:40%">
+        <tr>
+            <th>ItemName</th>
+            <th>manufacturer</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        <tr>
+            <td>@Model.Clothes.ItemName</td>
+            <td>@Model.Clothes.Manufacturer</td>
+            <td>@Model.Clothes.Category</td>
+            <td>@Model.Quantity</td>
+            <td>@Model.SubTotal</td>
+        </tr>
+    </table>
+    <a href="/warehouse">Back to main</a>
+</body>
+</html>

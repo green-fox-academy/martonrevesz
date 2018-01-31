@@ -7,13 +7,13 @@
 <body>
     <h2>Green Fox Fashion Web Store</h2>
     <form action="/warehouse/summary" method="post">
-        <select>   
+        <select name="itemName">   
             @for (int i = 0; i < Model.UniqueNames.Count; i++)
             {
                 <option value="@Model.UniqueNames[i]">@Model.UniqueNames[i]</option>
             }            
         </select>
-        <select>
+        <select name="size">
             @for (int i = 0; i < Model.UniqueSizes.Count; i++)
             {
                 <option value="@Model.UniqueSizes[i]">@Model.UniqueSizes[i]</option>

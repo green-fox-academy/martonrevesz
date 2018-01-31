@@ -32,5 +32,16 @@ namespace PallidaWareHouse.Repositories
                 UniqueSizes = ClothesContext.Clothes.GroupBy(c => c.Size).Select(g => g.First().Size).ToList()
             };
         }
+
+        public SummaryViewModel CalculateSummary(string itemName, string size, int quantity)
+        {
+            Clothing clothing = ClothesContext.Clothes.FirstOrDefault(c => c.ItemName.Equals(itemName) && c.Size.Equals(size));
+            return new SummaryViewModel()
+            {
+                Clothes = clothing,
+                Quantity = quantity,
+                SubTotal = clothing.UnitPrice * quantity
+            };
+        }
     }
 }

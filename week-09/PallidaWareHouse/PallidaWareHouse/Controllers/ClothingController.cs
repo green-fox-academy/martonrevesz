@@ -24,9 +24,9 @@ namespace PallidaWareHouse.Controllers
         }
 
         [HttpPost("summary")]
-        public IActionResult Summary()
-        {
-            return Ok();
+        public IActionResult Summary([FromForm]string itemName, [FromForm]string size, [FromForm]int quantity)
+        {            
+            return View(ClothingRepository.CalculateSummary(itemName, size, quantity));
         }
 
         [HttpGet("query")]
