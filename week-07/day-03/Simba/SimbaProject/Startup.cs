@@ -26,9 +26,11 @@ namespace SimbaProject
             services.AddScoped<ReaderRepository>();
             services.AddScoped<BookRepository>();
             services.AddScoped<BorrowRepository>();
+            services.AddScoped<AuthorRepository>();
             services.AddScoped<ReaderService>();
             services.AddScoped<BookService>();
             services.AddScoped<BorrowService>();
+            services.AddScoped<AuthorService>();
 
         }
 

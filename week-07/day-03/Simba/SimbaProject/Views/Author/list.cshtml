@@ -1,0 +1,33 @@
+﻿@model SimbaProject.Viewmodels.ReaderAuthorsViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Author List</title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <nav>
+        <center>
+            <a href="/index">Home</a>
+            @if (Model.Reader.UserType.Equals("admin"))
+            {
+                <a href="/author/add">New Author</a>
+            }
+        </center>
+    </nav>
+
+    <center>
+        <table style="width:30%">
+            <tr>
+                <th>Title</th>
+            </tr>
+            @for (int i = 0; i < @Model.Authors.Count; i++)
+            {
+                <tr>
+                    <td> <a href="/author/single/@Model.Authors[i].Id"> @Model.Authors[i].Name</a></td>
+                </tr>
+            }
+        </table>
+    </center>
+</body>
+</html>

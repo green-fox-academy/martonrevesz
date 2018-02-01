@@ -11,8 +11,8 @@ using System;
 namespace SimbaProject.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20180118170555_Initial")]
-    partial class Initial
+    [Migration("20180201153539_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,10 +21,28 @@ namespace SimbaProject.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("SimbaProject.Models.Author", b =>
+                {
+                    b.Property<long?>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Birth");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Nationality");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authors");
+                });
+
             modelBuilder.Entity("SimbaProject.Models.Book", b =>
                 {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("AuthorId");
 
                     b.Property<int>("BorrowedCopies");
 
@@ -34,6 +52,8 @@ namespace SimbaProject.Migrations
 
                     b.HasKey("BookId");
 
+                    b.HasIndex("AuthorId");
+
                     b.ToTable("Books");
                 });
 
@@ -42,6 +62,10 @@ namespace SimbaProject.Migrations
                     b.Property<int>("BookId");
 
                     b.Property<int>("ReaderId");
+
+                    b.Property<DateTime>("BorrowedTime");
+
+                    b.Property<DateTime>("DueTime");
 
                     b.HasKey("BookId", "ReaderId");
 
@@ -68,6 +92,13 @@ namespace SimbaProject.Migrations
                     b.HasKey("ReaderId");
 
                     b.ToTable("Readers");
+                });
+
+            modelBuilder.Entity("SimbaProject.Models.Book", b =>
+                {
+                    b.HasOne("SimbaProject.Models.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorId");
                 });
 
             modelBuilder.Entity("SimbaProject.Models.BookReader", b =>

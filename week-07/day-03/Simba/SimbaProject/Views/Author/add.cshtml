@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title>Add Author</title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <nav>
+        <center>
+            <a href="/index">Home</a>
+            <a href="/author/list">Author list</a>
+        </center>
+    </nav>
+    <form action="/author/add" method="post">
+        Name:
+        <input type="text" name="Name"><br>
+        Birth:
+        <input type="number" name="Birth" /><br>
+        Nationality:
+        <input type="datetime" name="nationality" /><br>
+
+        <input type="submit" />
+    </form>
+
+</body>
+</html>

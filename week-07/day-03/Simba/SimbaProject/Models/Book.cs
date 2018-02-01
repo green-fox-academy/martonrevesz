@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SimbaProject.Models
 {
@@ -12,5 +10,7 @@ namespace SimbaProject.Models
         public ICollection<BookReader> BookReaders { get; set; } = new List<BookReader>();
         public int TotalCopies { get; set; }
         public int BorrowedCopies { get; set; }
+        public Author Author { get; set; }
+        public long? AuthorId { get; set; }
     }
 }
