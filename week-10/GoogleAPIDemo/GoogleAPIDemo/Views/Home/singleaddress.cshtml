@@ -1,0 +1,44 @@
+﻿@model GoogleAPIDemo.Models.LngLat
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        #map {
+            height: 400px;
+            width: 45%;
+            position: center;
+            float: right;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <p id="lat">@Model.Lat</p>
+    <p id="lng">@Model.Lng</p>
+    <script>
+        function initMap() {
+            var element = document.getElementById('lat');
+            var lat = element.innerText || element.textContent;
+            element.innerHTML = lat;
+            element = document.getElementById('lng');
+            var lng = element.innerText || element.textContent;
+            element.innerHTML = lng;
+            lat = lat.replace(",", ".");
+            lng = lng.replace(",", ".");
+            var uluru = { lat: parseFloat(lat), lng: parseFloat(lng) };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5oxgWIg_10OYjIwW-ekzMrYAvJbPWCDY&callback=initMap">
+    </script>
+</body>
+</html>
